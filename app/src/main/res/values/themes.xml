@@ -2,8 +2,7 @@
     <style name="Base.Theme.ManshatSoultanCommunity" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/title</item>
         <item name="colorPrimaryDark">@color/title</item>
-        <item name="colorAccent">@color/title</item>
+        <item name="colorAccent">@color/black</item>
     </style>
-
     <style name="Theme.ManshatSoultanCommunity" parent="Base.Theme.ManshatSoultanCommunity" />
 </resources>
