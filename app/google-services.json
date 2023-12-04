@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "335918384800",
+    "project_id": "manshat-soultan-community",
+    "storage_bucket": "manshat-soultan-community.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335918384800:android:422abb6e53b62299b3abc5",
+        "android_client_info": {
+          "package_name": "com.example.manshatsoultancommunity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW1A2QHbzh9jFUMbviZF4fkPUx-1_80Mg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

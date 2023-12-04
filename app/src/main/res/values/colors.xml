@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="background">#F3EEEA</color>
+    <color name="title">#952323</color>
+    <color name="titleSecondary">#321E1E</color>
+    <color name="black">#040D12</color>
+    <color name="error">#FF2D55</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#00A6A6</color>
+    <color name="secondary">#485668</color>
+    <color name="tertiary">#D6E2ED</color>
+    <color name="quinary">#F1F4FA</color>
+    <color name="hint">#FCAEAE</color>
+    <color name="border">#FFFFFF</color>
+    <color name="success">#3CD29C</color>
+    <color name="progress">#FFB21C</color>
+
+</resources>
