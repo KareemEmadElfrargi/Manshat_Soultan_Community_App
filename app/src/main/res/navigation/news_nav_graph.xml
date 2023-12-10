@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/news_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.manshatsoultancommunity.features.news.presentation.fragment.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.manshatsoultancommunity.features.news.presentation.fragment.AboutFragment"
+        android:label="AboutFragment" />
+    <fragment
+        android:id="@+id/addPostFragment"
+        android:name="com.example.manshatsoultancommunity.features.news.presentation.fragment.AddPostFragment"
+        android:label="AddPostFragment" />
+
+    <fragment
+        android:id="@+id/RIPFragment"
+        android:name="com.example.manshatsoultancommunity.features.news.presentation.fragment.RIPFragment"
+        android:label="RIPFragment" />
+    <fragment
+        android:id="@+id/adsFragment"
+        android:name="com.example.manshatsoultancommunity.features.news.presentation.fragment.AdsFragment"
+        android:label="AdsFragment" />
+</navigation>

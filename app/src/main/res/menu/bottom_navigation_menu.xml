@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:title="الرئيسية"
+    android:icon="@drawable/ic_home"
+    android:id="@+id/homeFragment"/>
+
+
+    <item
+        android:title="إعلانات"
+        android:icon="@drawable/ads_ic"
+        android:id="@+id/adsFragment"/>
+
+    <item
+        android:title="من نحن"
+        android:icon="@drawable/about_ic"
+        android:id="@+id/aboutFragment"/>
+    <item
+        android:title="إدارة"
+        android:icon="@drawable/add_ic"
+        android:id="@+id/addPostFragment"/>
+</menu>

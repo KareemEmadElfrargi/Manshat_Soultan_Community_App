@@ -2,15 +2,21 @@
 <resources>
 
     <!--basic color for light mode-->
+    <color name="black">#040D12</color>
     <color name="background">#f8ecee</color>
-    <color name="title">#b93436</color>
-    <color name="titleSecondary">#040D12</color>
-    <color name="hint">#de9da3</color>
+    <color name="title">#740c1c</color>
+    <color name="titleSecondary">#842c3b</color>
+    <color name="titleThird">#252523</color>
+    <color name="circle">#E3BAC1</color>
+    <color name="background_animation_title">#FFFFFF</color>
+    <color name="titleButton">#c88a1a</color>
+    <color name="buttonColor">#740c1c</color>
+    <color name="iconColor">#740c1c</color>
+    <color name="hint">#8f8585</color>
     <color name="error">#FF2D55</color>
 
     <!-- other color-->
     <color name="white">#FFFFFFFF</color>
-    <color name="black">#040D12</color>
     <color name="primary">#3b0d13</color>
     <color name="secondary">#485668</color>
     <color name="tertiary">#D6E2ED</color>
@@ -18,5 +24,23 @@
     <color name="border">#FFFFFF</color>
     <color name="success">#3CD29C</color>
     <color name="progress">#FFB21C</color>
+
+
+
+
+    <color name="g_gray700">#666666</color>
+    <color name="g_black">#171717</color>
+    <color name="g_blue">#000DAE</color>
+    <color name="g_white">#F5F8FA</color>
+    <color name="g_dark_blue">#000759</color>
+    <color name="g_blue_gray200">#97AABD</color>
+    <color name="g_light_red">#FF9999</color>
+    <color name="g_card_background">#FAFDFF</color>
+    <color name="g_search_and_icons">#FAFBFC</color>
+    <color name="g_line">#E9EAEC</color>
+    <color name="g_blue100">#B8D9FA</color>
+    <color name="g_red">#FF0000</color>
+    <color name="g_gray500">#969899</color>
+    <color name="g_orange_yellow">#F8BA00</color>
 
 </resources>

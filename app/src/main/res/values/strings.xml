@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">مجتمع منشأة سلطان</string>
+
+
+
+
+
+
+
+
+
+    <string name="rightAddress">مرحباً بكم في قرية منشأة سلطان</string>
+
+    <string name="subTitleName">إعرف اخبار قرية منشأة سلطان من خلال التطبيق</string>
+    <string name="start">إنطلق</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="let_s_log_in">Let\'s Log In</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="forgotpassword">ForgotPassword</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="let_s_register">Let\'s Register</string>
+    <string name="faramawy">Faramawy.</string>
+    <string name="first_name">First Name\t</string>
+    <string name="last_name">Last Name</string>
+    <string name="admin">مسؤول</string>
+    <string name="user">مستخدم</string>
+    <string name="rightAddress2">أخبار قرية منشأة سلطان</string>
+    <string name="subTitleName2">إذا كنت مستخدم لمعرفة اخبار قريتك عليك المتابعة باستخدام زر <font color="#040D12"><b>مُسخدم</b></font> وإذا كنت مسؤول عن ادارة اخبار القرية عليك المتابعة باستخدام زر <font color="#040D12"><b>مسؤول</b></font></string>
+    <string name="admin_code_decr">قم بإدخال الكود الذي تم إرسالة لك من قِبل <font color="#740c1c"><b>مُطوري</b></font> التطبيق.</string>
+    <string name="admin_code_title">المُتابعة كـ مسؤول</string>
+    <string name="confirm">تأكيد</string>
+    <string name="cancel">إلغاء</string>
 </resources>

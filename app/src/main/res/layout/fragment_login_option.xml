@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/image_background"
+            android:scaleType="centerCrop" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/h3"
+                android:layout_marginTop="120dp"
+                android:drawableStart="@drawable/micro_ic"
+                android:drawablePadding="6dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="MS NEWS" />
+
+
+            <TextView
+                android:id="@+id/tvAddressForNewsApp"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:text="@string/rightAddress2"
+                app:layout_constraintTop_toBottomOf="@id/tvAppName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAlignment="center"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tvQualityForShopping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/h2"
+                app:layout_constraintStart_toStartOf="@id/tvAddressForNewsApp"
+                app:layout_constraintEnd_toEndOf="@id/tvAddressForNewsApp"
+                app:layout_constraintTop_toBottomOf="@id/tvAddressForNewsApp"
+                android:textAlignment="center"
+                android:padding="6dp"
+                android:gravity="center"
+                android:lineSpacingMultiplier="0.7"
+                android:layout_marginTop="15dp"
+                android:text="@string/subTitleName2" />
+
+            <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/buttonUserAccountOptions"
+                android:layout_width="@dimen/mediumButtonWidth"
+                android:layout_height="@dimen/mediumButtonHeight"
+                style="@style/blueButtonStyle"
+                app:layout_constraintTop_toBottomOf="@id/tvQualityForShopping"
+                app:layout_constraintStart_toStartOf="@id/tvQualityForShopping"
+                app:layout_constraintEnd_toEndOf="@id/tvQualityForShopping"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:spinning_bar_color="@color/white"
+                android:text="@string/user" />
+
+            <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/buttonAdminAccountOptions"
+                android:layout_width="@dimen/mediumButtonWidth"
+                android:layout_height="@dimen/mediumButtonHeight"
+                style="@style/whiteButtonStyle"
+                app:layout_constraintTop_toBottomOf="@id/buttonUserAccountOptions"
+                app:layout_constraintStart_toStartOf="@id/tvQualityForShopping"
+                app:layout_constraintEnd_toEndOf="@id/tvQualityForShopping"
+                android:layout_marginTop="10dp"
+                app:spinning_bar_color="@color/black"
+                android:text="@string/admin" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        tools:context=".features.news.presentation.common.NewsActivity">
+
+
+        <TextView
+            android:id="@+id/animationTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ستبقي فلسطين حرة للأبد"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textAlignment="textStart"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:focusable="true"
+            android:padding="8dp"
+            android:drawableStart="@drawable/important_ic_news"
+            android:background="@drawable/shape_item_animation_title_scroll"
+            android:drawablePadding="8dp"
+            android:textDirection="rtl"
+            android:textSize="18dp"
+            android:fontFamily="@font/base_font_cairo"
+            android:focusableInTouchMode="true"
+            android:scrollHorizontally="true"
+            android:freezesText="true"/>
+
+        <fragment
+            android:id="@+id/fragmentContainerNews"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/navigationHomeNewsActivity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animationTitle"
+            app:navGraph="@navigation/news_nav_graph"
+            tools:layout="@layout/fragment_home" />
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigationHomeNewsActivity"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:menu="@menu/bottom_navigation_menu"
+            app:labelVisibilityMode="selected"
+            tools:layout_editor_absoluteX="1dp"
+            android:layoutDirection="rtl"
+            android:background="@drawable/bottom_navigation_background"
+            android:elevation="0dp"
+            app:itemTextAppearanceInactive="@style/BottomNavigationTextStyle"
+            app:itemTextAppearanceActive="@style/BottomNavigationTextStyle"
+            app:itemPaddingBottom="10dp"
+            app:itemPaddingTop="10dp"
+            app:itemRippleColor="@color/g_white"
+            app:itemIconTint="@drawable/bottom_nav_item_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteY="1dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

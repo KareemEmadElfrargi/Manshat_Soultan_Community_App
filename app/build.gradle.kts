@@ -45,7 +45,8 @@ android {
 }
 kapt {
     correctErrorTypes = true
-}
+    generateStubs = true}
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -67,9 +68,6 @@ dependencies {
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
-    // Navigation component
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
 
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
@@ -88,19 +86,31 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.49")
     kapt("com.google.dagger:hilt-android-compiler:2.49")
 
-    //firebase
-    //implementation (platform("com.google.firebase:firebase-bom:32.3.1"))
-    //implementation ("com.google.firebase:firebase-database-ktx:20.3.0")
-
     // lottie
-    val lottieVersion = "3.4.0"
-    //noinspection GradleDependency
-    implementation("com.airbnb.android:lottie:$lottieVersion")
+    implementation("com.airbnb.android:lottie:3.5.0")
 
     // Room database
-    implementation ("androidx.room:room-runtime:2.6.0")
-    annotationProcessor ("androidx.room:room-compiler:2.6.0")
-    implementation ("androidx.room:room-ktx:2.6.0")
+    implementation ("androidx.room:room-runtime:2.6.1")
+    annotationProcessor ("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
+
+    // Navigation component
+    val activity_version = "1.8.1"
+    implementation("androidx.activity:activity-ktx:$activity_version")
+    // ... (rest of your dependencies remain the same)
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
+    //loading button
+    implementation("com.github.leandroborgesferreira:loading-button-android:2.3.0")
+
+    //viewpager2 indicator --.
+    implementation ("androidx.viewpager2:viewpager2:view_pager_version")
+    //stepView
+    //implementation ("com.shuhart.stepview:stepview:1.5.2")
+    implementation ("com.github.shuhart:stepview:1.5.1")
+
+    //circular image
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
 
 
 }

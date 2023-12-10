@@ -4,6 +4,7 @@
 
     <application
         android:allowBackup="true"
+        android:name=".ManshatApplication"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -16,11 +17,14 @@
             android:name=".features.splash.SplashActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".features.news.presentation.common.NewsActivity"
+            android:exported="false">
+        </activity>
+
+        <activity android:name=".features.Intro.common.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

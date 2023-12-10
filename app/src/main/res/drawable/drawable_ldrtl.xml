@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/ic_my_icon.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- LTR version -->
+    <item android:drawable="@drawable/important_ic_news" android:gravity="start"/>
+
+    <!-- RTL version -->
+    <item android:drawable="@drawable/important_ic_news" android:gravity="start"/>
+
+</layer-list>
