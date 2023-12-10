@@ -9,18 +9,14 @@
         android:label="IntroductionFragment" >
         <action
             android:id="@+id/action_introductionFragment_to_optionLoginFragment"
-            app:destination="@id/optionLoginFragment" />
+            app:destination="@id/optionLoginFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/optionLoginFragment"
         android:name="com.example.manshatsoultancommunity.features.Intro.fragment.OptionLoginFragment"
-        android:label="OptionLoginFragment" >
-        <action
-            android:id="@+id/action_optionLoginFragment_to_adminLoginFragment"
-            app:destination="@id/adminLoginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/adminLoginFragment"
-        android:name="com.example.manshatsoultancommunity.features.Intro.fragment.AdminLoginFragment"
-        android:label="AdminLoginFragment" />
+        android:label="OptionLoginFragment" />
 </navigation>

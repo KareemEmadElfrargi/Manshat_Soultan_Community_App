@@ -19,7 +19,7 @@ import com.google.api.ResourceProto.resource
 @Suppress("UNREACHABLE_CODE")
 class SportPostAdapter(
     private var listOfPost:List<PostCaption>,
-    private var listOfAppointmentMatch:AppointmentMatch,
+    private var listOfAppointmentMatch:List<AppointmentMatch>,
 
     val context :Context):RecyclerView.Adapter<SportPostAdapter.BaseViewHolder>() {
 
@@ -40,37 +40,47 @@ class SportPostAdapter(
         }
         return super.createViewHolder(parent,viewType)
     }
-    override fun getItemCount(): Int = listOfPost.size
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        val currentPost = listOfPost[position]
-        val currentMatch = listOfAppointmentMatch
+        //val currentPost = listOfPost[position]
+        //val currentMatch = listOfAppointmentMatch
         when(holder){
-            is PostViewHolder ->{
-                holder.binding.apply {
-                    profileName.text = currentPost.nameOfPublisher
-                    postTime.text = currentPost.timeOfPost
-                    postCaption.text = currentPost.content
-                    currentPost.imageOfPublisher?.let { profileImage.setImageResource(it) }
+            is PostViewHolder -> {
+                if (position < listOfPost.size) {
+                    val currentPost = listOfPost[position]
+                    holder.binding.apply {
+                        profileName.text = currentPost.nameOfPublisher
+                        postTime.text = currentPost.timeOfPost
+                        postCaption.text = currentPost.content
+                        currentPost.imageOfPublisher?.let { profileImage.setImageResource(it) }
+                    }
                 }
             }
-            is AppointmentMatchPostViewHolder ->{
-                holder.binding.apply{
-                    team1TextView.text = currentMatch.firstTeam
-                    team2TextView.text = currentMatch.secondTeam
-                    timeTextView.text = currentMatch.timeOfMatch
-                    dayTextView.text = currentMatch.dayOfMatch
+            is AppointmentMatchPostViewHolder -> {
+                if (position < listOfAppointmentMatch.size) {
+                    val currentMatch = listOfAppointmentMatch[position]
+                    holder.binding.apply {
+                        team1TextView.text = currentMatch.firstTeam
+                        team2TextView.text = currentMatch.secondTeam
+                        timeTextView.text = currentMatch.timeOfMatch
+                        dayTextView.text = currentMatch.dayOfMatch
+                    }
                 }
             }
         }
     }
 
+    // position representing the position of the item within the adapter
     override fun getItemViewType(position: Int): Int {
-        return when (position) {
-            0 -> APPOINTMENT_MATCH_POST_VIEW_HOLDER
+        return when {
+            // match 1 , postion 0
+            // match 2 , postion 0,1
+            position < listOfAppointmentMatch.size -> APPOINTMENT_MATCH_POST_VIEW_HOLDER
             else -> POST_VIEW_HOLDER
         }
+
     }
+    override fun getItemCount(): Int = maxOf(listOfPost.size, listOfAppointmentMatch.size)
     abstract class BaseViewHolder(view:View):RecyclerView.ViewHolder(view)
     class PostViewHolder(view: View) : BaseViewHolder(view){
         val binding = ItemPostTextBinding.bind(view)

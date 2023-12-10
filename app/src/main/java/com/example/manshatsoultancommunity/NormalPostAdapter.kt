@@ -28,11 +28,13 @@ class NormalPostAdapter(private var listOfPost:List<PostCaption> , val context :
             postCaption.text = currentPost.content
             currentPost?.imageOfPublisher?.let { profileImage.setImageResource(it) }
             if (currentPost.status){
-
                 val color = ContextCompat.getColor(context, R.color.title)
+                val paddingInPx = context.resources.getDimensionPixelSize(R.dimen.your_padding_dimension)
+                val borderWidthPx = context.resources.getDimensionPixelSize(R.dimen.your_border_width)
                 profileImage.apply {
-                    borderWidth = 10
+                    borderWidth = borderWidthPx
                     borderColor = color
+                    setPadding(paddingInPx,paddingInPx,paddingInPx,paddingInPx)
                 }
             }
         }

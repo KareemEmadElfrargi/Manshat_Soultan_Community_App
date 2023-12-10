@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.NormalPostAdapter
+import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.FragmentRipBinding
 import com.example.manshatsoultancommunity.features.news.data.model.PostCaption
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,12 +28,33 @@ class RIPFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val nameOfPublisher = "واجب عزاء منشاة سلطان"
+        val nameOfPublisher = "وفيات منشأة سلطان"
+        val proFileImage = R.drawable.rip_image
+
         val listDiePeople = listOf<PostCaption> (
-            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة فتحية محمد حلاوة زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات "),
-            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات "),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "الاحد الساعة 5", content = "توفية الي رحمة الله تعالي الحاجة فتحية محمد حلاوة زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة رتيبة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
+            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "10:00", content = "توفية الي رحمة الله تعالي الحاجة سارة علي زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات ", imageOfPublisher = proFileImage),
         )
-        ripAdapter = NormalPostAdapter(listDiePeople,requireContext())
+        ripAdapter = NormalPostAdapter(listDiePeople.reversed(),requireContext())
         binding.recyclerViewRIPPage.adapter = ripAdapter
     }
 }

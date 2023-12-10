@@ -46,8 +46,10 @@
             android:gravity="center"
             android:text="@string/rightAddress"
             android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/ellipse"
+            app:layout_constraintEnd_toEndOf="@id/ellipse"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="@id/ellipse"
             app:layout_constraintTop_toTopOf="@id/guideLineLeftTexture"
             app:layout_constraintVertical_bias="0.566" />
 

@@ -11,7 +11,7 @@
 
     <string name="rightAddress">مرحباً بكم في قرية منشأة سلطان</string>
 
-    <string name="subTitleName">إعرف اخبار قرية منشأة سلطان من خلال التطبيق</string>
+    <string name="subTitleName">إعرف اخبار قرية منشأة سلطان من خلال تصفحك للتطبيق</string>
     <string name="start">إنطلق</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
@@ -27,9 +27,12 @@
     <string name="admin">مسؤول</string>
     <string name="user">مستخدم</string>
     <string name="rightAddress2">أخبار قرية منشأة سلطان</string>
-    <string name="subTitleName2">إذا كنت مستخدم لمعرفة اخبار قريتك عليك المتابعة باستخدام زر <font color="#040D12"><b>مُسخدم</b></font> وإذا كنت مسؤول عن ادارة اخبار القرية عليك المتابعة باستخدام زر <font color="#040D12"><b>مسؤول</b></font></string>
+    <string name="subTitleName2">إذا كنت مستخدم لمعرفة اخبار قريتك عليك المتابعة باستخدام زر <font color="#040D12"><b>مُستخدم</b></font> وإذا كنت مسؤول عن ادارة اخبار القرية عليك المتابعة باستخدام زر <font color="#040D12"><b>مسؤول</b></font></string>
     <string name="admin_code_decr">قم بإدخال الكود الذي تم إرسالة لك من قِبل <font color="#740c1c"><b>مُطوري</b></font> التطبيق.</string>
     <string name="admin_code_title">المُتابعة كـ مسؤول</string>
     <string name="confirm">تأكيد</string>
     <string name="cancel">إلغاء</string>
+    <string name="try_again_action">حاول مرة اخري</string>
+    <string name="wrong_code">الكود خطأ</string>
+    <string name="welcom_message_admin">مرحباً بك استاذ</string>
 </resources>

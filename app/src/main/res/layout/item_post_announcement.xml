@@ -1,0 +1,84 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Main Content Layout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/iconImageView"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:visibility="invisible"
+                    android:src="@drawable/new_icon" />
+
+                <!-- Image -->
+                <ImageView
+                    android:id="@+id/imageViewAnnouncement"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@drawable/background_image_post_deafult"
+                    android:src="@drawable/img_shcool_profile"
+                    android:scaleType="centerCrop" />
+
+                <!-- Announcement Title -->
+                <TextView
+                    android:id="@+id/AnnouncementTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:fontFamily="@font/base_font_cairo"
+                    android:layoutDirection="rtl"
+                    android:textDirection="rtl"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/AnnouncementDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sub_title_font_ciaro_light"
+                    android:lineSpacingMultiplier="0.7"
+                    android:layoutDirection="rtl"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_12sdp"
+                    android:text=""
+                    android:layout_marginTop="8dp" />
+
+                <!-- Announcement Date -->
+                <TextView
+                    android:id="@+id/AnnouncementDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_marginTop="8dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

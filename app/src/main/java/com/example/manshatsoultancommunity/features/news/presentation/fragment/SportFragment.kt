@@ -41,12 +41,10 @@ class SportFragment: Fragment() {
             PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "1:00", content = "انهاردا مفيش حجز عشان الجو يشباب , امضاء عمك فوزي", imageOfPublisher = proFileImage, status = true),
             )
         val listAppointmentMatch = listOf(
-
             AppointmentMatch("منشأة سلطان","تتا","20:20","الحد"),
-            AppointmentMatch("منشأة سلطان","تتا","20:20","الحد")
         )
         val objAppointmentMatch = AppointmentMatch("منشأة سلطان","تتا","20:20","الحد")
-        sportAdapter = SportPostAdapter(listSportPosts,objAppointmentMatch,requireContext())
+        sportAdapter = SportPostAdapter(listSportPosts,listAppointmentMatch,requireContext())
         binding.recyclerViewSportPage.adapter = sportAdapter
     }
 }

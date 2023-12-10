@@ -24,6 +24,7 @@
                 app:civ_border_width="0dp"
                 android:layout_height="50dp"
                 android:scaleType="centerCrop"
+                android:thicknessRatio="2"
                 android:src="@drawable/logo_image_profile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

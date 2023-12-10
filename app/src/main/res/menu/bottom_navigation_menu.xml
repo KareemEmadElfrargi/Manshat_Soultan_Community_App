@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item
     android:title="الرئيسية"
-    android:icon="@drawable/ic_home"
+    android:icon="@drawable/home_24"
     android:id="@+id/homeFragment"/>
 
 
@@ -13,10 +13,10 @@
 
     <item
         android:title="من نحن"
-        android:icon="@drawable/about_ic"
+        android:icon="@drawable/about_24"
         android:id="@+id/aboutFragment"/>
     <item
         android:title="إدارة"
-        android:icon="@drawable/add_ic"
+        android:icon="@drawable/add_circle_24"
         android:id="@+id/addPostFragment"/>
 </menu>

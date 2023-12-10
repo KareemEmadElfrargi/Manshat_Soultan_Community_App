@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.HomeViewPagerAdapter
+import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.FragmentAdsBinding
 import com.example.manshatsoultancommunity.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayout
@@ -31,16 +32,18 @@ class HomeFragment: Fragment() {
         val categoriesFragments = arrayListOf(
             GeneralFragment(),
             RIPFragment(),
-            SportFragment(), /*More*/
+            SportFragment(),
+            EducationFragment(), /*More*/
         )
         val viewPager2Adapter = HomeViewPagerAdapter(categoriesFragments,childFragmentManager,lifecycle)
         binding.viewPager2Home.adapter = viewPager2Adapter
 
         TabLayoutMediator(binding.tabLayout,binding.viewPager2Home) { tab, position ->
             when (position) {
-                0 -> tab.text = "عـــام"
+                0 -> tab.setIcon(R.drawable.ic_general)
                 1 -> tab.text = "صفحة الوفيات"
                 2 -> tab.text = "مركز شباب"
+                3 -> tab.text = "التــعليم"
             }
         }.attach()
 

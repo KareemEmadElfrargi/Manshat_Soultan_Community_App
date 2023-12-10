@@ -8,4 +8,6 @@
     <dimen name="mediumButtonHeight">55dp</dimen>
     <dimen name="editTextHeight">60dp</dimen>
     <dimen name="your_border_width">4dp</dimen>
+    <dimen name="your_padding_dimension">1dp</dimen>
+
 </resources>
