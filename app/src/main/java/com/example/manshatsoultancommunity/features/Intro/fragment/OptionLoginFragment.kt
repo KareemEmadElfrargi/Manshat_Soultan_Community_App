@@ -33,7 +33,6 @@ class OptionLoginFragment : Fragment(){
                 //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
-            Toast.makeText(requireContext(),"Login as User",Toast.LENGTH_SHORT).show()
         }
         binding.buttonAdminAccountOptions.setOnClickListener {
                 setupButtonSheetDialog { code ->

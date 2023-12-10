@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.HomeViewPagerAdapter
 import com.example.manshatsoultancommunity.databinding.FragmentAdsBinding
 import com.example.manshatsoultancommunity.databinding.FragmentHomeBinding
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,8 +40,27 @@ class HomeFragment: Fragment() {
             when (position) {
                 0 -> tab.text = "عـــام"
                 1 -> tab.text = "صفحة الوفيات"
-                2 -> tab.text = "رياضة"
+                2 -> tab.text = "مركز شباب"
             }
         }.attach()
+
+        binding.tabLayout.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.let {
+                    if (tab.position == viewPager2Adapter.itemCount - 1) {
+                        if (binding.tabLayout.selectedTabPosition != 0) {
+                            //Toast.makeText(requireContext(),"",Toast.LENGTH_SHORT).show()
+                            //binding.tabLayout.getTabAt(0)?.select()
+                        }
+                    }
+                }
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+
+        })
     }
 }

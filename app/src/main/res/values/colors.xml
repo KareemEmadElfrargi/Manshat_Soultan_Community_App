@@ -10,9 +10,11 @@
     <color name="circle">#E3BAC1</color>
     <color name="background_animation_title">#FFFFFF</color>
     <color name="titleButton">#c88a1a</color>
+    <color name="circleImageState">#00989c</color>
     <color name="buttonColor">#740c1c</color>
     <color name="iconColor">#740c1c</color>
     <color name="hint">#8f8585</color>
+    <color name="background_image_error">#dddddd</color>
     <color name="error">#FF2D55</color>
 
     <!-- other color-->
