@@ -1,4 +1,4 @@
-package com.example.manshatsoultancommunity
+package com.example.manshatsoultancommunity.features.news.presentation.common.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

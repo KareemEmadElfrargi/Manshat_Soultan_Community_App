@@ -3,6 +3,7 @@ package com.example.manshatsoultancommunity.features.Intro.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,19 +12,25 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.FragmentLoginOptionBinding
+import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
 import com.example.manshatsoultancommunity.features.news.presentation.common.NewsActivity
+import com.example.manshatsoultancommunity.utils.Constants.ADMIN_COLLECTION
+import com.example.manshatsoultancommunity.utils.Constants.CODE_AUTH_KEY
 import com.example.manshatsoultancommunity.utils.TransitionListener
 import com.example.manshatsoultancommunity.utils.dailogs.setupButtonSheetDialog
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.toObject
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
-
+import javax.inject.Inject
+const val TAG = "OptionLoginFragment"
 @AndroidEntryPoint
-
-class OptionLoginFragment : Fragment(){
-
+class OptionLoginFragment: Fragment(){
+    lateinit var firestore : FirebaseFirestore
     private lateinit var binding : FragmentLoginOptionBinding
     private var transitionListener: TransitionListener? = null
-    private var updated = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,6 +62,21 @@ class OptionLoginFragment : Fragment(){
                 startActivity(intent)
             }
         }
+
+        firestore = Firebase.firestore
+        firestore.collection(ADMIN_COLLECTION).document("T-132605").get()
+            .addOnSuccessListener { result ->
+                if (result.exists()){
+                    val admin = result.toObject(Admin::class.java)
+
+                }else {
+
+                }
+
+            }.addOnFailureListener {
+
+            }
+
         val nameOfAdmin = "فتحي سرحان"
         val sheetCodeAdminAuth = listOf<String>("F-W2365","A-W2005","A-W1395","A-W1113")
         binding.buttonAdminAccountOptions.setOnClickListener {
@@ -72,6 +94,7 @@ class OptionLoginFragment : Fragment(){
                 if (code == sheetCodeAuth) {
                     showSnackBarMessage("${getString(R.string.welcom_message_admin)} $name")
                     Intent(requireActivity(), NewsActivity::class.java).also { intent ->
+                        intent.putExtra(CODE_AUTH_KEY,sheetCodeAuth)
                         startActivity(intent)
                         applyTransition()
                     }

@@ -1,24 +1,13 @@
-package com.example.manshatsoultancommunity.utils
+package com.example.manshatsoultancommunity.features.advertisement.presentation.common.adapter
 
 import android.content.Context
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.MenuView.ItemView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.engine.Resource
 import com.example.manshatsoultancommunity.R
-import com.example.manshatsoultancommunity.SportPostAdapter
-import com.example.manshatsoultancommunity.databinding.ItemApppintmentMatchsBinding
 import com.example.manshatsoultancommunity.databinding.ItemPostAnnouncementBinding
-import com.example.manshatsoultancommunity.databinding.ItemPostTextBinding
-import com.example.manshatsoultancommunity.features.news.data.model.AnnouncementPost
-import com.example.manshatsoultancommunity.features.news.data.model.AppointmentMatch
-import com.example.manshatsoultancommunity.features.news.data.model.PostCaption
-import com.google.android.material.resources.MaterialResources.getDimensionPixelSize
-import com.google.api.ResourceProto.resource
+import com.example.manshatsoultancommunity.features.advertisement.data.model.AnnouncementPost
 
 @Suppress("UNREACHABLE_CODE")
 class AnnouncementPostAdapter(

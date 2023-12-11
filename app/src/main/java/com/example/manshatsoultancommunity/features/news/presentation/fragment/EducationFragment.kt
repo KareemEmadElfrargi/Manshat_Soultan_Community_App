@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.manshatsoultancommunity.NormalPostAdapter
+import com.example.manshatsoultancommunity.features.news.presentation.common.adapter.NormalPostAdapter
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.FragmentEductionBinding
 import com.example.manshatsoultancommunity.features.news.data.model.PostCaption
@@ -25,7 +25,6 @@ class EducationFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val nameOfSchool = "الشهيد شعبان المليجي"
         val proFileImage = R.drawable.img_shcool_profile
         val content2 = "نتيجة الشهادة الاعداداية قريبا علي التطبيق"

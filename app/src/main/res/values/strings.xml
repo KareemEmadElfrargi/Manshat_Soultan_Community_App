@@ -1,17 +1,7 @@
 <resources>
-    <string name="app_name">مجتمع منشأة سلطان</string>
-
-
-
-
-
-
-
-
-
-    <string name="rightAddress">مرحباً بكم في قرية منشأة سلطان</string>
-
-    <string name="subTitleName">إعرف اخبار قرية منشأة سلطان من خلال تصفحك للتطبيق</string>
+    <string name="app_name">قريتي</string>
+    <string name="startingText">مرحباً بكم في قرية منشأة سلطان</string>
+    <string name="startingTextDescription">إعرف اخبار قرية منشأة سلطان من خلال تصفحك للتطبيق</string>
     <string name="start">إنطلق</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
@@ -35,4 +25,9 @@
     <string name="try_again_action">حاول مرة اخري</string>
     <string name="wrong_code">الكود خطأ</string>
     <string name="welcom_message_admin">مرحباً بك استاذ</string>
+    <string name="important">عاجل | </string>
+
+
+
+    <string name="emoji_important">\\uD83D\\uDEA8</string>
 </resources>

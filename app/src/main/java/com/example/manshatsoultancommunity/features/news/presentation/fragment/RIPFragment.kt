@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.manshatsoultancommunity.NormalPostAdapter
+import com.example.manshatsoultancommunity.features.news.presentation.common.adapter.NormalPostAdapter
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.FragmentRipBinding
 import com.example.manshatsoultancommunity.features.news.data.model.PostCaption

@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.manshatsoultancommunity.HomeViewPagerAdapter
+import com.example.manshatsoultancommunity.features.news.presentation.common.adapter.HomeViewPagerAdapter
 import com.example.manshatsoultancommunity.R
-import com.example.manshatsoultancommunity.databinding.FragmentAdsBinding
 import com.example.manshatsoultancommunity.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator

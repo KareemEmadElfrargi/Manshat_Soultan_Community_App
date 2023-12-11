@@ -1,26 +1,20 @@
-package com.example.manshatsoultancommunity
+package com.example.manshatsoultancommunity.features.news.presentation.common.adapter
 
 import android.content.Context
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.MenuView.ItemView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.engine.Resource
+import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.ItemApppintmentMatchsBinding
 import com.example.manshatsoultancommunity.databinding.ItemPostTextBinding
 import com.example.manshatsoultancommunity.features.news.data.model.AppointmentMatch
 import com.example.manshatsoultancommunity.features.news.data.model.PostCaption
-import com.google.android.material.resources.MaterialResources.getDimensionPixelSize
-import com.google.api.ResourceProto.resource
 
 @Suppress("UNREACHABLE_CODE")
 class SportPostAdapter(
     private var listOfPost:List<PostCaption>,
     private var listOfAppointmentMatch:List<AppointmentMatch>,
-
     val context :Context):RecyclerView.Adapter<SportPostAdapter.BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -30,12 +24,10 @@ class SportPostAdapter(
                 val view = inflater.inflate(R.layout.item_post_text,parent,false)
                 PostViewHolder(view)
             }
-
             APPOINTMENT_MATCH_POST_VIEW_HOLDER ->{
                 val view = inflater.inflate(R.layout.item_apppintment_matchs,parent,false)
                 AppointmentMatchPostViewHolder(view)
             }
-
             else -> throw IllegalArgumentException("Invalid view type")
         }
         return super.createViewHolder(parent,viewType)
@@ -73,12 +65,9 @@ class SportPostAdapter(
     // position representing the position of the item within the adapter
     override fun getItemViewType(position: Int): Int {
         return when {
-            // match 1 , postion 0
-            // match 2 , postion 0,1
             position < listOfAppointmentMatch.size -> APPOINTMENT_MATCH_POST_VIEW_HOLDER
             else -> POST_VIEW_HOLDER
         }
-
     }
     override fun getItemCount(): Int = maxOf(listOfPost.size, listOfAppointmentMatch.size)
     abstract class BaseViewHolder(view:View):RecyclerView.ViewHolder(view)

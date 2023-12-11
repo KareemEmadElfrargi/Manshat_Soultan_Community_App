@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.R
-import com.example.manshatsoultancommunity.SportPostAdapter
 import com.example.manshatsoultancommunity.databinding.FragmentAdsBinding
-import com.example.manshatsoultancommunity.databinding.FragmentSportBinding
-import com.example.manshatsoultancommunity.features.news.data.model.AnnouncementPost
-import com.example.manshatsoultancommunity.utils.AnnouncementPostAdapter
+import com.example.manshatsoultancommunity.features.advertisement.data.model.AnnouncementPost
+import com.example.manshatsoultancommunity.features.advertisement.presentation.common.adapter.AnnouncementPostAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.example.manshatsoultancommunity.features.news.data.model
+package com.example.manshatsoultancommunity.features.advertisement.data.model
 
 data class AnnouncementPost(
     val titleAnnouncement:String,

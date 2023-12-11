@@ -112,5 +112,7 @@ dependencies {
     //circular image
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
+    //Import the StringEscapeUtils
+    implementation ("org.apache.commons:commons-text:1.9")
 
 }
