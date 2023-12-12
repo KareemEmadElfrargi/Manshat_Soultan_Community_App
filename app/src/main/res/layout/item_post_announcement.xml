@@ -29,16 +29,7 @@
                 android:background="@drawable/image_backround_card_style_2"
                >
 
-                <ImageView
-                    android:id="@+id/iconImageView"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:visibility="invisible"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewAnnouncement"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:src="@drawable/new_icon" />
+
 
 
                 <ImageView
@@ -51,6 +42,13 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:scaleType="centerCrop" />
+<!--                <ImageView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:src="@drawable/black_background"-->
+<!--                    app:layout_constraintStart_toStartOf="@id/imageViewAnnouncement"-->
+<!--                    app:layout_constraintEnd_toEndOf="@id/imageViewAnnouncement"-->
+<!--                    />-->
 
                 <TextView
                     android:id="@+id/photoIsReal"
@@ -67,7 +65,28 @@
                     android:shadowDx="2"
                     android:shadowDy="2"
                     android:shadowRadius="4"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:fontFamily="@font/sub_title_font_ciaro_light"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_8sdp"/>
 
+                <TextView
+                    android:id="@+id/dateOfPublisher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تاريخ النشر يوم الاربعاء الساعة 9"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@id/imageViewAnnouncement"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/imageViewAnnouncement"
+                    android:layoutDirection="ltr"
+                    android:textDirection="rtl"
+                    android:drawableEnd="@drawable/baseline_access_time_24"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="4"
                     android:layout_marginBottom="@dimen/_4sdp"
                     android:fontFamily="@font/sub_title_font_ciaro_light"
                     android:textStyle="bold"
@@ -92,12 +111,28 @@
                     android:layout_marginTop="8dp" />
 
                 <TextView
+                    android:id="@+id/iconImageView"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:background="@drawable/btn_news_background"
+                    android:text="جديد"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="@id/imageViewAnnouncement"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewAnnouncement"
+                    android:fontFamily="@font/btn_font_cairo_black"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    />
+
+                <TextView
                     android:id="@+id/AnnouncementDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sub_title_font_ciaro_light"
                     android:lineSpacingMultiplier="0.7"
-                    android:layoutDirection="rtl"
                     android:textStyle="bold"
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:textColor="@color/black"
@@ -106,16 +141,17 @@
                     app:layout_constraintEnd_toEndOf="@+id/AnnouncementTitle"
                     app:layout_constraintTop_toBottomOf="@+id/AnnouncementTitle"
                     android:textSize="@dimen/_12sdp"
-                    android:text=""
-                    android:layout_marginTop="@dimen/_2sdp" />
-
-                <!-- Announcement Date -->
+                    android:textDirection="rtl"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="إدارة vipers gym مستمره فى عروضها ودعم الشباب، مواعيد الفترتين ثابته للشباب والسيدات ، وقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرين "
+                   />
                 <TextView
                     android:id="@+id/AnnouncementPlace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="يوم 14/3 الموافق يموم الخميس"
-                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_4sdp"
                     android:layoutDirection="rtl"
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:fontFamily="@font/sub_title_font_ciaro_light"
