@@ -22,6 +22,8 @@ import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.R
 import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Locale
 
 fun AppCompatActivity.showToast(massage: Any) {
@@ -71,20 +73,11 @@ fun View.enabled() {
     isEnabled = true
 }
 
-//fun Fragment.showProgress (){
-//    val progress = view?.rootView?.findViewById<LoadingView>(R.id.load)
-//    val fragmentContainer = view?.rootView?.findViewById<FragmentContainerView>(R.id.nav_host_fragment2)
-//    progress?.start()
-//    progress?.visibilityVisible()
-//    fragmentContainer?.visibilityGone()
-//}
-//fun Fragment.hideProgress (){
-//    val progress = view?.rootView?.findViewById<LoadingView>(R.id.load)
-//    val fragmentContainer = view?.rootView?.findViewById<FragmentContainerView>(R.id.nav_host_fragment2)
-//    progress?.stop()
-//    progress?.visibilityGone()
-//    fragmentContainer?.visibilityVisible()
-//}
+private fun getCurrentTime(): String {
+    val currentTime = Calendar.getInstance().time
+    val timeFormat = SimpleDateFormat("hh:mm:ss a", Locale.getDefault())
+    return timeFormat.format(currentTime)}
+
 fun Fragment.hideKeyboard() {
     val inputManager: InputMethodManager = activity
         ?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

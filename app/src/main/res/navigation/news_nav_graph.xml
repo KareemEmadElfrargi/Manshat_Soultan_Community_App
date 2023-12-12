@@ -23,6 +23,6 @@
         android:label="RIPFragment" />
     <fragment
         android:id="@+id/adsFragment"
-        android:name="com.example.manshatsoultancommunity.features.news.presentation.fragment.AdsFragment"
+        android:name="com.example.manshatsoultancommunity.features.advertisement.presentation.fragment.AdsFragment"
         android:label="AdsFragment" />
 </navigation>

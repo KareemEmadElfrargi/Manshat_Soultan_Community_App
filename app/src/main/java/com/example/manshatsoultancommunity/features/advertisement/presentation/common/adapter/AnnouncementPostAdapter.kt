@@ -1,10 +1,12 @@
 package com.example.manshatsoultancommunity.features.advertisement.presentation.common.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.ItemPostAnnouncementBinding
 import com.example.manshatsoultancommunity.features.advertisement.data.model.AnnouncementPost
@@ -36,8 +38,11 @@ class AnnouncementPostAdapter(
                         AnnouncementTitle.text = currentPost.titleAnnouncement
                         AnnouncementDescription.text = currentPost.descriptionAnnouncement
                         AnnouncementPlace.text = currentPost.placePostedAnnouncement
-                        currentPost?.imageAnnouncement?.let { imageViewAnnouncement.setImageResource(it) }
-                        if (currentPost.statusNew){
+                            Glide.with(context).
+                            load(currentPost.imageAnnouncement)
+                                .error(R.drawable.img_shcool_profile)
+                                .into(imageViewAnnouncement)
+                        if (currentPost.statusNew!!){
                             iconImageView.visibility = View.VISIBLE
                         }else{
                             iconImageView.visibility = View.GONE
@@ -48,6 +53,11 @@ class AnnouncementPostAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun setDataUpdated(newList:List<AnnouncementPost>){
+        listOfPostAnnouncement = newList
+        notifyDataSetChanged()
+    }
     override fun getItemViewType(position: Int): Int {
         return when(position){
             0 -> ANNOUNCEMENT_POST_VIEW_HOLDER
