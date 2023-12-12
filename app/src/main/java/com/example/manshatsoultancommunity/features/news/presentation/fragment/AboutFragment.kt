@@ -1,12 +1,16 @@
 package com.example.manshatsoultancommunity.features.news.presentation.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.content.pm.PackageManager
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.databinding.FragmentAboutBinding
-import com.example.manshatsoultancommunity.databinding.FragmentLoginOptionBinding
+import com.example.manshatsoultancommunity.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,6 +28,53 @@ class AboutFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            whatsAppDevOne.setOnClickListener {
+                val phoneNumber = "1113461483"
+                val countryCode = "+20"
+                contactByWhatsApp(phoneNumber,countryCode)
+            }
+            whatsAppDevTwo.setOnClickListener {
+                val phoneNumber = "1282579495"
+                val countryCode = "+20"
+                contactByWhatsApp(phoneNumber,countryCode)
+            }
+        }
+    }
+
+
+
+    private fun contactByWhatsApp(phoneNumber: String, codeCountry:String) {
+
+        if (isWhatsAppInstalled()){
+            val uri = Uri.parse("https://api.whatsapp.com/send?phone=$codeCountry$phoneNumber")
+            val whatsappIntent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(whatsappIntent)
+        }else{
+            contactByCall(phoneNumber)
+            showToast("مفيش واتس اب علي تليفونك")
+        }
+    }
+
+    private fun contactByCall(phoneNumber: String) {
+        val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+        startActivity(dialIntent)
+    }
+
+    // TODO:WhatsAPP Config
+    private fun isWhatsAppInstalled(): Boolean {
+        val pm  =  requireActivity().packageManager
+        val whatsappPackageNames = listOf("com.whatsapp", "com.whatsapp.w4b")
+        for (packageName in whatsappPackageNames) {
+            return try {
+                pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+                true
+            } catch (e: PackageManager.NameNotFoundException) {
+                false
+            }
+        }
+        return false
     }
 
 }

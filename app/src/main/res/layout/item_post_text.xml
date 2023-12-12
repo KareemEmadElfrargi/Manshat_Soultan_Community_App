@@ -9,22 +9,21 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginVertical="4dp"
-        app:cardCornerRadius="8dp">
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_marginVertical="@dimen/_4sdp"
+        app:cardCornerRadius="@dimen/_8sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="@dimen/_8sdp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileImage"
-                android:layout_width="50dp"
+                android:layout_width="@dimen/_50sdp"
                 app:civ_border_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/_40sdp"
                 android:scaleType="centerCrop"
-                android:thicknessRatio="2"
                 android:src="@drawable/logo_image_profile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -61,11 +60,11 @@
                 style="@style/postTextCaption"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:lineSpacingMultiplier="0.7"
                 android:text="توفية الي رحمة الله تعالي الحاجة فتحية محمد حلاوة زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات "
                 android:textDirection="rtl"
-                android:textSize="16sp"
+                android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +81,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/postCaption"
                 app:layout_constraintTop_toBottomOf="@+id/postCaption" />
-
             <Space
                 android:id="@+id/spaceBetweenIcons"
                 android:layout_width="10dp"

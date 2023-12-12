@@ -27,16 +27,23 @@ class AdsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val titleOFAnnouncement = "إعلان إفتتاح عيادة جديدة"
-        val imageOFAnnouncement = R.drawable.imag_clinic
-        val statusNew = false
-        val contentOfAnnouncement = "يعلن الدكتور محمد ياسر عن فتح عيادة جديدة في شارع المحطة"
-        val dateOfAnnouncement = "Mon , 10:23"
+//        val titleOFAnnouncement = "إعلان إفتتاح عيادة جديدة"
+//        val titleOFAnnouncement2 = "عروض من Vipers Gym"
+//        val imageOFAnnouncement = R.drawable.imag_clinic
+//        val imageOFAnnouncement3 = R.drawable.gym_imag
+//        val contentOfAnnouncement = "يعلن الدكتور محمد ياسر عن فتح عيادة جديدة في شارع المحطة"
+//        val contentOfAnnouncement2 = "يعلن الدكتور فتحي بحيري عن فتح عيادة نسا وتوليد عند شارع المدارس"
+//        val contentOfAnnouncement3 = "تم تخفيض الحصه لجميع الطلبه فى جميع المراحل السنيه حتى مرحلة الثانويه ل ١٠ جنيه بدل ١٥ للحصه"
+//        val dateOfAnnouncement = "العنوان : منشأة سلطان أمام محطة القطار"
+//        val dateOfAnnouncement3 = "العنوان : منشأة سلطان أمام محطة القطار أعلى صالون Top 10"
 
-        val obj = AnnouncementPost(titleOFAnnouncement,imageOFAnnouncement,contentOfAnnouncement,dateOfAnnouncement,statusNew)
-        val obj2 = AnnouncementPost(titleOFAnnouncement,imageOFAnnouncement,contentOfAnnouncement,dateOfAnnouncement)
-        val listOFAds = listOf<AnnouncementPost>(obj,obj2)
-        announcementAdapter = AnnouncementPostAdapter(listOFAds,requireContext())
+//        val obj = AnnouncementPost(titleOFAnnouncement,imageOFAnnouncement,contentOfAnnouncement,dateOfAnnouncement,false)
+//        val obj2 = AnnouncementPost(titleOFAnnouncement,imageOFAnnouncement,contentOfAnnouncement2,dateOfAnnouncement,true)
+//        val obj3 = AnnouncementPost(titleOFAnnouncement2,imageOFAnnouncement3,contentOfAnnouncement3,dateOfAnnouncement3,true)
+        val comparator = compareByDescending<AnnouncementPost> { it.statusNew }
+        val listOFAds = listOf<AnnouncementPost>()
+        val sortedList = listOFAds.sortedWith(comparator)
+        announcementAdapter = AnnouncementPostAdapter(sortedList,requireContext())
         binding.recyclerViewAnnouncementPage.adapter = announcementAdapter
     }
 }

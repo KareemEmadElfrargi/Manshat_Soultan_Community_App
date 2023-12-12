@@ -2,6 +2,9 @@ package com.example.manshatsoultancommunity.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.manshatsoultancommunity.utils.Constants.ADMIN_CATEGORY_KEY
+import com.google.common.reflect.TypeToken
+import com.google.gson.Gson
 
 class SharedPreferencesManager (context: Context) {
 
@@ -11,6 +14,19 @@ class SharedPreferencesManager (context: Context) {
         sharedPreferences.edit()
             .putString(key, value)
             .apply()
+    }
+    fun saveList(key: String,myList: List<String>) {
+        val editor = sharedPreferences.edit()
+        val gson = Gson()
+        val json = gson.toJson(myList)
+        editor.putString(key,json)
+        editor.apply()
+    }
+    fun getList(key: String): List<String> {
+        val gson = Gson()
+        val json = sharedPreferences.getString(key, null)
+        val type = object : TypeToken<List<String>>() {}.type
+        return gson.fromJson(json, type)
     }
 
     public fun saveBoolean(key: String, value: Boolean) {
@@ -26,7 +42,6 @@ class SharedPreferencesManager (context: Context) {
     public fun getBoolean(key: String, defaultValue: Boolean = false): Boolean {
         return sharedPreferences.getBoolean(key, defaultValue) ?: defaultValue
     }
-
     public fun clearString(key: String) {
         sharedPreferences.edit()
             .remove(key)

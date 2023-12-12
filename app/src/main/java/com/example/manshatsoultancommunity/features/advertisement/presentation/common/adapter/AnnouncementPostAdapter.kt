@@ -35,7 +35,7 @@ class AnnouncementPostAdapter(
                     holder.binding.apply{
                         AnnouncementTitle.text = currentPost.titleAnnouncement
                         AnnouncementDescription.text = currentPost.descriptionAnnouncement
-                        AnnouncementDate.text = currentPost.datePostedAnnouncement
+                        AnnouncementPlace.text = currentPost.placePostedAnnouncement
                         currentPost?.imageAnnouncement?.let { imageViewAnnouncement.setImageResource(it) }
                         if (currentPost.statusNew){
                             iconImageView.visibility = View.VISIBLE

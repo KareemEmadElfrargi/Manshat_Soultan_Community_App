@@ -114,5 +114,8 @@ dependencies {
 
     //Import the StringEscapeUtils
     implementation ("org.apache.commons:commons-text:1.9")
+    // read more
+    //implementation ("com.github.colourmoon:readmore-textview:v1.0.2")
+    //implementation ("com.webtoonscorp.android:readmore-view:1.3.3")
 
 }

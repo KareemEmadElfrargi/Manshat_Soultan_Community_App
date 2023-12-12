@@ -8,50 +8,85 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        >
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
+            app:cardCornerRadius="@dimen/_10sdp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <!-- Main Content Layout -->
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:background="@drawable/image_backround_card_style_2"
+               >
 
                 <ImageView
                     android:id="@+id/iconImageView"
                     android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewAnnouncement"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginStart="@dimen/_4sdp"
                     android:src="@drawable/new_icon" />
 
-                <!-- Image -->
+
                 <ImageView
                     android:id="@+id/imageViewAnnouncement"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:background="@drawable/background_image_post_deafult"
-                    android:src="@drawable/img_shcool_profile"
+                    android:src="@drawable/imag_clinic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:scaleType="centerCrop" />
 
-                <!-- Announcement Title -->
+                <TextView
+                    android:id="@+id/photoIsReal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="صورة من ارض الواقع"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="@id/imageViewAnnouncement"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/imageViewAnnouncement"
+                    android:layoutDirection="ltr"
+                    android:textDirection="rtl"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="4"
+
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:fontFamily="@font/sub_title_font_ciaro_light"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_8sdp"/>
+
                 <TextView
                     android:id="@+id/AnnouncementTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="إعلان إفتتاح عيادة جديدة"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:drawableStart="@drawable/start_ic"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewAnnouncement"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewAnnouncement"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewAnnouncement"
                     android:fontFamily="@font/base_font_cairo"
                     android:layoutDirection="rtl"
                     android:textDirection="rtl"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="@dimen/_14sdp"
                     android:layout_marginTop="8dp" />
@@ -64,20 +99,39 @@
                     android:lineSpacingMultiplier="0.7"
                     android:layoutDirection="rtl"
                     android:textStyle="bold"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    app:layout_constraintStart_toStartOf="@+id/AnnouncementTitle"
+                    app:layout_constraintEnd_toEndOf="@+id/AnnouncementTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/AnnouncementTitle"
                     android:textSize="@dimen/_12sdp"
                     android:text=""
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="@dimen/_2sdp" />
 
                 <!-- Announcement Date -->
                 <TextView
-                    android:id="@+id/AnnouncementDate"
+                    android:id="@+id/AnnouncementPlace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_marginTop="8dp" />
+                    android:text="يوم 14/3 الموافق يموم الخميس"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layoutDirection="rtl"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:fontFamily="@font/sub_title_font_ciaro_light"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_11sdp"
+                    android:textStyle="bold"
+                    android:lineSpacingMultiplier="0.7"
+                    android:drawableStart="@drawable/location"
+                    app:layout_constraintStart_toStartOf="@+id/AnnouncementDescription"
+                    app:layout_constraintEnd_toEndOf="@+id/AnnouncementTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/AnnouncementDescription"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

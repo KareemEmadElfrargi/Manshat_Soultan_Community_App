@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.manshatsoultancommunity.databinding.FragmentAboutBinding
-import com.example.manshatsoultancommunity.databinding.FragmentAddPostBinding
 import com.example.manshatsoultancommunity.databinding.FragmentGeneralBinding
 import dagger.hilt.android.AndroidEntryPoint
 

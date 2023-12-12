@@ -14,7 +14,7 @@
         android:label="AboutFragment" />
     <fragment
         android:id="@+id/addPostFragment"
-        android:name="com.example.manshatsoultancommunity.features.news.presentation.fragment.AddPostFragment"
+        android:name="com.example.manshatsoultancommunity.features.manager.presentation.fragment.ManageFragment"
         android:label="AddPostFragment" />
 
     <fragment

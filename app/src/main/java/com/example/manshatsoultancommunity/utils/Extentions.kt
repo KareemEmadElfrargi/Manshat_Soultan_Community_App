@@ -8,13 +8,18 @@ import android.graphics.Matrix
 import android.graphics.Rect
 import android.location.Geocoder
 import android.media.ExifInterface
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import com.example.manshatsoultancommunity.R
 import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
 import java.util.Locale
@@ -23,8 +28,18 @@ fun AppCompatActivity.showToast(massage: Any) {
     Toast.makeText(this, "$massage", Toast.LENGTH_LONG).show()
 }
 
-fun Fragment.showToast(massage: Any) {
-    Toast.makeText(requireContext(), "$massage", Toast.LENGTH_LONG).show()
+fun Fragment.showToast(message: Any, fontResId: Int? = null) {
+    val toast = Toast.makeText(requireContext(), "$message", Toast.LENGTH_LONG)
+    val toastView = toast.view
+
+    val toastTextView = toastView?.findViewById<TextView>(android.R.id.message)
+    fontResId?.let {
+        val customTypeface = ResourcesCompat.getFont(requireContext(), it)
+        toastTextView?.typeface = customTypeface
+    }
+    toastTextView?.setTextColor(ContextCompat.getColor(requireContext(), R.color.title))
+    toastTextView?.gravity = Gravity.CENTER
+    toast.show()
 }
 
 fun Fragment.showToastShort(massage: Any) {

@@ -1,24 +1,23 @@
-package com.example.manshatsoultancommunity.features.news.presentation.fragment
+package com.example.manshatsoultancommunity.features.manager.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.manshatsoultancommunity.databinding.FragmentAboutBinding
-import com.example.manshatsoultancommunity.databinding.FragmentAddPostBinding
+import com.example.manshatsoultancommunity.databinding.FragmentManageBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 
-class AddPostFragment: Fragment() {
-    private lateinit var binding : FragmentAddPostBinding
+class ManageFragment: Fragment() {
+    private lateinit var binding : FragmentManageBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAddPostBinding.inflate(inflater)
+        binding = FragmentManageBinding.inflate(inflater)
         return binding.root
     }
 
