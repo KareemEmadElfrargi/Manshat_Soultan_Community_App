@@ -36,11 +36,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
+    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
         return Room.databaseBuilder(
-            context.applicationContext,
+            appContext,
             AppDatabase::class.java,
-            "Manshat_Soultan.db"
+            "Manshat_Soultan"
         ).build()
     }
 

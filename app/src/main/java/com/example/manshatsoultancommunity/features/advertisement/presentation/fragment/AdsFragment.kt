@@ -11,8 +11,11 @@ import com.example.manshatsoultancommunity.databinding.FragmentAdsBinding
 import com.example.manshatsoultancommunity.features.advertisement.data.model.AnnouncementPost
 import com.example.manshatsoultancommunity.features.advertisement.presentation.common.ViewModels.AnnouncementPostViewModel
 import com.example.manshatsoultancommunity.features.advertisement.presentation.common.adapter.AnnouncementPostAdapter
+import com.example.manshatsoultancommunity.features.advertisement.presentation.common.adapter.InteractionWithAds
 import com.example.manshatsoultancommunity.utils.Constants.CHILD_OF_ADS_REALTIME
 import com.example.manshatsoultancommunity.utils.Resource
+import com.example.manshatsoultancommunity.utils.contactByWhatsApp
+import com.example.manshatsoultancommunity.utils.dailogs.setupButtonSheetDetailsDialog
 import com.example.manshatsoultancommunity.utils.showToast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -23,7 +26,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AdsFragment : Fragment() {
+class AdsFragment : Fragment(),InteractionWithAds {
 
     private lateinit var binding: FragmentAdsBinding
     private lateinit var announcementAdapter: AnnouncementPostAdapter
@@ -47,7 +50,9 @@ class AdsFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.adsPostList.collectLatest { result ->
                 when (result) {
-                    is Resource.Loading -> showLoading()
+                    is Resource.Loading -> {
+                        showLoading()
+                    }
                     is Resource.Success -> {
                         hideLoading()
                         setUpAdsRecycleView(result.data)
@@ -88,7 +93,7 @@ class AdsFragment : Fragment() {
         val sortedList = listOFAds?.sortedWith(comparator)
         sortedList?.let {
             if (listOFAds.isNotEmpty()) {
-                announcementAdapter = AnnouncementPostAdapter(sortedList, requireContext())
+                announcementAdapter = AnnouncementPostAdapter(sortedList, requireContext(),this)
                 binding.recyclerViewAnnouncementPage.adapter = announcementAdapter
             } else {
 
@@ -107,5 +112,12 @@ class AdsFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         firebaseDatabase.reference.child(CHILD_OF_ADS_REALTIME).removeEventListener(valueEventListenerAdsPost!!)
+    }
+
+    override fun onClickOnCardOfAds(adsPost: AnnouncementPost) {
+        setupButtonSheetDetailsDialog(adsPost) { phoneNumber ->
+            val countryCode = "+2"
+            contactByWhatsApp(phoneNumber,countryCode)
+        }
     }
 }

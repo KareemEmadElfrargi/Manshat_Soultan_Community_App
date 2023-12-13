@@ -14,7 +14,9 @@ import com.example.manshatsoultancommunity.features.advertisement.data.model.Ann
 @Suppress("UNREACHABLE_CODE")
 class AnnouncementPostAdapter(
     private var listOfPostAnnouncement:List<AnnouncementPost>,
-    val context :Context):RecyclerView.Adapter<AnnouncementPostAdapter.BaseViewHolder>() {
+    val context :Context,
+    private val listenerClickAds : InteractionWithAds
+    ):RecyclerView.Adapter<AnnouncementPostAdapter.BaseViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when(viewType){
@@ -38,14 +40,18 @@ class AnnouncementPostAdapter(
                         AnnouncementTitle.text = currentPost.titleAnnouncement
                         AnnouncementDescription.text = currentPost.descriptionAnnouncement
                         AnnouncementPlace.text = currentPost.placePostedAnnouncement
-                            Glide.with(context).
-                            load(currentPost.imageAnnouncement)
-                                .error(R.drawable.img_shcool_profile)
-                                .into(imageViewAnnouncement)
+                        dateOfPublisher.text = currentPost.datePostedAnnouncement
+                        Glide.with(context).load(currentPost.imageAnnouncement)
+                            .error(R.drawable.img_shcool_profile)
+                            .into(imageViewAnnouncement)
+
                         if (currentPost.statusNew!!){
                             iconImageView.visibility = View.VISIBLE
                         }else{
                             iconImageView.visibility = View.GONE
+                        }
+                        cardViewAds.setOnClickListener {
+                            listenerClickAds.onClickOnCardOfAds(currentPost)
                         }
                     }
                 }

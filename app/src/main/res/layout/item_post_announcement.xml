@@ -14,7 +14,7 @@
         >
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
+            android:id="@+id/cardViewAds"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/_10sdp"

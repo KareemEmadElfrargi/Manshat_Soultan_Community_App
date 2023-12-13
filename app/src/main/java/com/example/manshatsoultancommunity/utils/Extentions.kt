@@ -1,6 +1,8 @@
 package com.example.manshatsoultancommunity.utils
 
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -8,6 +10,7 @@ import android.graphics.Matrix
 import android.graphics.Rect
 import android.location.Geocoder
 import android.media.ExifInterface
+import android.net.Uri
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +19,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -150,4 +154,36 @@ fun Fragment.showKeyboard(view: View) {
 
     // check if no view has focus:
     inputManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+}
+
+ fun Fragment.contactByWhatsApp(phoneNumber: String, codeCountry:String) {
+
+    if (!isWhatsAppInstalled()){
+        val uri = Uri.parse("https://api.whatsapp.com/send?phone=$codeCountry$phoneNumber")
+        val whatsappIntent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(whatsappIntent)
+    }else{
+        contactByCall(phoneNumber)
+        showToast("مفيش واتس اب علي تليفونك")
+    }
+}
+
+ fun Fragment.contactByCall(phoneNumber: String) {
+    val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+    startActivity(dialIntent)
+}
+
+// TODO:WhatsAPP Config
+ fun Fragment.isWhatsAppInstalled(): Boolean {
+    val pm  =  requireActivity().packageManager
+    val whatsappPackageNames = listOf("com.whatsapp", "com.whatsapp.w4b")
+    for (packageName in whatsappPackageNames) {
+        return try {
+            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+    }
+    return false
 }
