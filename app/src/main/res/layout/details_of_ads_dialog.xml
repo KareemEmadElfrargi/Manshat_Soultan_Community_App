@@ -45,7 +45,7 @@
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedScroll_descriptionAds"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_150sdp"
+            android:layout_height="@dimen/_80sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:layout_marginStart="@dimen/_8sdp"
             app:layout_constraintTop_toBottomOf="@+id/tv_owner_title"
@@ -59,6 +59,7 @@
                 android:layout_marginStart="@dimen/_2sdp"
                 android:fontFamily="@font/sub_title_font_ciaro_light"
                 android:textStyle="bold"
+                android:layoutDirection="rtl"
                 android:text="إدارة vipers gym مستمره فى عروضها ودعم الشباب، مواعيد الفترتين ثابته للشباب والسيدات ، وقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرين  إدارة vipers gym مستمره فى عروضها ودعم الشباب، مواعيد الفترتين ثابته للشباب والسيدات ، وقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرين "
                 android:textColor="@color/g_gray700"
                 android:textSize="@dimen/_13sdp" />
@@ -70,12 +71,14 @@
             android:id="@+id/tv_days_and_date_of_ads"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_20sdp"
             android:text="المواعيد : حد - ثلاثاء - اربع - خميس - الساعة
         المواعيد : حد - ثلاثاء - اربع - خميس - الساعة 9المواعيد : حد - ثلاثاء - اربع - خميس - الساعة 99"
             android:fontFamily="@font/base_font_cairo"
             android:lineSpacingMultiplier="0.7"
+            android:layoutDirection="rtl"
+            android:drawablePadding="@dimen/_4sdp"
+            android:drawableStart="@drawable/day_ic"
             app:layout_constraintEnd_toEndOf="@+id/nestedScroll_descriptionAds"
             app:layout_constraintStart_toStartOf="@+id/nestedScroll_descriptionAds"
             app:layout_constraintTop_toBottomOf="@id/nestedScroll_descriptionAds" />
@@ -88,6 +91,9 @@
             android:layout_marginBottom="@dimen/_20sdp"
             android:text="م.سلطان , المحطة اسفل محل توب 10"
             android:fontFamily="@font/base_font_cairo"
+            android:drawableStart="@drawable/location"
+            android:drawablePadding="@dimen/_4sdp"
+            android:layoutDirection="rtl"
             app:layout_constraintEnd_toEndOf="@+id/tv_days_and_date_of_ads"
             app:layout_constraintStart_toStartOf="@+id/tv_days_and_date_of_ads"
             app:layout_constraintTop_toBottomOf="@id/tv_days_and_date_of_ads" />
@@ -101,8 +107,12 @@
             android:text="تاريخ نشر الاعلان : الاربعاء الساعة 9 مساءاً"
             android:fontFamily="@font/base_font_cairo"
             android:textColor="@color/g_gray700"
-            app:layout_constraintEnd_toEndOf="@+id/tv_place_of_ads"
+            android:layoutDirection="rtl"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:drawablePadding="@dimen/_8sdp"
+            android:drawableStart="@drawable/time_ic"
             app:layout_constraintStart_toStartOf="@+id/tv_place_of_ads"
+            app:layout_constraintEnd_toEndOf="@+id/tv_place_of_ads"
             app:layout_constraintTop_toBottomOf="@id/tv_place_of_ads" />
 
         <LinearLayout
@@ -111,8 +121,8 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_20sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/tv_date_published_of_ads"
-            app:layout_constraintStart_toStartOf="@id/tv_date_published_of_ads"
+            app:layout_constraintEnd_toEndOf="@id/tv_place_of_ads"
+            app:layout_constraintStart_toStartOf="@id/tv_place_of_ads"
             app:layout_constraintTop_toBottomOf="@id/tv_date_published_of_ads"
             android:orientation="horizontal">
 
@@ -137,7 +147,7 @@
                 android:fontFamily="@font/btn_font_cairo_black"
                 android:background="@drawable/red_background"
                 android:textColor="@color/white"
-                android:text="الاستعلام"
+                android:text="استعلام"
                 app:spinning_bar_color="@color/white"
                 android:textAllCaps="false" />
         </LinearLayout>

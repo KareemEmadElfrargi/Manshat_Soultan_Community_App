@@ -5,8 +5,10 @@ import com.example.manshatsoultancommunity.features.advertisement.data.model.Ann
 
 fun AdsPostEntity.toDomainModel(): AnnouncementPost {
     return AnnouncementPost(
+        idAds = id,
         titleAnnouncement = titleAnnouncement,
         imageAnnouncement = imageAnnouncement,
+//        imageData = imageData,
         descriptionAnnouncement = descriptionAnnouncement,
         placePostedAnnouncement = placePostedAnnouncement,
         statusNew = statusNew,

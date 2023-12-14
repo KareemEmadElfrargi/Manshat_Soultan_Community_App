@@ -1,5 +1,6 @@
 package com.example.manshatsoultancommunity.features.advertisement.di
 
+import android.content.Context
 import com.example.manshatsoultancommunity.database.AppDatabase
 import com.example.manshatsoultancommunity.features.advertisement.data.data_source.local.AdsPostDao
 import com.example.manshatsoultancommunity.features.advertisement.data.data_source.local.AdsPostLocalDataSource
@@ -14,15 +15,19 @@ import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AdsPostModule {
     @Provides
-    fun provideAdsPostDataSource(db:FirebaseDatabase): IAdsPostDataSource  = AdsPostDataSourceImp(db)
+    fun provideAdsPostDataSource(db:FirebaseDatabase,@ApplicationContext context: Context): IAdsPostDataSource  = AdsPostDataSourceImp(context,db)
     @Provides
-    fun provideAdsPostRepo(dataSource:IAdsPostDataSource,localDataSource: AdsPostLocalDataSource): IAdsPostRepository = AdsPostRepository(dataSource,localDataSource)
+    fun provideAdsPostRepo(dataSource:IAdsPostDataSource,
+                           localDataSource: AdsPostLocalDataSource,
+                           @ApplicationContext context: Context):
+            IAdsPostRepository = AdsPostRepository(dataSource,localDataSource,context)
     @Provides
     fun provideAdsPostUseCase(repo:IAdsPostRepository): IGetAdsPostUseCase = GetAdsPostUseCase(repo)
     @Provides

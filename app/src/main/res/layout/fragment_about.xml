@@ -33,8 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_170sdp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/img_about_cover" />
-
+                android:src="@drawable/cover_ms" />
         </androidx.cardview.widget.CardView>
 
           <TextView

@@ -29,10 +29,10 @@
                 android:drawableStart="@drawable/micro_ic"
                 android:drawablePadding="6dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvAddressForNewsApp"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="MS NEWS" />
+                app:layout_constraintEnd_toEndOf="@+id/tvAddressForNewsApp"
+                android:text="" />
 
 
             <TextView

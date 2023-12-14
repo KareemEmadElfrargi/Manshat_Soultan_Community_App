@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.manshatsoultancommunity.R
@@ -39,10 +40,8 @@ class AnnouncementPostAdapter(
                     holder.binding.apply{
                         AnnouncementTitle.text = currentPost.titleAnnouncement
                         AnnouncementDescription.text = currentPost.descriptionAnnouncement
-                        AnnouncementPlace.text = currentPost.placePostedAnnouncement
                         dateOfPublisher.text = currentPost.datePostedAnnouncement
                         Glide.with(context).load(currentPost.imageAnnouncement)
-                            .error(R.drawable.img_shcool_profile)
                             .into(imageViewAnnouncement)
 
                         if (currentPost.statusNew!!){
@@ -53,6 +52,7 @@ class AnnouncementPostAdapter(
                         cardViewAds.setOnClickListener {
                             listenerClickAds.onClickOnCardOfAds(currentPost)
                         }
+
                     }
                 }
             }

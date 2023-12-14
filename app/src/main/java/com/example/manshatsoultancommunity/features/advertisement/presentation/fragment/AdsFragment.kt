@@ -16,7 +16,9 @@ import com.example.manshatsoultancommunity.utils.Constants.CHILD_OF_ADS_REALTIME
 import com.example.manshatsoultancommunity.utils.Resource
 import com.example.manshatsoultancommunity.utils.contactByWhatsApp
 import com.example.manshatsoultancommunity.utils.dailogs.setupButtonSheetDetailsDialog
+import com.example.manshatsoultancommunity.utils.isInternetAvailable
 import com.example.manshatsoultancommunity.utils.showToast
+import com.example.manshatsoultancommunity.utils.showToastStyle
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -24,6 +26,7 @@ import com.google.firebase.database.ValueEventListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 @AndroidEntryPoint
 class AdsFragment : Fragment(),InteractionWithAds {
@@ -45,7 +48,7 @@ class AdsFragment : Fragment(),InteractionWithAds {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        firebaseDatabase = FirebaseDatabase.getInstance()
 
         lifecycleScope.launch {
             viewModel.adsPostList.collectLatest { result ->
@@ -69,6 +72,9 @@ class AdsFragment : Fragment(),InteractionWithAds {
         updatedData()
     }
 
+
+
+
     private fun updatedData() {
         valueEventListenerAdsPost = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -83,14 +89,13 @@ class AdsFragment : Fragment(),InteractionWithAds {
             override fun onCancelled(error: DatabaseError) {}
 
         }
-        firebaseDatabase = FirebaseDatabase.getInstance()
         firebaseDatabase.reference.child(CHILD_OF_ADS_REALTIME)
             .addValueEventListener(valueEventListenerAdsPost!!)
     }
 
     private fun setUpAdsRecycleView(listOFAds: List<AnnouncementPost>?) {
         val comparator = compareByDescending<AnnouncementPost> { it.statusNew }
-        val sortedList = listOFAds?.sortedWith(comparator)
+        val sortedList = listOFAds?.reversed()?.sortedWith(comparator)
         sortedList?.let {
             if (listOFAds.isNotEmpty()) {
                 announcementAdapter = AnnouncementPostAdapter(sortedList, requireContext(),this)
@@ -113,11 +118,14 @@ class AdsFragment : Fragment(),InteractionWithAds {
         super.onDestroy()
         firebaseDatabase.reference.child(CHILD_OF_ADS_REALTIME).removeEventListener(valueEventListenerAdsPost!!)
     }
-
     override fun onClickOnCardOfAds(adsPost: AnnouncementPost) {
         setupButtonSheetDetailsDialog(adsPost) { phoneNumber ->
             val countryCode = "+2"
-            contactByWhatsApp(phoneNumber,countryCode)
+            if (isInternetAvailable()){
+                contactByWhatsApp(phoneNumber,countryCode)
+            }else {
+                showToastStyle("يجب عليك الاتصال بالانترنت للتواصل")
+            }
         }
     }
 }

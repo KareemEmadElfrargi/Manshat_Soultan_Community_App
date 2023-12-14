@@ -11,29 +11,401 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".YourActivity">
-    <ImageView
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
-        app:layout_constraintStart_toStartOf="@id/centeredTextView"
-        app:layout_constraintEnd_toEndOf="@id/centeredTextView"
-        app:layout_constraintBottom_toTopOf="@id/centeredTextView"
+         <!-- fixed layout for doesn't have a codes (users)-->
+         <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/parent_viewUsers"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:visibility="gone"
+          >
+          <ImageView
+              android:layout_width="@dimen/_100sdp"
+              android:layout_height="@dimen/_100sdp"
+              app:layout_constraintStart_toStartOf="@id/centeredTextView"
+              app:layout_constraintEnd_toEndOf="@id/centeredTextView"
+              app:layout_constraintBottom_toTopOf="@id/centeredTextView"
 
-        android:src="@drawable/atttention_ic"/>
-        <TextView
-            android:id="@+id/centeredTextView"
-            android:layout_width="wrap_content"
+              android:src="@drawable/atttention_ic"/>
+          <TextView
+              android:id="@+id/centeredTextView"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/textdescription1"
+              style="@style/h3"
+              android:textAlignment="center"
+              android:layout_margin="@dimen/_8sdp"
+              android:padding="@dimen/_8sdp"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintVertical_bias="0.5"
+              app:layout_constraintHorizontal_bias="0.5" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+         <!-- fixed layout for have a codes-->
+         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parent_viewManagers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+          <!-- scroll Department admins-->
+            <ScrollView
+          android:id="@+id/layout_part_admins"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          >
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+
+              >
+              <TextView
+                  android:id="@+id/nameOfManager"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/h3"
+                  android:drawableStart="@drawable/wave_hand_ic"
+                  android:drawablePadding="@dimen/_8sdp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  android:text="مرحبا بك استاذ كريم عماد"
+                  android:layout_margin="@dimen/_8sdp"
+                  android:textSize="@dimen/_14sdp"/>
+              <TextView
+                  android:id="@+id/nameOfManagerDescription"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  style="@style/h4"
+                  android:text="انت الان علي بعد خطوة من ادارة صفحتك"
+                  android:textSize="@dimen/_10sdp"
+                  app:layout_constraintTop_toBottomOf="@id/nameOfManager"
+                  app:layout_constraintStart_toStartOf="parent"
+                  android:layout_marginStart="@dimen/_8sdp"
+                  android:layoutDirection="rtl" />
+
+
+              <androidx.core.widget.NestedScrollView
+                  android:id="@+id/nestedScrollRadios"
+                  android:layout_width="match_parent"
+                  android:layout_height="@dimen/_100sdp"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toBottomOf="@id/nameOfManagerDescription"
+                  >
+                  <RadioGroup
+                      android:id="@+id/radioGroup"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layoutDirection="rtl"
+
+                      >
+
+                      <RadioButton
+                          android:id="@+id/rd_general_news"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          style="@style/h3"
+                          android:textAlignment="center"
+                          android:textSize="@dimen/_10sdp"
+                          android:text="الأخبار العامة" />
+
+                      <RadioButton
+                          android:id="@+id/rd_rip_news"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          style="@style/h3"
+                          android:textAlignment="center"
+                          android:textSize="@dimen/_10sdp"
+                          android:text="الوفيات" />
+
+                      <RadioButton
+                          android:id="@+id/rd_sport_news"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          style="@style/h3"
+                          android:textAlignment="center"
+                          android:textSize="@dimen/_10sdp"
+                          android:text="مركز الشباب" />
+
+                      <RadioButton
+                          android:id="@+id/rd_education_news"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          style="@style/h3"
+                          android:textAlignment="center"
+                          android:textSize="@dimen/_10sdp"
+                          android:text="التعليم" />
+
+                  </RadioGroup>
+
+              </androidx.core.widget.NestedScrollView>
+
+              <com.google.android.material.textfield.TextInputLayout
+                  android:id="@+id/layout_content"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toBottomOf="@id/nestedScrollRadios"
+                  android:layout_margin="@dimen/_8sdp"
+                  android:hint="شارك الاخبار مع قريتك"
+                  >
+                  <com.google.android.material.textfield.TextInputEditText
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/h3"
+                      android:textDirection="rtl"
+                      android:textAlignment="textStart"
+                      android:textSize="@dimen/_12sdp"/>
+              </com.google.android.material.textfield.TextInputLayout>
+
+              <!-- button publish post or ads-->
+              <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+                  android:id="@+id/publish_post"
+                  android:layout_width="@dimen/_150sdp"
+                  android:layout_height="wrap_content"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  android:layout_marginHorizontal="@dimen/_8sdp"
+                  android:layout_marginTop="@dimen/_16sdp"
+                  app:layout_constraintTop_toBottomOf="@+id/layout_content"
+                  android:text="نشر"
+                  style="@style/blueButtonStyle"/>
+
+
+              <ImageView
+                  android:id="@+id/img_scroll_icon"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@drawable/scroll_ic"
+                  android:layout_marginStart="@dimen/_200sdp"
+                  android:layoutDirection="rtl"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintBottom_toBottomOf="@id/nestedScrollRadios"
+                  app:layout_constraintTop_toTopOf="@id/nestedScrollRadios"/>
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="إسحب لاعلي"
+                  android:textSize="@dimen/_12ssp"
+                  android:fontFamily="@font/btn_font_cairo_black"
+                  app:layout_constraintEnd_toStartOf="@+id/img_scroll_icon"
+                  app:layout_constraintTop_toTopOf="@+id/img_scroll_icon"
+                  app:layout_constraintBottom_toBottomOf="@id/img_scroll_icon"
+
+                  />
+          </androidx.constraintlayout.widget.ConstraintLayout>
+      </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parent_viewOwnerAds"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"/>
+        <ScrollView
+            android:id="@+id/layout_part_owners_ads"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/textdescription1"
-            style="@style/h3"
-            android:textAlignment="center"
-            android:layout_margin="@dimen/_8sdp"
-            android:padding="@dimen/_8sdp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.5"
-            app:layout_constraintHorizontal_bias="0.5" />
+            app:layout_constraintTop_toTopOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/title_of_page_ads"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/h3"
+                    android:drawableStart="@drawable/wave_hand_ic"
+                    android:drawablePadding="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="مرحبا بك في صفحة ادارة الاعلانات"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:textSize="@dimen/_14sdp"/>
+                <ImageView
+                    android:id="@+id/add_image_ads"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_150sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title_of_page_ads"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:background="@drawable/background_image_post_deafult"
+                    android:layout_marginHorizontal="@dimen/_8sdp"/>
+                <ImageView
+                    android:id="@+id/iconOfImageAds"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/add_image_ic"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/add_image_ads"
+                    app:layout_constraintEnd_toEndOf="@+id/add_image_ads"
+                    app:layout_constraintTop_toTopOf="@+id/add_image_ads"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_image_ads"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_titleAnnouncementManage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_image_ads"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:hint="عنون الاعلان"
+                    android:maxEms="10"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/titleAnnouncementManage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/h3"
+                        android:textDirection="rtl"
+                        android:textAlignment="textStart"
+                        android:textSize="@dimen/_11sdp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_descriptionAnnouncementManage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_titleAnnouncementManage"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:hint="وصف الاعلان"
+                    android:maxEms="10"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/descriptionAnnouncementManage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/h3"
+                        android:textDirection="rtl"
+                        android:textAlignment="textStart"
+                        android:textSize="@dimen/_11sdp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_nameOfOwnerAnnouncementManage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_descriptionAnnouncementManage"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:hint="مـــالك الاعلان"
+                    android:maxEms="10"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nameOfOwnerAnnouncementManage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/h3"
+                        android:textDirection="rtl"
+                        android:textAlignment="textStart"
+                        android:textSize="@dimen/_11sdp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_daysOfWorkAnnouncementManage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_nameOfOwnerAnnouncementManage"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:hint=" مواعيد العمل ( ان وجدت )"
+                    android:maxEms="10"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/daysOfWorkAnnouncementManage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/h3"
+                        android:textDirection="rtl"
+                        android:textAlignment="textStart"
+                        android:textSize="@dimen/_11sdp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_placeOfWorkAnnouncementManage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_daysOfWorkAnnouncementManage"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:hint="مكان الاعلان ( ان وجد )"
+                    android:maxEms="10"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/placeOfWorkAnnouncementManage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/h3"
+                        android:textDirection="rtl"
+                        android:textAlignment="textStart"
+                        android:textSize="@dimen/_11sdp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_phoneOfWorkAnnouncementManage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_placeOfWorkAnnouncementManage"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:hint="رقم الهاتف للتواصل"
+                    android:maxEms="10"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phoneOfWorkAnnouncementManage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/h3"
+                        android:textDirection="rtl"
+                        android:textAlignment="textStart"
+                        android:textSize="@dimen/_11sdp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <CheckBox
+                    android:id="@+id/statusNew_checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="هل تريد تثبيت الاعلان"
+                    app:layout_constraintTop_toBottomOf="@id/layout_phoneOfWorkAnnouncementManage"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layoutDirection="rtl"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:textDirection="rtl"
+                    style="@style/h3"
+                    android:textSize="@dimen/_11sdp"
+                    android:checked="true" />
+
+                <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+                    android:id="@+id/publish_ads_btn"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/statusNew_checkBox"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="نشر"
+                    style="@style/blueButtonStyle"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

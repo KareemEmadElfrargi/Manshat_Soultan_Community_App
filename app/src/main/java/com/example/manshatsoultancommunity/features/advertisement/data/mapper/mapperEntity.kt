@@ -4,10 +4,12 @@ import com.example.manshatsoultancommunity.features.advertisement.data.data_sour
 import com.example.manshatsoultancommunity.features.advertisement.data.model.AnnouncementPost
 
 
-fun AnnouncementPost.toRoomEntity(): AdsPostEntity {
+fun AnnouncementPost.toRoomEntity(imageDataX:ByteArray): AdsPostEntity {
     return AdsPostEntity(
+        id = idAds,
         titleAnnouncement = titleAnnouncement,
         imageAnnouncement = imageAnnouncement,
+        imageData =imageDataX,
         descriptionAnnouncement = descriptionAnnouncement,
         placePostedAnnouncement = placePostedAnnouncement,
         statusNew = statusNew,

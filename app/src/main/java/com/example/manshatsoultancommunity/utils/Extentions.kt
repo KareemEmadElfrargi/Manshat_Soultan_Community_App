@@ -10,6 +10,8 @@ import android.graphics.Matrix
 import android.graphics.Rect
 import android.location.Geocoder
 import android.media.ExifInterface
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
 import android.view.Gravity
 import android.view.View
@@ -29,6 +31,7 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import java.util.UUID
 
 fun AppCompatActivity.showToast(massage: Any) {
     Toast.makeText(this, "$massage", Toast.LENGTH_LONG).show()
@@ -46,6 +49,20 @@ fun Fragment.showToast(message: Any, fontResId: Int? = null) {
     toastTextView?.setTextColor(ContextCompat.getColor(requireContext(), R.color.title))
     toastTextView?.gravity = Gravity.CENTER
     toast.show()
+}
+fun Fragment.showToastStyle(message: Any){
+    val inflater = layoutInflater
+    val layout = inflater.inflate(R.layout.custom_toast_layout, null)
+
+    val textView = layout.findViewById<TextView>(R.id.textViewToast)
+    textView.text = message.toString()
+
+    with(Toast(context)) {
+        setGravity(Gravity.CENTER, 0, 0)
+        duration = Toast.LENGTH_SHORT
+        view = layout
+        show()
+    }
 }
 
 fun Fragment.showToastShort(massage: Any) {
@@ -186,4 +203,19 @@ fun Fragment.showKeyboard(view: View) {
         }
     }
     return false
+}
+
+fun generateUniqueId(): String {
+    return UUID.randomUUID().toString()
+}
+
+ fun Fragment.isInternetAvailable(): Boolean {
+    val connectivityManager =
+        context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val network = connectivityManager.activeNetwork
+    val capabilities =
+        connectivityManager.getNetworkCapabilities(network)
+    return capabilities != null &&
+            (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
 }

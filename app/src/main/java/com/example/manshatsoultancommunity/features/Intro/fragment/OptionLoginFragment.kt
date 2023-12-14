@@ -67,13 +67,15 @@ class OptionLoginFragment: Fragment(){
         }
         firestore = Firebase.firestore
         binding.buttonAdminAccountOptions.setOnClickListener {
+//            binding.buttonAdminAccountOptions.startAnimation()
             showButtonSheetDialog()
         }
     }
     private fun showButtonSheetDialog() {
-        setupButtonSheetDialog{ codeEntry ->
+        setupButtonSheetDialog(binding.buttonAdminAccountOptions){ codeEntry ->
             firestore.collection(ADMIN_COLLECTION).document(codeEntry).get()
                 .addOnSuccessListener { result ->
+                    binding.buttonAdminAccountOptions.revertAnimation()
                     if (result.exists()){
                         val admin = result.toObject(Admin::class.java)
                         saveAdminData(admin)
@@ -86,9 +88,9 @@ class OptionLoginFragment: Fragment(){
                     }else {
                         showSnackBarMessageWithAction()
                     }
-
                 }.addOnFailureListener {
-                    showToast(it.message.toString())
+                    showToast("لا يوجد اتصال بالانترنت")
+                    binding.buttonAdminAccountOptions.revertAnimation()
                 }
         }
     }

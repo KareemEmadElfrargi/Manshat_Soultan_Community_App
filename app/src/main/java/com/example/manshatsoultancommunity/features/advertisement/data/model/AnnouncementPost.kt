@@ -4,6 +4,7 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 data class AnnouncementPost(
+    val idAds:String = "",
     val titleAnnouncement:String?=null,
     val imageAnnouncement:String?=null,
     val descriptionAnnouncement:String?=null,

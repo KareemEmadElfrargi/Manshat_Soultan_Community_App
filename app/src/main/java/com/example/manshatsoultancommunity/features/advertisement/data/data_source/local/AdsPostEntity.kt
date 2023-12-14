@@ -2,13 +2,15 @@ package com.example.manshatsoultancommunity.features.advertisement.data.data_sou
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import javax.annotation.Nullable
 
 @Entity(tableName = "AdsPostTable")
 data class AdsPostEntity (
-    @PrimaryKey(autoGenerate = true)
-    val id:Long=0,
+    @PrimaryKey
+    val id:String = "",
     val titleAnnouncement:String?=null,
     val imageAnnouncement:String?=null,
+    val imageData: ByteArray? = null,
     val descriptionAnnouncement:String?=null,
     val placePostedAnnouncement:String?=null,
     val statusNew:Boolean? = true,
