@@ -14,7 +14,7 @@
         >
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewAds"
+            android:id="@+id/cardViewAdvertisement"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/_10sdp"
@@ -33,7 +33,7 @@
 
 
                 <ImageView
-                    android:id="@+id/imageViewAnnouncement"
+                    android:id="@+id/imageViewAdvertisement"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:background="@drawable/background_image_post_deafult"
@@ -41,23 +41,16 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:scaleType="centerCrop" />
-<!--                <ImageView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:src="@drawable/black_background"-->
-<!--                    app:layout_constraintStart_toStartOf="@id/imageViewAnnouncement"-->
-<!--                    app:layout_constraintEnd_toEndOf="@id/imageViewAnnouncement"-->
-<!--                    />-->
 
                 <TextView
-                    android:id="@+id/photoIsReal"
+                    android:id="@+id/photoIsRealAdvertisement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="صورة من ارض الواقع"
                     android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="@id/imageViewAnnouncement"
+                    app:layout_constraintStart_toStartOf="@id/imageViewAdvertisement"
                     android:layout_marginStart="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageViewAnnouncement"
+                    app:layout_constraintBottom_toBottomOf="@id/imageViewAdvertisement"
                     android:layoutDirection="ltr"
                     android:textDirection="rtl"
                     android:shadowColor="#000000"
@@ -70,14 +63,14 @@
                     android:textSize="@dimen/_8sdp"/>
 
                 <TextView
-                    android:id="@+id/dateOfPublisher"
+                    android:id="@+id/dateOfPublisherAdvertisement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="تاريخ النشر يوم الاربعاء الساعة 9"
                     android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="@id/imageViewAnnouncement"
+                    app:layout_constraintEnd_toEndOf="@id/imageViewAdvertisement"
                     android:layout_marginEnd="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@id/imageViewAnnouncement"
+                    app:layout_constraintBottom_toBottomOf="@id/imageViewAdvertisement"
                     android:layoutDirection="ltr"
                     android:textDirection="rtl"
                     android:drawableEnd="@drawable/baseline_access_time_24"
@@ -92,15 +85,15 @@
                     android:textSize="@dimen/_8sdp"/>
 
                 <TextView
-                    android:id="@+id/AnnouncementTitle"
+                    android:id="@+id/AdvertisementTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="إعلان إفتتاح عيادة جديدة"
                     android:layout_marginStart="@dimen/_4sdp"
                     android:drawableStart="@drawable/start_ic"
-                    app:layout_constraintStart_toStartOf="@+id/imageViewAnnouncement"
-                    app:layout_constraintEnd_toEndOf="@+id/imageViewAnnouncement"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewAnnouncement"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewAdvertisement"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewAdvertisement"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewAdvertisement"
                     android:fontFamily="@font/base_font_cairo"
                     android:layoutDirection="rtl"
                     android:textDirection="rtl"
@@ -110,17 +103,17 @@
                     android:layout_marginTop="8dp" />
 
                 <ImageView
-                    android:id="@+id/iconImageView"
+                    android:id="@+id/pin_icon_Advertisement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/favorite_ic"
-                    app:layout_constraintStart_toStartOf="@+id/imageViewAnnouncement"
-                    app:layout_constraintTop_toTopOf="@+id/imageViewAnnouncement"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewAdvertisement"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewAdvertisement"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:layout_marginTop="-4dp"/>
 
                 <TextView
-                    android:id="@+id/AnnouncementDescription"
+                    android:id="@+id/AdvertisementDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sub_title_font_ciaro_light"
@@ -129,9 +122,9 @@
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_8sdp"
-                    app:layout_constraintStart_toStartOf="@+id/AnnouncementTitle"
-                    app:layout_constraintEnd_toEndOf="@+id/AnnouncementTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/AnnouncementTitle"
+                    app:layout_constraintStart_toStartOf="@+id/AdvertisementTitle"
+                    app:layout_constraintEnd_toEndOf="@+id/AdvertisementTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/AdvertisementTitle"
                     android:textSize="@dimen/_12sdp"
                     android:textDirection="rtl"
                     android:ellipsize="end"

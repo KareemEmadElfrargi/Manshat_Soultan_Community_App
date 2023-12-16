@@ -39,7 +39,7 @@
                     android:layout_weight="1"
                      />
                 <ImageView
-                    android:id="@+id/iconImageView"
+                    android:id="@+id/pin_icon_Advertisement"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/vs_icon"

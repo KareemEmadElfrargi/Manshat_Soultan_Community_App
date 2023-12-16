@@ -25,8 +25,10 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.manshatsoultancommunity.R
 import com.google.android.material.snackbar.Snackbar
+import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -219,3 +221,48 @@ fun generateUniqueId(): String {
             (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
                     capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
 }
+
+fun isInternetAvailable(context : Context): Boolean {
+    val connectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val network = connectivityManager.activeNetwork
+    val capabilities =
+        connectivityManager.getNetworkCapabilities(network)
+    return capabilities != null &&
+            (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
+}
+
+fun loadImageData(imageUrl: String,context: Context): ByteArray {
+    return try {
+        // Use Glide to load the image and retrieve the byte array
+        val glideRequest = Glide.with(context)
+            .asBitmap()
+            .load(imageUrl)
+
+        val bitmap = glideRequest.submit().get()
+        // Convert the Bitmap to a ByteArray
+        val outputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+        outputStream.toByteArray()
+    } catch (e: Exception) {
+        // Handle errors, such as network issues or image loading failures
+        // You might want to log the error or return a default image data
+        e.printStackTrace()
+        byteArrayOf() // Default empty byte array for simplicity
+    }
+}
+
+//        // When the user scrolls, it checks if the bottom of the content , presumably to load more data as the user scrolls.
+//        binding.nestedScrollAdsPage.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener{ view, _, scrollY, _, _ ->
+//
+//            val canScrollHorizontally = view.canScrollHorizontally(1) || view.canScrollHorizontally(-1)
+//            val canScrollVertically = view.canScrollVertically(1) || view.canScrollVertically(-1)
+//
+//            if (canScrollHorizontally || canScrollVertically) {
+//                // view: This represents the NestedScrollView instance on which the scroll change listener is set
+//                if (view.getChildAt(0).bottom <= view.height + scrollY) {
+//                    viewModel.fetchAdsPosts()
+//                }
+//            }
+//        })

@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.DetailsOfAdsDialogBinding
-import com.example.manshatsoultancommunity.features.advertisement.data.model.AnnouncementPost
+import com.example.manshatsoultancommunity.features.advertisement.data.model.Advertisements
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 @SuppressLint("MissingInflatedId")
 fun Fragment.setupButtonSheetDetailsDialog(
-    adsPost: AnnouncementPost,
+    adsPost: Advertisements,
     onConfirmClick:(String)->Unit
 ){
     val dialog = BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialog)
@@ -18,16 +18,16 @@ fun Fragment.setupButtonSheetDetailsDialog(
     dialog.show()
 
     binding.apply {
-        tvOwnerTitle.text = adsPost.owner
-        tvDescriptionAds.text = adsPost.descriptionAnnouncement
-        tvDaysAndDateOfAds.text = adsPost.dates
-        tvPlaceOfAds.text = adsPost.placePostedAnnouncement
-        tvDatePublishedOfAds.text = adsPost.datePostedAnnouncement
+        tvOwnerTitle.text = adsPost.ownerOfAdvertisement
+        tvDescriptionAds.text = adsPost.descriptionOfAdvertisement
+        tvDaysAndDateOfAds.text = adsPost.datesOfAdvertisement
+        tvPlaceOfAds.text = adsPost.locationOfAdvertisement
+        tvDatePublishedOfAds.text = adsPost.datePostedAdvertisement
         buttonCancelBackAds.setOnClickListener {
             dialog.dismiss()
         }
         buttonEnquiryOfAds.setOnClickListener {
-            val phoneNumber = adsPost.contactUs ?: "01113461483"
+            val phoneNumber = adsPost.numberOfOwnerOfAdvertisement ?: "01113461483"
             onConfirmClick(phoneNumber)
             dialog.dismiss()
         }

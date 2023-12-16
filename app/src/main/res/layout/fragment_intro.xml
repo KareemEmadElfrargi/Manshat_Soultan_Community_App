@@ -26,6 +26,7 @@
             app:lottie_loop="true"
              />
 
+
         <ImageView
             android:id="@+id/ellipse"
             android:layout_width="0dp"
@@ -33,9 +34,9 @@
             app:layout_constraintBottom_toBottomOf="@id/guidelineEllipseBottom"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="@id/guidelineEllipseRight"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/guidelineEllipseLeft"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <TextView
             android:id="@+id/tvAddressForNewsAppName"

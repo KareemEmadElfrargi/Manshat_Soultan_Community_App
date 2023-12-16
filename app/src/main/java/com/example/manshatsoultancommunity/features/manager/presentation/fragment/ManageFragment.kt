@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.databinding.FragmentManageBinding
-import com.example.manshatsoultancommunity.features.advertisement.data.model.AnnouncementPost
+import com.example.manshatsoultancommunity.features.advertisement.data.model.Advertisements
 import com.example.manshatsoultancommunity.utils.Constants.CHILD_OF_ADS_REALTIME
 import com.example.manshatsoultancommunity.utils.generateUniqueId
 import com.google.firebase.database.FirebaseDatabase
@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ManageFragment: Fragment() {
     private lateinit var binding : FragmentManageBinding
     private lateinit var firebaseDatabase: FirebaseDatabase
-    private var status = true
+    private var status = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,7 +55,7 @@ class ManageFragment: Fragment() {
         val datesOfWork = binding.daysOfWorkAnnouncementManage.text.toString()
         val placePostedAnnouncement = binding.placeOfWorkAnnouncementManage.text.toString()
         val contactUs = binding.phoneOfWorkAnnouncementManage.text.toString()
-        val objAnnouncement = AnnouncementPost(
+        val objAnnouncement = Advertisements(
             generateUniqueId(),
             titleAnnouncement,
             "https://firebasestorage.googleapis.com/v0/b/manshat-soultan-community.appspot.com/o/gym_imag.jpg?alt=media&token=c8268376-9fe9-4649-b7c4-c200226ac5ff",
