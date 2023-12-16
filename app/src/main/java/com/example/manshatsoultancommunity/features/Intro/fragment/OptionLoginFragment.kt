@@ -18,9 +18,11 @@ import com.example.manshatsoultancommunity.utils.Constants.ADMIN_CATEGORY_KEY
 import com.example.manshatsoultancommunity.utils.Constants.ADMIN_COLLECTION
 import com.example.manshatsoultancommunity.utils.Constants.ADMIN_ID_KEY
 import com.example.manshatsoultancommunity.utils.Constants.ADMIN_NAME_KEY
+import com.example.manshatsoultancommunity.utils.Constants.Auth_STATUS
 import com.example.manshatsoultancommunity.utils.SharedPreferencesManager
 import com.example.manshatsoultancommunity.utils.TransitionListener
 import com.example.manshatsoultancommunity.utils.dailogs.setupButtonSheetDialog
+import com.example.manshatsoultancommunity.utils.saveAdminData
 import com.example.manshatsoultancommunity.utils.showToast
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
@@ -61,6 +63,7 @@ class OptionLoginFragment: Fragment(){
 
         binding.buttonUserAccountOptions.setOnClickListener {
             //applyTransition()
+            SharedPreferencesManager(requireContext()).saveString(Auth_STATUS,"User")
             Intent(requireActivity(),NewsActivity::class.java).also { intent ->
                 startActivity(intent)
             }
@@ -94,27 +97,8 @@ class OptionLoginFragment: Fragment(){
                 }
         }
     }
-    private fun saveAdminData(admin: Admin?) {
-        SharedPreferencesManager(requireContext()).apply {
-        admin?.let {
-            saveString(ADMIN_ID_KEY,admin.id)
-            saveString(ADMIN_NAME_KEY, admin.name)
-            saveList(ADMIN_CATEGORY_KEY, admin.category)
-            saveBoolean(ADMIN_ACTIVE_KEY,admin.active)
-        }
-        }
-    }
-    private fun getAdminData():Admin{
-        val admin : Admin
-        SharedPreferencesManager(requireContext()).apply {
-            val id = getString(ADMIN_ID_KEY)
-            val name = getString(ADMIN_NAME_KEY)
-            val category = getList(ADMIN_CATEGORY_KEY)
-            val active = getBoolean(ADMIN_ACTIVE_KEY)
-            admin = Admin(id,name,category,active)
-        }
-     return admin
-    }
+
+
 
     private fun showSnackBarMessage(message: String) {
         val snackbar = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)

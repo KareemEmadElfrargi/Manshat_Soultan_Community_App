@@ -72,8 +72,9 @@ class AdvertisementsFragment : Fragment(),InteractionWithAdvertisement {
                         is Resource.Error -> {
                             hideLoading()
                             if (result.message.toString() == "Error fetching remote data") {
-                                hideEmptyListUI()
-                                showUnconnectedInternetUI()
+//                                hideEmptyListUI()
+//                                showUnconnectedInternetUI()
+//                                Log.e("AdvertisementsFragment",result.message.toString())
 
                             } else if (result.message.toString() == "Empty List cached on your phone!") {
                                 showEmptyListUI()
@@ -89,17 +90,8 @@ class AdvertisementsFragment : Fragment(),InteractionWithAdvertisement {
         updatedData()
     }
 
-    private fun connectedInternetUI() {
-        binding.lostConnectAnimation.visibilityGone()
-    }
-    private fun hideEmptyListUI() {
-        binding.emptyListAnimation.visibilityGone()
-    }
-    private fun showEmptyListUI() {
-        binding.emptyListAnimation.visibilityVisible()
-    }
-    private fun showUnconnectedInternetUI() {
-        binding.lostConnectAnimation.visibilityVisible()
+    override fun onResume() {
+        super.onResume()
     }
 
 
@@ -124,21 +116,11 @@ class AdvertisementsFragment : Fragment(),InteractionWithAdvertisement {
     @SuppressLint("NotifyDataSetChanged")
     private fun setUpAdsRecycleView(listOfAdvertisements: List<Advertisements>?) {
         listOfAdvertisements?.let {
-            announcementAdapter = AdvertisementsAdapter(listOfAdvertisements, requireContext(),this)
+            announcementAdapter = AdvertisementsAdapter(listOfAdvertisements.reversed(), requireContext(),this)
             announcementAdapter.notifyDataSetChanged()
             binding.recyclerViewAnnouncementPage.adapter = announcementAdapter
 
         }
-    }
-
-
-
-    private fun showLoading() {
-        binding.progressBarAdsFragment.visibilityVisible()
-    }
-
-    private fun hideLoading() {
-        binding.progressBarAdsFragment.visibilityGone()
     }
 
     override fun onDestroy() {
@@ -155,4 +137,25 @@ class AdvertisementsFragment : Fragment(),InteractionWithAdvertisement {
             }
         }
     }
+
+
+    private fun connectedInternetUI() {
+        binding.lostConnectAnimation.visibilityGone()
+    }
+    private fun hideEmptyListUI() {
+        binding.emptyListAnimation.visibilityGone()
+    }
+    private fun showEmptyListUI() {
+        binding.emptyListAnimation.visibilityVisible()
+    }
+    private fun showUnconnectedInternetUI() {
+        binding.lostConnectAnimation.visibilityVisible()
+    }
+    private fun showLoading() {
+        binding.progressBarAdsFragment.visibilityVisible()
+    }
+    private fun hideLoading() {
+        binding.progressBarAdsFragment.visibilityGone()
+    }
+
 }

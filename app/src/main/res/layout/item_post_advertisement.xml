@@ -30,8 +30,6 @@
                >
 
 
-
-
                 <ImageView
                     android:id="@+id/imageViewAdvertisement"
                     android:layout_width="match_parent"
@@ -41,6 +39,26 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:scaleType="centerCrop" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewAdvertisement"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewAdvertisement"
+                    android:background="#35040D12"
+
+                    />
+                <ImageView
+                    android:id="@+id/pin_icon_Advertisement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/favorite_ic"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewAdvertisement"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewAdvertisement"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:visibility="gone"
+                    android:layout_marginTop="-4dp"/>
 
                 <TextView
                     android:id="@+id/photoIsRealAdvertisement"
@@ -102,15 +120,6 @@
                     android:textSize="@dimen/_14sdp"
                     android:layout_marginTop="8dp" />
 
-                <ImageView
-                    android:id="@+id/pin_icon_Advertisement"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/favorite_ic"
-                    app:layout_constraintStart_toStartOf="@+id/imageViewAdvertisement"
-                    app:layout_constraintTop_toTopOf="@+id/imageViewAdvertisement"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginTop="-4dp"/>
 
                 <TextView
                     android:id="@+id/AdvertisementDescription"

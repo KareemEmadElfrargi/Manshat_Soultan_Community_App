@@ -15,7 +15,7 @@ class GetAdvertisementsUseCase @Inject constructor(
             val comparator = compareByDescending<Advertisements> { it.isPinAdvertisement }
              Resource.Success(resource.data?.sortedWith(comparator)!!)
         } else {
-             return resource
+              resource
         }
     }
 }

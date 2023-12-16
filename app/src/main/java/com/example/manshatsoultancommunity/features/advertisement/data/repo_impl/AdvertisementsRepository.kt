@@ -26,7 +26,8 @@ class AdvertisementsRepository @Inject constructor(
                     val imageData = loadImageData(it.imageOfAdvertisement!!, context)
                     it.toRoomEntity(imageData)
                 } ?: emptyList()
-                advertisementsDataSourceLocal.insertAdvertisements(dataListEntity)
+
+                advertisementsDataSourceLocal.insertAdvertisements(dataListEntity) // room
                 remoteAdvertisementsList
             }catch (e: Exception){
                 Log.e("AdvertisementsRepository", "Error fetching remote data: ${e.message}")

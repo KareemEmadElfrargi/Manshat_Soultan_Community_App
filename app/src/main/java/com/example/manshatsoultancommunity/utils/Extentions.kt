@@ -27,6 +27,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.manshatsoultancommunity.R
+import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
 import com.google.android.material.snackbar.Snackbar
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -250,6 +251,31 @@ fun loadImageData(imageUrl: String,context: Context): ByteArray {
         // You might want to log the error or return a default image data
         e.printStackTrace()
         byteArrayOf() // Default empty byte array for simplicity
+    }
+}
+
+
+fun Fragment.getAdminData(): Admin {
+    val admin : Admin
+    SharedPreferencesManager(requireContext()).apply {
+        val id = getString(Constants.ADMIN_ID_KEY)
+        val name = getString(Constants.ADMIN_NAME_KEY)
+        val category = getList(Constants.ADMIN_CATEGORY_KEY)
+        val active = getBoolean(Constants.ADMIN_ACTIVE_KEY)
+        admin = Admin(id,name,category,active)
+    }
+    return admin
+}
+
+ fun Fragment.saveAdminData(admin: Admin?) {
+    SharedPreferencesManager(requireContext()).apply {
+        admin?.let {
+            saveString(Constants.ADMIN_ID_KEY,admin.id)
+            saveString(Constants.ADMIN_NAME_KEY, admin.name)
+            saveList(Constants.ADMIN_CATEGORY_KEY, admin.category)
+            saveBoolean(Constants.ADMIN_ACTIVE_KEY,admin.active)
+            saveString(Constants.Auth_STATUS,"Admin")
+        }
     }
 }
 

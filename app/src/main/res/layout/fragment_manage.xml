@@ -203,208 +203,208 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/parent_viewOwnerAds"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible"/>
-        <ScrollView
-            android:id="@+id/layout_part_owners_ads"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-            <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="gone">
+            <ScrollView
+                android:id="@+id/layout_part_owners_ads"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/title_of_page_ads"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/h3"
-                    android:drawableStart="@drawable/wave_hand_ic"
-                    android:drawablePadding="@dimen/_8sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:text="مرحبا بك في صفحة ادارة الاعلانات"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:textSize="@dimen/_14sdp"/>
-                <ImageView
-                    android:id="@+id/add_image_ads"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_150sdp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/title_of_page_ads"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:background="@drawable/background_image_post_deafult"
-                    android:layout_marginHorizontal="@dimen/_8sdp"/>
-                <ImageView
-                    android:id="@+id/iconOfImageAds"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:src="@drawable/add_image_ic"
-                    android:visibility="visible"
-                    app:layout_constraintStart_toStartOf="@+id/add_image_ads"
-                    app:layout_constraintEnd_toEndOf="@+id/add_image_ads"
-                    app:layout_constraintTop_toTopOf="@+id/add_image_ads"
-                    app:layout_constraintBottom_toBottomOf="@+id/add_image_ads"/>
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/title_of_page_ads"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/h3"
+                        android:drawableStart="@drawable/wave_hand_ic"
+                        android:drawablePadding="@dimen/_8sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="مرحبا بك في صفحة ادارة الاعلانات"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:textSize="@dimen/_14sdp"/>
+                    <ImageView
+                        android:id="@+id/add_image_ads"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_150sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/title_of_page_ads"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/background_image_post_deafult"
+                        android:layout_marginHorizontal="@dimen/_8sdp"/>
+                    <ImageView
+                        android:id="@+id/iconOfImageAds"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/add_image_ic"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="@+id/add_image_ads"
+                        app:layout_constraintEnd_toEndOf="@+id/add_image_ads"
+                        app:layout_constraintTop_toTopOf="@+id/add_image_ads"
+                        app:layout_constraintBottom_toBottomOf="@+id/add_image_ads"/>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layout_titleAnnouncementManage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/add_image_ads"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:hint="عنون الاعلان"
-                    android:maxEms="10"
-                    >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/titleAnnouncementManage"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_titleAnnouncementManage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/h3"
-                        android:textDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:textSize="@dimen/_11sdp"/>
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layout_descriptionAnnouncementManage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/layout_titleAnnouncementManage"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:hint="وصف الاعلان"
-                    android:maxEms="10"
-                    >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/descriptionAnnouncementManage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/add_image_ads"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:hint="عنون الاعلان"
+                        android:maxEms="10"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/titleAnnouncementManage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/h3"
+                            android:textDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:textSize="@dimen/_11sdp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_descriptionAnnouncementManage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/h3"
-                        android:textDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:textSize="@dimen/_11sdp"/>
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layout_nameOfOwnerAnnouncementManage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/layout_descriptionAnnouncementManage"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:hint="مـــالك الاعلان"
-                    android:maxEms="10"
-                    >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nameOfOwnerAnnouncementManage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layout_titleAnnouncementManage"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:hint="وصف الاعلان"
+                        android:maxEms="10"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/descriptionAnnouncementManage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/h3"
+                            android:textDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:textSize="@dimen/_11sdp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_nameOfOwnerAnnouncementManage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/h3"
-                        android:textDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:textSize="@dimen/_11sdp"/>
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layout_daysOfWorkAnnouncementManage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/layout_nameOfOwnerAnnouncementManage"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:hint=" مواعيد العمل ( ان وجدت )"
-                    android:maxEms="10"
-                    >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/daysOfWorkAnnouncementManage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layout_descriptionAnnouncementManage"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:hint="مـــالك الاعلان"
+                        android:maxEms="10"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/nameOfOwnerAnnouncementManage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/h3"
+                            android:textDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:textSize="@dimen/_11sdp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_daysOfWorkAnnouncementManage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/h3"
-                        android:textDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:textSize="@dimen/_11sdp"/>
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layout_placeOfWorkAnnouncementManage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/layout_daysOfWorkAnnouncementManage"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:hint="مكان الاعلان ( ان وجد )"
-                    android:maxEms="10"
-                    >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/placeOfWorkAnnouncementManage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layout_nameOfOwnerAnnouncementManage"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:hint=" مواعيد العمل ( ان وجدت )"
+                        android:maxEms="10"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/daysOfWorkAnnouncementManage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/h3"
+                            android:textDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:textSize="@dimen/_11sdp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_placeOfWorkAnnouncementManage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/h3"
-                        android:textDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:textSize="@dimen/_11sdp"/>
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layout_phoneOfWorkAnnouncementManage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/layout_placeOfWorkAnnouncementManage"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:hint="رقم الهاتف للتواصل"
-                    android:maxEms="10"
-                    >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/phoneOfWorkAnnouncementManage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layout_daysOfWorkAnnouncementManage"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:hint="مكان الاعلان ( ان وجد )"
+                        android:maxEms="10"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/placeOfWorkAnnouncementManage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/h3"
+                            android:textDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:textSize="@dimen/_11sdp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_phoneOfWorkAnnouncementManage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/h3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layout_placeOfWorkAnnouncementManage"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:hint="رقم الهاتف للتواصل"
+                        android:maxEms="10"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phoneOfWorkAnnouncementManage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/h3"
+                            android:textDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:textSize="@dimen/_11sdp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <CheckBox
+                        android:id="@+id/statusNew_checkBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="هل تريد تثبيت الاعلان"
+                        app:layout_constraintTop_toBottomOf="@id/layout_phoneOfWorkAnnouncementManage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layoutDirection="rtl"
+                        android:layout_margin="@dimen/_8sdp"
                         android:textDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:textSize="@dimen/_11sdp"/>
-                </com.google.android.material.textfield.TextInputLayout>
-                <CheckBox
-                    android:id="@+id/statusNew_checkBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="هل تريد تثبيت الاعلان"
-                    app:layout_constraintTop_toBottomOf="@id/layout_phoneOfWorkAnnouncementManage"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layoutDirection="rtl"
-                    android:layout_margin="@dimen/_8sdp"
-                    android:textDirection="rtl"
-                    style="@style/h3"
-                    android:textSize="@dimen/_11sdp"
-                    android:checked="true" />
+                        style="@style/h3"
+                        android:textSize="@dimen/_11sdp"
+                        android:checked="true" />
 
-                <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
-                    android:id="@+id/publish_ads_btn"
-                    android:layout_width="@dimen/_150sdp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginHorizontal="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/statusNew_checkBox"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="@dimen/_8sdp"
-                    android:text="نشر"
-                    style="@style/blueButtonStyle"/>
+                    <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+                        android:id="@+id/publish_ads_btn"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/statusNew_checkBox"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:text="نشر"
+                        style="@style/blueButtonStyle"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
-
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

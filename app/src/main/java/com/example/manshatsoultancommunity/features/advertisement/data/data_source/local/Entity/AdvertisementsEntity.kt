@@ -6,18 +6,18 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "AnnouncementsTable")
 data class AdvertisementsEntity (
     @PrimaryKey
-    val id:String = "",
-    val titleOfAdvertisement:String?=null,
-    val imageOfAdvertisement:String?=null,
-    val imageDataOfAdvertisement: ByteArray? = null,
-    val descriptionOfAdvertisement:String?=null,
-    val locationOfAdvertisement:String?=null,
-    val isPinAdvertisement:Boolean? = true,
-    val datePostedAdvertisement:String?=null,
+    var id:String = "",
+    var titleOfAdvertisement:String?=null,
+    var imageOfAdvertisement:String?=null,
+    var imageDataOfAdvertisement: ByteArray? = null,
+    var descriptionOfAdvertisement:String?=null,
+    var locationOfAdvertisement:String?=null,
+    var isPinAdvertisement:Boolean? = false,
+    var datePostedAdvertisement:String?=null,
     /*additional*/
-    val ownerOfAdvertisement:String? =null,
-    val datesOfAdvertisement:String?=null,
-    val numberOfOwnerOfAdvertisement:String?=null
+    var ownerOfAdvertisement:String? =null,
+    var datesOfAdvertisement:String?=null,
+    var numberOfOwnerOfAdvertisement:String?=null
     /*More..*/
 
 )

@@ -2,6 +2,8 @@ package com.example.manshatsoultancommunity.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.content.ContentProviderCompat.requireContext
+import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
 import com.example.manshatsoultancommunity.utils.Constants.ADMIN_CATEGORY_KEY
 import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
@@ -47,5 +49,7 @@ class SharedPreferencesManager (context: Context) {
             .remove(key)
             .apply()
     }
+
+
 
 }

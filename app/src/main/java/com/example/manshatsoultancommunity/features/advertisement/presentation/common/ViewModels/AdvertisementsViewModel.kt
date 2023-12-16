@@ -20,10 +20,9 @@ class AdvertisementsViewModel @Inject constructor(
 
     init {
         fetchAdvertisements()
+
     }
-
      fun fetchAdvertisements(){
-
         viewModelScope.launch {
             _advertisementsList.emit(Resource.Loading())
         }
@@ -31,7 +30,5 @@ class AdvertisementsViewModel @Inject constructor(
             val result = getAdvertisementsUseCase.getAdvertisementsUseCase()
             _advertisementsList.emit(result)
         }
-
     }
-
 }

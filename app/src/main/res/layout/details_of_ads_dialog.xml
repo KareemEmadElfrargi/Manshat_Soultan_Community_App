@@ -78,7 +78,7 @@
             android:lineSpacingMultiplier="0.7"
             android:layoutDirection="rtl"
             android:drawablePadding="@dimen/_4sdp"
-            android:drawableStart="@drawable/day_ic"
+            android:drawableStart="@drawable/date_range_24"
             app:layout_constraintEnd_toEndOf="@+id/nestedScroll_descriptionAds"
             app:layout_constraintStart_toStartOf="@+id/nestedScroll_descriptionAds"
             app:layout_constraintTop_toBottomOf="@id/nestedScroll_descriptionAds" />
@@ -94,6 +94,7 @@
             android:drawableStart="@drawable/location"
             android:drawablePadding="@dimen/_4sdp"
             android:layoutDirection="rtl"
+            android:lineSpacingMultiplier="0.7"
             app:layout_constraintEnd_toEndOf="@+id/tv_days_and_date_of_ads"
             app:layout_constraintStart_toStartOf="@+id/tv_days_and_date_of_ads"
             app:layout_constraintTop_toBottomOf="@id/tv_days_and_date_of_ads" />
@@ -109,6 +110,7 @@
             android:textColor="@color/g_gray700"
             android:layoutDirection="rtl"
             android:layout_marginEnd="@dimen/_4sdp"
+            android:lineSpacingMultiplier="0.7"
             android:drawablePadding="@dimen/_8sdp"
             android:drawableStart="@drawable/time_ic"
             app:layout_constraintStart_toStartOf="@+id/tv_place_of_ads"
