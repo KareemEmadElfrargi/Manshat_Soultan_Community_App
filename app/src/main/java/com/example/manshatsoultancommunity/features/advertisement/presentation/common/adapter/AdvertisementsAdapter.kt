@@ -45,7 +45,7 @@ class AdvertisementsAdapter(
                         if (currentAdvertisement.isPinAdvertisement!!){
                             pinIconAdvertisement.visibility = View.VISIBLE
                         }else{
-                            pinIconAdvertisement.visibility = View.GONE
+                            pinIconAdvertisement.visibility = View.INVISIBLE
                         }
 
                         cardViewAdvertisement.setOnClickListener {

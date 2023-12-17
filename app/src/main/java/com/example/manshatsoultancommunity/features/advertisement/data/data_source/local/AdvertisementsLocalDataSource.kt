@@ -14,4 +14,8 @@ class AdvertisementsLocalDataSource @Inject constructor(
         return advertisementsDao.getAllAdvertisements()
     }
 
+    override suspend fun deleteAdvertisements() {
+        advertisementsDao.deleteAdvertisements()
+    }
+
 }

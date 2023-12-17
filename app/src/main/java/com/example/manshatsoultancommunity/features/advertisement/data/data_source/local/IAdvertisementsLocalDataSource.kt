@@ -6,4 +6,5 @@ import com.example.manshatsoultancommunity.features.advertisement.data.data_sour
 interface IAdvertisementsLocalDataSource {
     suspend fun insertAdvertisements(advertisements:List<AdvertisementsEntity>)
     suspend fun getAllAdvertisements(): List<AdvertisementsEntity>
+    suspend fun deleteAdvertisements()
 }

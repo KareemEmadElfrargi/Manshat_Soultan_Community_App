@@ -398,7 +398,7 @@
                         android:textDirection="rtl"
                         style="@style/h3"
                         android:textSize="@dimen/_11sdp"
-                        android:checked="true" />
+                        android:checked="false" />
 
                     <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
                         android:id="@+id/publish_ads_btn"

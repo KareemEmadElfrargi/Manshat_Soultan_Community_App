@@ -117,8 +117,8 @@ class AdvertisementsFragment : Fragment(),InteractionWithAdvertisement {
     private fun setUpAdsRecycleView(listOfAdvertisements: List<Advertisements>?) {
         
         listOfAdvertisements?.let {
-            val sortedList = it.sortedByDescending { it.isPinAdvertisement }
-            announcementAdapter = AdvertisementsAdapter(sortedList, requireContext(),this)
+
+            announcementAdapter = AdvertisementsAdapter(listOfAdvertisements, requireContext(),this)
             binding.recyclerViewAnnouncementPage.adapter = announcementAdapter
 
         }

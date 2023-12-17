@@ -20,7 +20,6 @@ import com.example.manshatsoultancommunity.utils.getAdminData
 import com.example.manshatsoultancommunity.utils.getCurrentTime
 import com.example.manshatsoultancommunity.utils.showAlertDialog
 import com.example.manshatsoultancommunity.utils.showToast
-import com.example.manshatsoultancommunity.utils.showToastStyle
 import com.example.manshatsoultancommunity.utils.visibilityGone
 import com.example.manshatsoultancommunity.utils.visibilityInVisible
 import com.example.manshatsoultancommunity.utils.visibilityVisible
@@ -39,7 +38,7 @@ class ManageFragment: Fragment() {
     private val storageReference: StorageReference by lazy {
         FirebaseStorage.getInstance().reference
     }
-    private var status = false
+    private var isPin = false
     private lateinit var admin : Admin
     private lateinit var authStatus : String
     private  var uriFormGallery : Uri? = null
@@ -119,7 +118,7 @@ class ManageFragment: Fragment() {
            uploadImageToFirebase()
        }
         binding.statusNewCheckBox.setOnCheckedChangeListener{ _,isChecked ->
-            status = isChecked
+            isPin = isChecked
         }
 
         binding.addImageAds.setOnClickListener {
@@ -189,7 +188,7 @@ class ManageFragment: Fragment() {
             downloadUri,
             descriptionAdvertisement,
             placePostedAdvertisement,
-            status,
+            isPin,
             getCurrentTime(),
             "اعلان ممول بواسطة $ownerAdvertisement",
             datesOfWorkAdvertisement,

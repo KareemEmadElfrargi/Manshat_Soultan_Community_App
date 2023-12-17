@@ -10,11 +10,9 @@ class GetAdvertisementsUseCase @Inject constructor(
 ) : IGetAdvertisementsUseCase {
     override suspend fun getAdvertisementsUseCase(): Resource<List<Advertisements>> {
         val resource = repository.getAdsPost()
-
          return if (resource is Resource.Success) {
-
-             val advertisements = resource.data
-             Resource.Success(advertisements.orEmpty())
+             val sortedList = resource.data?.sortedByDescending { it.isPinAdvertisement }
+             Resource.Success(sortedList.orEmpty())
         } else {
               resource
         }

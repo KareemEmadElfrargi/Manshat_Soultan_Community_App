@@ -21,6 +21,7 @@ class AdvertisementsRepository @Inject constructor(
     override suspend fun getAdsPost(): Resource<List<Advertisements>> {
         return if (isInternetAvailable(context)) {
             try {
+                advertisementsDataSourceLocal.deleteAdvertisements()
                 val remoteAdvertisementsList = advertisementsDataSourceRemote.getAdvertisements()
                 val dataListEntity = remoteAdvertisementsList.data?.map {
                     val imageData = loadImageData(it.imageOfAdvertisement!!, context)
