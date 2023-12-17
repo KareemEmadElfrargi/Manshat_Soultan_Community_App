@@ -57,11 +57,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/_2sdp"
-                android:fontFamily="@font/sub_title_font_ciaro_light"
+                android:fontFamily="@font/dubai_light"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layoutDirection="rtl"
                 android:text="إدارة vipers gym مستمره فى عروضها ودعم الشباب، مواعيد الفترتين ثابته للشباب والسيدات ، وقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرين  إدارة vipers gym مستمره فى عروضها ودعم الشباب، مواعيد الفترتين ثابته للشباب والسيدات ، وقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرينوقررنا التعاون مع أولياء الأمور وأخواتنا المتدربين الصغيرين "
-                android:textColor="@color/g_gray700"
                 android:textSize="@dimen/_13sdp" />
 
         </androidx.core.widget.NestedScrollView>
@@ -72,11 +72,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_20sdp"
-            android:text="المواعيد : حد - ثلاثاء - اربع - خميس - الساعة
-        المواعيد : حد - ثلاثاء - اربع - خميس - الساعة 9المواعيد : حد - ثلاثاء - اربع - خميس - الساعة 99"
-            android:fontFamily="@font/base_font_cairo"
+            android:text=""
+            android:layout_marginTop="@dimen/_8sdp"
+            android:fontFamily="@font/dubai_bold"
             android:lineSpacingMultiplier="0.7"
             android:layoutDirection="rtl"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/black"
             android:drawablePadding="@dimen/_4sdp"
             android:drawableStart="@drawable/date_range_24"
             app:layout_constraintEnd_toEndOf="@+id/nestedScroll_descriptionAds"
@@ -87,11 +89,12 @@
             android:id="@+id/tv_place_of_ads"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:text="م.سلطان , المحطة اسفل محل توب 10"
-            android:fontFamily="@font/base_font_cairo"
-            android:drawableStart="@drawable/location"
+            android:text=""
+            android:fontFamily="@font/dubai_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            android:drawableStart="@drawable/location_ic"
+            android:gravity="center_vertical"
             android:drawablePadding="@dimen/_4sdp"
             android:layoutDirection="rtl"
             android:lineSpacingMultiplier="0.7"
@@ -99,33 +102,17 @@
             app:layout_constraintStart_toStartOf="@+id/tv_days_and_date_of_ads"
             app:layout_constraintTop_toBottomOf="@id/tv_days_and_date_of_ads" />
 
-        <TextView
-            android:id="@+id/tv_date_published_of_ads"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:text="تاريخ نشر الاعلان : الاربعاء الساعة 9 مساءاً"
-            android:fontFamily="@font/base_font_cairo"
-            android:textColor="@color/g_gray700"
-            android:layoutDirection="rtl"
-            android:layout_marginEnd="@dimen/_4sdp"
-            android:lineSpacingMultiplier="0.7"
-            android:drawablePadding="@dimen/_8sdp"
-            android:drawableStart="@drawable/time_ic"
-            app:layout_constraintStart_toStartOf="@+id/tv_place_of_ads"
-            app:layout_constraintEnd_toEndOf="@+id/tv_place_of_ads"
-            app:layout_constraintTop_toBottomOf="@id/tv_place_of_ads" />
+
 
         <LinearLayout
+            android:id="@+id/layout_buttons"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_20sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/tv_place_of_ads"
             app:layout_constraintStart_toStartOf="@id/tv_place_of_ads"
-            app:layout_constraintTop_toBottomOf="@id/tv_date_published_of_ads"
+            app:layout_constraintTop_toBottomOf="@id/tv_place_of_ads"
             android:orientation="horizontal">
 
             <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
@@ -153,6 +140,26 @@
                 app:spinning_bar_color="@color/white"
                 android:textAllCaps="false" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_date_published_of_ads"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="تاريخ نشر الاعلان : الاربعاء الساعة 9 مساءاً"
+            android:fontFamily="@font/base_font_cairo"
+            android:textColor="@color/g_gray700"
+            android:layoutDirection="rtl"
+            android:textSize="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:lineSpacingMultiplier="0.7"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="@+id/layout_buttons"
+            app:layout_constraintEnd_toEndOf="@+id/layout_buttons"
+            app:layout_constraintTop_toBottomOf="@id/layout_buttons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

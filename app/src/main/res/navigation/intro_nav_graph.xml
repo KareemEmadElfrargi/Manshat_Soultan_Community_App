@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/introductionFragment"
         android:name="com.example.manshatsoultancommunity.features.Intro.fragment.IntroductionFragment"
-        android:label="IntroductionFragment" >
+        android:label="IntroductionFragment">
         <action
             android:id="@+id/action_introductionFragment_to_optionLoginFragment"
             app:destination="@id/optionLoginFragment"

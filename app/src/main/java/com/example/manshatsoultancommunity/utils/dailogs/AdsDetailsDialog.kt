@@ -22,7 +22,7 @@ fun Fragment.setupButtonSheetDetailsDialog(
         tvDescriptionAds.text = adsPost.descriptionOfAdvertisement
         tvDaysAndDateOfAds.text = adsPost.datesOfAdvertisement
         tvPlaceOfAds.text = adsPost.locationOfAdvertisement
-        tvDatePublishedOfAds.text = adsPost.datePostedAdvertisement
+        tvDatePublishedOfAds.text = " تاريخ نشر الاعلان : ${adsPost.datePostedAdvertisement}"
         buttonCancelBackAds.setOnClickListener {
             dialog.dismiss()
         }

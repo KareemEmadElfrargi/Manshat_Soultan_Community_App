@@ -26,7 +26,11 @@ class SharedPreferencesManager (context: Context) {
     }
     fun getList(key: String): List<String> {
         val gson = Gson()
-        val json = sharedPreferences.getString(key, null)
+        val json = sharedPreferences.getString(key, "")
+        if (json.isNullOrEmpty()) {
+
+            return emptyList()
+        }
         val type = object : TypeToken<List<String>>() {}.type
         return gson.fromJson(json, type)
     }

@@ -1,29 +1,25 @@
 package com.example.manshatsoultancommunity.utils
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
-import android.graphics.Rect
-import android.location.Geocoder
 import android.media.ExifInterface
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.res.ResourcesCompat
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.manshatsoultancommunity.R
@@ -35,7 +31,6 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import java.util.UUID
-
 fun AppCompatActivity.showToast(massage: Any) {
     Toast.makeText(this, "$massage", Toast.LENGTH_LONG).show()
 }
@@ -61,7 +56,7 @@ fun Fragment.showToastStyle(message: Any){
     textView.text = message.toString()
 
     with(Toast(context)) {
-        setGravity(Gravity.CENTER, 0, 0)
+        setGravity(Gravity.BOTTOM, 0, 0)
         duration = Toast.LENGTH_SHORT
         view = layout
         show()
@@ -96,10 +91,9 @@ fun View.disable() {
 fun View.enabled() {
     isEnabled = true
 }
-
-private fun getCurrentTime(): String {
+ fun getCurrentTime(): String {
     val currentTime = Calendar.getInstance().time
-    val timeFormat = SimpleDateFormat("hh:mm:ss a", Locale.getDefault())
+    val timeFormat = SimpleDateFormat("EEE  hh:mm a , d MMM ", Locale("ar"))
     return timeFormat.format(currentTime)}
 
 fun Fragment.hideKeyboard() {
@@ -247,7 +241,7 @@ fun loadImageData(imageUrl: String,context: Context): ByteArray {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
         outputStream.toByteArray()
     } catch (e: Exception) {
-        // Handle errors, such as network issues or image loading failures
+        // Handle errors, such as network issues or image ;loading failures
         // You might want to log the error or return a default image data
         e.printStackTrace()
         byteArrayOf() // Default empty byte array for simplicity
@@ -279,7 +273,19 @@ fun Fragment.getAdminData(): Admin {
     }
 }
 
-//        // When the user scrolls, it checks if the bottom of the content , presumably to load more data as the user scrolls.
+fun Fragment.showAlertDialog(title:String,message:String, positive: () -> Unit,negativie: (dialog:DialogInterface) -> Unit){
+    AlertDialog.Builder(requireContext())
+        .setTitle(title)
+        .setMessage(message)
+        .setPositiveButton("تسجيل الخروج") { dialog, which ->
+            positive()
+        }
+        .setNegativeButton("الغاء") { dialog, which ->
+            negativie(dialog)
+        }.create().show()
+}
+
+        // When the user scrolls, it checks if the bottom of the content , presumably to load more data as the user scrolls.
 //        binding.nestedScrollAdsPage.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener{ view, _, scrollY, _, _ ->
 //
 //            val canScrollHorizontally = view.canScrollHorizontally(1) || view.canScrollHorizontally(-1)

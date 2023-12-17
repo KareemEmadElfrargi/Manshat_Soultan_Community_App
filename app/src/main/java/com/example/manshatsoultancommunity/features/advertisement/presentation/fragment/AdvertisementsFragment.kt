@@ -1,5 +1,4 @@
 package com.example.manshatsoultancommunity.features.advertisement.presentation.fragment
-
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
@@ -86,14 +85,13 @@ class AdvertisementsFragment : Fragment(),InteractionWithAdvertisement {
                     }
                 }
             }
-
         updatedData()
     }
 
     override fun onResume() {
         super.onResume()
-    }
 
+    }
 
     private fun updatedData() {
         valueEventListenerAdsPost = object : ValueEventListener {
@@ -106,7 +104,9 @@ class AdvertisementsFragment : Fragment(),InteractionWithAdvertisement {
                 setUpAdsRecycleView(listOfAdvertisements)
             }
 
-            override fun onCancelled(error: DatabaseError) {}
+            override fun onCancelled(error: DatabaseError) {
+                //
+            }
 
         }
         firebaseDatabase.reference.child(CHILD_OF_ADS_REALTIME)
@@ -115,9 +115,10 @@ class AdvertisementsFragment : Fragment(),InteractionWithAdvertisement {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun setUpAdsRecycleView(listOfAdvertisements: List<Advertisements>?) {
+        
         listOfAdvertisements?.let {
-            announcementAdapter = AdvertisementsAdapter(listOfAdvertisements.reversed(), requireContext(),this)
-            announcementAdapter.notifyDataSetChanged()
+            val sortedList = it.sortedByDescending { it.isPinAdvertisement }
+            announcementAdapter = AdvertisementsAdapter(sortedList, requireContext(),this)
             binding.recyclerViewAnnouncementPage.adapter = announcementAdapter
 
         }
@@ -148,9 +149,10 @@ class AdvertisementsFragment : Fragment(),InteractionWithAdvertisement {
     private fun showEmptyListUI() {
         binding.emptyListAnimation.visibilityVisible()
     }
-    private fun showUnconnectedInternetUI() {
-        binding.lostConnectAnimation.visibilityVisible()
-    }
+//    private fun showUnconnectedInternetUI() {
+//        binding.lostConnectAnimation.visibilityVisible()
+//    }
+
     private fun showLoading() {
         binding.progressBarAdsFragment.visibilityVisible()
     }

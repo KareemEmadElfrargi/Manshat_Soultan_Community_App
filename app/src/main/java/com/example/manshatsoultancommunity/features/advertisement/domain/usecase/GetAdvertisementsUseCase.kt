@@ -12,8 +12,9 @@ class GetAdvertisementsUseCase @Inject constructor(
         val resource = repository.getAdsPost()
 
          return if (resource is Resource.Success) {
-            val comparator = compareByDescending<Advertisements> { it.isPinAdvertisement }
-             Resource.Success(resource.data?.sortedWith(comparator)!!)
+
+             val advertisements = resource.data
+             Resource.Success(advertisements.orEmpty())
         } else {
               resource
         }

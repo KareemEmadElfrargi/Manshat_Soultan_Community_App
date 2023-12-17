@@ -29,10 +29,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
-const val TAG = "OptionLoginFragment"
 @AndroidEntryPoint
 class OptionLoginFragment: Fragment(){
-    lateinit var firestore : FirebaseFirestore
+    private lateinit var firestore : FirebaseFirestore
     private lateinit var binding : FragmentLoginOptionBinding
     private var transitionListener: TransitionListener? = null
     override fun onCreateView(

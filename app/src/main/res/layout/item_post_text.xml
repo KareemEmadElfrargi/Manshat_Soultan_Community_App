@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -20,9 +21,10 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileImage"
-                android:layout_width="@dimen/_50sdp"
-                app:civ_border_width="0dp"
+                android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
+                app:civ_border_width="@dimen/_2sdp"
+                app:civ_border_color="@color/title"
                 android:scaleType="centerCrop"
                 android:src="@drawable/logo_image_profile"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -36,37 +38,56 @@
                 android:layout_marginEnd="@dimen/_4sdp"
                 android:fontFamily="@font/base_font_cairo"
                 android:text="جروب منشأة سلطان"
-                android:textDirection="rtl"
-                android:textSize="16sp"
+                android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/profileImage"
                 app:layout_constraintTop_toTopOf="@+id/profileImage" />
+
+            <TextView
+                android:id="@+id/authorName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/base_font_cairo"
+                android:text="( فتحي سرحان )"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:textSize="@dimen/_8sdp"
+                android:drawablePadding="@dimen/_4sdp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toStartOf="@+id/profileName"
+                app:layout_constraintTop_toTopOf="@+id/profileName"
+                app:layout_constraintBottom_toBottomOf="@+id/profileName"
+                app:drawableRightCompat="@drawable/person_24" />
 
             <TextView
                 android:id="@+id/postTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_4sdp"
-                android:fontFamily="@font/sub_title_font_ciaro_light"
-                android:text="فتحي سرحان , الاربعاء الساعة 9"
+                android:text="10:00"
+                android:drawablePadding="@dimen/_2sdp"
+                android:gravity="center_vertical"
                 android:lineSpacingMultiplier="0.7"
+                android:fontFamily="@font/dubai_light"
                 android:textColor="#555"
                 android:textDirection="rtl"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@+id/profileImage"
-                app:layout_constraintTop_toBottomOf="@+id/profileName" />
+                app:layout_constraintTop_toBottomOf="@+id/profileName"
+                app:drawableEndCompat="@drawable/time_ic" />
 
             <TextView
                 android:id="@+id/postCaption"
-                style="@style/postTextCaption"
+                android:fontFamily="@font/dubai_light"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_2sdp"
                 android:lineSpacingMultiplier="0.7"
+                android:textColor="@color/black"
                 android:text="توفية الي رحمة الله تعالي الحاجة فتحية محمد حلاوة زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات "
                 android:textDirection="rtl"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold"
+                android:textSize="@dimen/_13sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profileImage" />

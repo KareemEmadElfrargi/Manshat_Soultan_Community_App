@@ -12,5 +12,4 @@ object Constants {
     const val ADMIN_COLLECTION = "Admin"
     const val CHILD_OF_ADS_REALTIME = "Ads"
 
-
 }

@@ -4,20 +4,21 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.databinding.FragmentManageBinding
+import com.example.manshatsoultancommunity.features.Intro.common.IntroActivity
 import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
 import com.example.manshatsoultancommunity.features.advertisement.data.model.Advertisements
-import com.example.manshatsoultancommunity.utils.Constants
+import com.example.manshatsoultancommunity.utils.Constants.Auth_STATUS
 import com.example.manshatsoultancommunity.utils.Constants.CHILD_OF_ADS_REALTIME
 import com.example.manshatsoultancommunity.utils.SharedPreferencesManager
 import com.example.manshatsoultancommunity.utils.generateUniqueId
 import com.example.manshatsoultancommunity.utils.getAdminData
+import com.example.manshatsoultancommunity.utils.getCurrentTime
+import com.example.manshatsoultancommunity.utils.showAlertDialog
 import com.example.manshatsoultancommunity.utils.showToast
 import com.example.manshatsoultancommunity.utils.showToastStyle
 import com.example.manshatsoultancommunity.utils.visibilityGone
@@ -26,11 +27,8 @@ import com.example.manshatsoultancommunity.utils.visibilityVisible
 import com.github.dhaval2404.imagepicker.ImagePicker
 
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.storage
-import com.google.firebase.storage.storage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,7 +42,7 @@ class ManageFragment: Fragment() {
     private var status = false
     private lateinit var admin : Admin
     private lateinit var authStatus : String
-    private lateinit var uriFormGallry : Uri
+    private  var uriFormGallery : Uri? = null
     private lateinit var downloadUri : String
 
     override fun onCreateView(
@@ -63,7 +61,18 @@ class ManageFragment: Fragment() {
 
 
         admin = getAdminData()
-        authStatus = SharedPreferencesManager(requireContext()).getString(Constants.Auth_STATUS)
+        authStatus = SharedPreferencesManager(requireContext()).getString(Auth_STATUS)
+
+
+        binding.logoutManagerBtn.setOnClickListener {
+            showAlertDialog("تسجيل الخروج","لتسجيل الخروج من التطبيق اضفط زر تسجيل الخروج",{
+                SharedPreferencesManager(requireContext()).clearString(Auth_STATUS)
+                startActivity(Intent(requireContext(), IntroActivity::class.java))
+                activity?.finish()
+            },{ dialog ->
+                dialog.dismiss()
+            })
+        }
 
         if (authStatus=="User"){
             binding.apply {
@@ -72,25 +81,38 @@ class ManageFragment: Fragment() {
                 parentViewOwnerAds.visibilityGone()
             }
         }else if (authStatus == "Admin") {
-            admin.category.forEach{ category ->
-                when(category) {
-                    "Sport" , "RIP" , "Education" -> {
-                        binding.apply {
-                            parentViewManagers.visibilityVisible()
-                            parentViewUsers.visibilityGone()
-                            parentViewOwnerAds.visibilityGone()
+            if (admin.active) {
+                admin.category.forEach { category ->
+                    when (category) {
+                        "Sport", "RIP", "Education", "General" -> {
+                            binding.apply {
+                                parentViewManagers.visibilityVisible()
+                                parentViewUsers.visibilityGone()
+                                parentViewOwnerAds.visibilityGone()
+                                // gone for blocking page
+                            }
                         }
-                    }
-                    "Advertisement" ->{
-                        binding.apply {
-                            parentViewManagers.visibilityGone()
-                            parentViewUsers.visibilityGone()
-                            parentViewOwnerAds.visibilityVisible()
+
+                        "Advertisement" -> {
+                            binding.apply {
+                                parentViewManagers.visibilityGone()
+                                parentViewUsers.visibilityGone()
+                                parentViewOwnerAds.visibilityVisible()
+                                // gone for blocking page
+                            }
                         }
                     }
                 }
+            } else {
+                binding.apply {
+                    parentViewManagers.visibilityGone()
+                    parentViewUsers.visibilityGone()
+                    parentViewOwnerAds.visibilityGone()
+                    //TODO : show Blocking page
+                }
             }
         }
+
 
        binding.publishAdsBtn.setOnClickListener {
            binding.publishAdsBtn.startAnimation()
@@ -109,66 +131,81 @@ class ManageFragment: Fragment() {
 
         }
 
-
     }
 
     private fun uploadImageToFirebase() {
-        val referenceAdvertisements =
-            storageReference.child("images/Advertisements/${generateUniqueId()}.jpg")
-        val uploadTask = referenceAdvertisements.putFile(uriFormGallry)
+        val referenceAdvertisements = storageReference.child("images/Advertisements/${generateUniqueId()}.jpg")
+        val titleAdvertisement = binding.titleAnnouncementManage.text.toString()
+        val descriptionAdvertisement = binding.descriptionAnnouncementManage.text.toString()
+        val ownerAdvertisement = binding.nameOfOwnerAnnouncementManage.text.toString()
+        val datesOfWorkAdvertisement = binding.daysOfWorkAnnouncementManage.text.toString()
+        val placePostedAdvertisement = binding.placeOfWorkAnnouncementManage.text.toString()
+        val phoneOfAdvertisement = binding.phoneOfWorkAnnouncementManage.text.toString()
 
-        val urlTask = uploadTask.continueWithTask { task ->
-            if (!task.isSuccessful) {
-                task.exception?.let {
-                    throw it
+        if ( uriFormGallery != null
+            && titleAdvertisement.isNotBlank()
+            && descriptionAdvertisement.isNotBlank()
+            && ownerAdvertisement.isNotBlank()
+            && datesOfWorkAdvertisement.isNotBlank()
+            && placePostedAdvertisement.isNotBlank()
+            && phoneOfAdvertisement.isNotBlank()) {
+
+            val uploadTask = referenceAdvertisements.putFile(uriFormGallery!!)
+            uploadTask.continueWithTask { task ->
+                if (!task.isSuccessful) {
+                    task.exception?.let {
+                        throw it
+                    }
                 }
-            }
-            referenceAdvertisements.downloadUrl
-        }.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                downloadUri = task.result.toString()
-                uploadAdsToFirebase()
-
-
-            } else {
-                // Handle failures
-                // ...
-            }
-        }.toString()
+                referenceAdvertisements.downloadUrl
+            }.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    downloadUri = task.result.toString()
+                    uploadAdsToFirebase()
+                } else {
+                    // Handle failures
+                    // ...
+                }
+            }.toString()
+        }else {
+            showToast("يجب عليك ادخال بيانات الاعلان")
+            binding.publishAdsBtn.revertAnimation()
+        }
     }
 
 
     private fun uploadAdsToFirebase() {
 
-        val titleAnnouncement = binding.titleAnnouncementManage.text.toString()
-        val descriptionAnnouncement = binding.descriptionAnnouncementManage.text.toString()
-        val owner = binding.nameOfOwnerAnnouncementManage.text.toString()
-        val datesOfWork = binding.daysOfWorkAnnouncementManage.text.toString()
-        val placePostedAnnouncement = binding.placeOfWorkAnnouncementManage.text.toString()
-        val contactUs = binding.phoneOfWorkAnnouncementManage.text.toString()
+        val titleAdvertisement = binding.titleAnnouncementManage.text.toString()
+        val descriptionAdvertisement = binding.descriptionAnnouncementManage.text.toString()
+        val ownerAdvertisement = binding.nameOfOwnerAnnouncementManage.text.toString()
+        val datesOfWorkAdvertisement = binding.daysOfWorkAnnouncementManage.text.toString()
+        val placePostedAdvertisement = binding.placeOfWorkAnnouncementManage.text.toString()
+        val phoneOfAdvertisement = binding.phoneOfWorkAnnouncementManage.text.toString()
 
         val objAnnouncement = Advertisements(
             generateUniqueId(),
-            titleAnnouncement,
+            titleAdvertisement,
             downloadUri,
-            descriptionAnnouncement,
-            placePostedAnnouncement,
+            descriptionAdvertisement,
+            placePostedAdvertisement,
             status,
-            "الاحد 9 صباحاً",
-            "اعلان ممول بواسطة $owner",
-            datesOfWork,
-            contactUs
+            getCurrentTime(),
+            "اعلان ممول بواسطة $ownerAdvertisement",
+            datesOfWorkAdvertisement,
+            phoneOfAdvertisement
         )
-        firebaseDatabase.reference.child(CHILD_OF_ADS_REALTIME).push().setValue(objAnnouncement)
-            .addOnSuccessListener {
-                binding.publishAdsBtn.revertAnimation()
-                showToast("تم رفع الاعلان بنجاح")
-        }.addOnFailureListener {
-                binding.publishAdsBtn.revertAnimation()
-                showToast("لم يتم رفع الاعلان")
-            }
-        cleanFiled()
-    }
+
+            firebaseDatabase.reference.child(CHILD_OF_ADS_REALTIME).push().setValue(objAnnouncement)
+                .addOnSuccessListener {
+                    binding.publishAdsBtn.revertAnimation()
+                    showToast("تم رفع الاعلان بنجاح")
+                }.addOnFailureListener {
+                    binding.publishAdsBtn.revertAnimation()
+                    showToast("لم يتم رفع الاعلان")
+                }
+            cleanFiled()
+        }
 
     private fun cleanFiled() {
         binding.apply {
@@ -178,6 +215,7 @@ class ManageFragment: Fragment() {
             daysOfWorkAnnouncementManage.text  = null
             placeOfWorkAnnouncementManage.text = null
             phoneOfWorkAnnouncementManage.text = null
+            addImageAds.setImageURI(null)
             statusNewCheckBox.isChecked = false
         }
     }
@@ -186,8 +224,8 @@ class ManageFragment: Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         when (resultCode) {
             Activity.RESULT_OK -> {
-                uriFormGallry = data?.data!!
-                binding.addImageAds.setImageURI(uriFormGallry)
+                uriFormGallery = data?.data!!
+                binding.addImageAds.setImageURI(uriFormGallery)
                 binding.iconOfImageAds.visibilityInVisible()
             }
             ImagePicker.RESULT_ERROR -> {
