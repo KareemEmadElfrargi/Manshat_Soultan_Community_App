@@ -12,6 +12,7 @@ import android.media.ExifInterface
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -27,6 +28,8 @@ import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
 import com.google.android.material.snackbar.Snackbar
 import java.io.ByteArrayOutputStream
 import java.io.IOException
+import java.net.InetSocketAddress
+import java.net.Socket
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -217,15 +220,30 @@ fun generateUniqueId(): String {
                     capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
 }
 
-fun isInternetAvailable(context : Context): Boolean {
+fun isInternetAvailable(context: Context): Boolean {
     val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val network = connectivityManager.activeNetwork
     val capabilities =
         connectivityManager.getNetworkCapabilities(network)
+
     return capabilities != null &&
             (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
-                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) &&
+            isServerReachable("www.google.com", 80, 1000) // Adjust the server and timeout as needed
+}
+
+
+private fun isServerReachable(serverAddress: String, port: Int, timeout: Int): Boolean {
+    return try {
+        val socket = Socket()
+        socket.connect(InetSocketAddress(serverAddress, port), timeout)
+        socket.close()
+        true
+    } catch (e: IOException) {
+        Log.e("NetworkUtils", "Error checking server reachability: ${e.message}")
+        false
+    }
 }
 
 fun loadImageData(imageUrl: String,context: Context): ByteArray {
