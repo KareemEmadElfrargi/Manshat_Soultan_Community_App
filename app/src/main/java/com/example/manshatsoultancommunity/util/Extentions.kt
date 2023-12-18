@@ -275,7 +275,8 @@ fun Fragment.getAdminData(): Admin {
         val name = getString(Constants.ADMIN_NAME_KEY)
         val category = getList(Constants.ADMIN_CATEGORY_KEY)
         val active = getBoolean(Constants.ADMIN_ACTIVE_KEY)
-        admin = Admin(id,name,category,active)
+        val rate = getInt(Constants.ADMIN_RATE_KEY)
+        admin = Admin(id,name,category,active,rate)
     }
     return admin
 }
@@ -288,6 +289,7 @@ fun Fragment.getAdminData(): Admin {
             saveList(Constants.ADMIN_CATEGORY_KEY, admin.category)
             saveBoolean(Constants.ADMIN_ACTIVE_KEY,admin.active)
             saveString(Constants.Auth_STATUS,"Admin")
+            saveInt(Constants.ADMIN_RATE_KEY,admin.rating)
         }
     }
 }
@@ -299,6 +301,7 @@ fun Fragment.clearAdminData() {
         clearItem(Constants.ADMIN_CATEGORY_KEY)
         clearItem(Constants.ADMIN_ACTIVE_KEY)
         clearItem(Constants.Auth_STATUS)
+        clearItem(Constants.ADMIN_RATE_KEY)
     }
 }
 

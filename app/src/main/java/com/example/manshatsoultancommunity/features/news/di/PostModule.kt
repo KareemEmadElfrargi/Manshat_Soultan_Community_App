@@ -7,10 +7,12 @@ import com.example.manshatsoultancommunity.features.news.data.repo_impl.PostRepo
 import com.example.manshatsoultancommunity.features.news.domain.repo.IPostRepository
 import com.example.manshatsoultancommunity.features.news.domain.usecase.GetEducationUseCase
 import com.example.manshatsoultancommunity.features.news.domain.usecase.GetGeneralUseCase
+import com.example.manshatsoultancommunity.features.news.domain.usecase.GetPostsUseCase
 import com.example.manshatsoultancommunity.features.news.domain.usecase.GetRipUseCase
 import com.example.manshatsoultancommunity.features.news.domain.usecase.GetSportUseCase
 import com.example.manshatsoultancommunity.features.news.domain.usecase.IGetEducationUseCase
 import com.example.manshatsoultancommunity.features.news.domain.usecase.IGetGeneralUseCase
+import com.example.manshatsoultancommunity.features.news.domain.usecase.IGetPostsUseCase
 import com.example.manshatsoultancommunity.features.news.domain.usecase.IGetRipUseCase
 import com.example.manshatsoultancommunity.features.news.domain.usecase.IGetSportUseCase
 import com.google.firebase.database.FirebaseDatabase
@@ -42,6 +44,8 @@ object PostModule {
     fun provideGeneralPostUseCase(repo:IPostRepository): IGetGeneralUseCase = GetGeneralUseCase(repo)
     @Provides
     fun provideEducationUseCase(repo:IPostRepository): IGetEducationUseCase = GetEducationUseCase(repo)
+    @Provides
+    fun providePostsUseCase(repo:IPostRepository): IGetPostsUseCase = GetPostsUseCase(repo)
 
 
 }

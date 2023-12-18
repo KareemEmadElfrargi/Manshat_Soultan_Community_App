@@ -9,7 +9,8 @@ data class Admin(
     val id:String,
     val name:String,
     val category:List<String>,
-    val active:Boolean = false
+    val active:Boolean = false,
+    val rating:Int
 ):Serializable{
-    constructor():this("","",emptyList<String>(),false)
+    constructor():this("","",emptyList<String>(),false,1)
 }

@@ -1,24 +1,27 @@
 package com.example.manshatsoultancommunity.features.news.presentation.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.manshatsoultancommunity.features.news.presentation.common.adapter.PostAdapter
-import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.FragmentRipBinding
-import com.example.manshatsoultancommunity.features.advertisement.data.model.Advertisements
+import com.example.manshatsoultancommunity.features.news.presentation.common.adapter.PostAdapter
 import com.example.manshatsoultancommunity.features.news.data.model.Post
 import com.example.manshatsoultancommunity.features.news.presentation.common.ViewModels.PostViewModel
+import com.example.manshatsoultancommunity.util.Constants
 import com.example.manshatsoultancommunity.util.Resource
 import com.example.manshatsoultancommunity.util.showToast
 import com.example.manshatsoultancommunity.util.visibilityGone
 import com.example.manshatsoultancommunity.util.visibilityVisible
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -26,6 +29,8 @@ import kotlinx.coroutines.launch
 class RIPFragment: Fragment() {
     private lateinit var binding : FragmentRipBinding
     private lateinit var ripAdapter : PostAdapter
+    private lateinit var firebaseDatabase: FirebaseDatabase
+    private var valueEventListenerRipPost: ValueEventListener? = null
     private val viewModel : PostViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +43,8 @@ class RIPFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val nameOfPublisher = "وفيات منشأة سلطان"
+
+        firebaseDatabase = FirebaseDatabase.getInstance()
         lifecycleScope.launch {
             viewModel.ripPostList.collect{ result ->
                 when(result){
@@ -48,6 +54,7 @@ class RIPFragment: Fragment() {
                     is Resource.Success -> {
                         hideLoading()
                         val listRipPost = result.data
+                        Log.i("RIPFragment",result.data.toString())
                         setupRecycleView(listRipPost)
                     }
                     is Resource.Error -> {
@@ -60,6 +67,32 @@ class RIPFragment: Fragment() {
             }
         }
 
+        updatedData()
+
+    }
+
+    private fun updatedData() {
+        valueEventListenerRipPost = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val listOfRipPost = mutableListOf<Post>()
+                for (ripPostSnapshot in snapshot.children) {
+                    val ripPost = ripPostSnapshot.getValue(Post::class.java)
+                    ripPost?.let { listOfRipPost.add(ripPost) }
+                }
+                setupRecycleView( listOfRipPost.filter { post ->
+                    post.categoryType == Constants.CATEGORY_TYPE_RIP_POST
+                })
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                showToast(error.message)
+            }
+
+        }
+
+        firebaseDatabase.reference.child(Constants.CHILD_OF_POST_REALTIME)
+            .addValueEventListener(valueEventListenerRipPost!!)
     }
 
     private fun hideLoading() {
@@ -75,5 +108,9 @@ class RIPFragment: Fragment() {
 
     private fun showLoading() {
         binding.progressBarRipFragment.visibilityVisible()
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        firebaseDatabase.reference.child(Constants.CHILD_OF_POST_REALTIME).removeEventListener(valueEventListenerRipPost!!)
     }
 }

@@ -69,8 +69,8 @@
     </style>
 
     <style name="BottomNavigationTextStyle">
-        <item name="android:fontFamily">@font/sub_title_font_cairo_light</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/btn_font_cairo_black</item>
+
     </style>
 
 

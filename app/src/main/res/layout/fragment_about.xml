@@ -106,7 +106,7 @@
                             android:layout_height="@dimen/_45sdp"
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:src="@drawable/my_pic"
+                            android:src="@drawable/dev_1"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
                         <TextView
@@ -117,6 +117,7 @@
                             android:text="م/ كريم عماد الفرارجي"
                             android:textDirection="rtl"
                             android:layout_marginEnd="@dimen/_8sdp"
+                            android:textColor="@color/black"
                             app:layout_constraintRight_toLeftOf="@+id/iv_dev_one"
                             app:layout_constraintTop_toTopOf="parent"
                             android:textSize="@dimen/_12sdp" />
@@ -167,6 +168,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/dev_name_two"
                             android:textDirection="rtl"
+                            android:textColor="@color/black"
                             android:layout_marginEnd="@dimen/_8sdp"
                             app:layout_constraintRight_toLeftOf="@+id/iv_dev_two"
                             app:layout_constraintTop_toTopOf="parent"

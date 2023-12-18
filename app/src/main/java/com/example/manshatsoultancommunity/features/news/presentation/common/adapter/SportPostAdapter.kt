@@ -44,7 +44,7 @@ class SportPostAdapter(
                         profileName.text = currentPost.nameOfCategory
                         postTime.text = currentPost.timeOfPost
                         postCaption.text = currentPost.content
-                        currentPost.imageOfChannel?.let { profileImage.setImageResource(it) }
+
                     }
                 }
             }

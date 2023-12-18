@@ -37,9 +37,17 @@ class SharedPreferencesManager (context: Context) {
             .putBoolean(key, value)
             .apply()
     }
-
+    public fun saveInt(key: String, value: Int) {
+        sharedPreferences.edit()
+            .putInt(key, value)
+            .apply()
+    }
     public fun getString(key: String, defaultValue: String = ""): String {
         return sharedPreferences.getString(key, defaultValue) ?: defaultValue
+    }
+
+    public fun getInt(key: String, defaultValue: Int = 1): Int {
+        return sharedPreferences.getInt(key, defaultValue)
     }
 
     public fun getBoolean(key: String, defaultValue: Boolean = false): Boolean {

@@ -36,8 +36,12 @@ class PostViewModel @Inject constructor(
     val educationPostList : StateFlow<Resource<List<Post>>> = _educationPostList
 
 
-    init {
 
+    init {
+        fetchRipPost()
+        fetchSportPost()
+        fetchGeneralPost()
+        fetchEducationPost()
     }
     fun fetchRipPost(){
         viewModelScope.launch {
@@ -68,6 +72,15 @@ class PostViewModel @Inject constructor(
     }
 
     fun fetchEducationPost(){
+        viewModelScope.launch {
+            _educationPostList.emit(Resource.Loading())
+        }
+        viewModelScope.launch {
+            val result = educationUseCase.getEducationPost()
+            _educationPostList.emit(result)
+        }
+    }
+    fun fetchPosts(){
         viewModelScope.launch {
             _educationPostList.emit(Resource.Loading())
         }
