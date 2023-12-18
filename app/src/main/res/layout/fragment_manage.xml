@@ -274,7 +274,7 @@
                         app:layout_constraintTop_toBottomOf="@id/add_image_ads"
                         android:layout_margin="@dimen/_8sdp"
                         android:hint="عنون الاعلان"
-                        android:maxEms="10"
+                        android:maxLength="30"
                         >
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/titleAnnouncementManage"
@@ -333,7 +333,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/layout_nameOfOwnerAnnouncementManage"
                         android:layout_margin="@dimen/_8sdp"
-                        android:hint=" مواعيد العمل ( ان وجدت )"
+                        android:hint=" مواعيد العمل"
                         android:maxEms="10"
                         >
                         <com.google.android.material.textfield.TextInputEditText
@@ -353,7 +353,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/layout_daysOfWorkAnnouncementManage"
                         android:layout_margin="@dimen/_8sdp"
-                        android:hint="مكان الاعلان ( ان وجد )"
+                        android:hint="مكان الاعلان"
                         android:maxEms="10"
                         >
                         <com.google.android.material.textfield.TextInputEditText

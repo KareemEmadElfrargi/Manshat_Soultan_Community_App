@@ -22,7 +22,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object AdvertisementsModule {
     @Provides
-    fun provideAdvertisementsDataSourceRemote(remoteDatabase:FirebaseDatabase, @ApplicationContext context: Context): IAdvertisementsDataSourceRemote  = AdvertisementsDataSourceRemoteImp(context,remoteDatabase)
+    fun provideAdvertisementsDataSourceRemote(remoteDatabase:FirebaseDatabase, @ApplicationContext context: Context): IAdvertisementsDataSourceRemote  = AdvertisementsDataSourceRemoteImp(remoteDatabase)
     @Provides
     fun provideAdvertisementsLocalDataSource(advertisementsDao:IAdvertisementsDao): IAdvertisementsLocalDataSource = AdvertisementsLocalDataSource(advertisementsDao)
     @Provides

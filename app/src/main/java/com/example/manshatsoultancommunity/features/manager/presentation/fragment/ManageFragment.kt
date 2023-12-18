@@ -215,6 +215,7 @@ class ManageFragment: Fragment() {
             placeOfWorkAnnouncementManage.text = null
             phoneOfWorkAnnouncementManage.text = null
             addImageAds.setImageURI(null)
+            iconOfImageAds.visibilityInVisible()
             statusNewCheckBox.isChecked = false
         }
     }

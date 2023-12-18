@@ -7,7 +7,6 @@ object Constants {
     const val Auth_STATUS = "auth_status"
     const val ADMIN_CATEGORY_KEY = "category"
     const val ADMIN_ACTIVE_KEY = "active"
-
     const val CODE_AUTH_KEY = "codeAuthenticationKey"
     const val ADMIN_COLLECTION = "Admin"
     const val CHILD_OF_ADS_REALTIME = "Advertisement"

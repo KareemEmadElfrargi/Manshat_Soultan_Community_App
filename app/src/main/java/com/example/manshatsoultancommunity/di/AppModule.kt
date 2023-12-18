@@ -1,12 +1,9 @@
 package com.example.manshatsoultancommunity.di
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.example.manshatsoultancommunity.database.AppDatabase
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -38,10 +35,7 @@ object AppModule {
     @Singleton
     fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
         return Room.databaseBuilder(
-            appContext,
-            AppDatabase::class.java,
-            "Manshat_Soultan"
-        ).build()
+            appContext, AppDatabase::class.java, "Manshat_Soultan").build()
     }
 
 }
