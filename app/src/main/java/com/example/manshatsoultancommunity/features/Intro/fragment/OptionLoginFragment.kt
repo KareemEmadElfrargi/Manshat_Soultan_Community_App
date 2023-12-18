@@ -12,18 +12,14 @@ import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.FragmentLoginOptionBinding
 import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
-import com.example.manshatsoultancommunity.features.news.presentation.common.NewsActivity
-import com.example.manshatsoultancommunity.utils.Constants.ADMIN_ACTIVE_KEY
-import com.example.manshatsoultancommunity.utils.Constants.ADMIN_CATEGORY_KEY
-import com.example.manshatsoultancommunity.utils.Constants.ADMIN_COLLECTION
-import com.example.manshatsoultancommunity.utils.Constants.ADMIN_ID_KEY
-import com.example.manshatsoultancommunity.utils.Constants.ADMIN_NAME_KEY
-import com.example.manshatsoultancommunity.utils.Constants.Auth_STATUS
-import com.example.manshatsoultancommunity.utils.SharedPreferencesManager
-import com.example.manshatsoultancommunity.utils.TransitionListener
-import com.example.manshatsoultancommunity.utils.dailogs.setupButtonSheetDialog
-import com.example.manshatsoultancommunity.utils.saveAdminData
-import com.example.manshatsoultancommunity.utils.showToast
+import com.example.manshatsoultancommunity.features.news.presentation.activity.NewsActivity
+import com.example.manshatsoultancommunity.util.Constants.ADMIN_COLLECTION
+import com.example.manshatsoultancommunity.util.Constants.Auth_STATUS
+import com.example.manshatsoultancommunity.util.SharedPreferencesManager
+import com.example.manshatsoultancommunity.util.TransitionListener
+import com.example.manshatsoultancommunity.util.dailogs.setupButtonSheetDialog
+import com.example.manshatsoultancommunity.util.saveAdminData
+import com.example.manshatsoultancommunity.util.showToast
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -63,7 +59,7 @@ class OptionLoginFragment: Fragment(){
         binding.buttonUserAccountOptions.setOnClickListener {
             //applyTransition()
             SharedPreferencesManager(requireContext()).saveString(Auth_STATUS,"User")
-            Intent(requireActivity(),NewsActivity::class.java).also { intent ->
+            Intent(requireActivity(), NewsActivity::class.java).also { intent ->
                 startActivity(intent)
             }
         }

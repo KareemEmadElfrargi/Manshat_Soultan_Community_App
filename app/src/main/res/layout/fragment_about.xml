@@ -42,13 +42,14 @@
                     android:layout_height="wrap_content"
                     android:text="قرية منشأة سلطان"
                     android:drawableEnd="@drawable/start_ic"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    style="@style/h4"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    style="@style/header_4"
                     android:textDirection="rtl"
                     android:textSize="@dimen/_18sdp"
                     app:layout_constraintTop_toBottomOf="@+id/card_image_cover"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                     />
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -66,7 +67,7 @@
                 android:textDirection="rtl"
                 android:textSize="@dimen/_13sdp"
                 android:lineSpacingMultiplier="0.8"
-                android:fontFamily="@font/sub_title_font_ciaro_light" />
+                android:fontFamily="@font/sub_title_font_cairo_light" />
         </androidx.core.widget.NestedScrollView>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/devs"
@@ -80,7 +81,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="مُطوري تطبيق القرية"
-                        android:drawableEnd="@drawable/dev_ic"
+                        android:drawableRight="@drawable/dev_ic"
                         android:drawablePadding="@dimen/_2sdp"
                         android:fontFamily="@font/btn_font_cairo_black"
                         android:textDirection="rtl"
@@ -96,8 +97,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
                         app:layout_constraintTop_toBottomOf="@+id/tv_titleOfDevs"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        >
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/iv_dev_one"
                             android:layout_width="@dimen/_45sdp"
@@ -105,7 +107,7 @@
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="@dimen/_8sdp"
                             android:src="@drawable/my_pic"
-                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
                         <TextView
                             android:id="@+id/tv_dev__name_one"
@@ -115,7 +117,7 @@
                             android:text="م/ كريم عماد الفرارجي"
                             android:textDirection="rtl"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            app:layout_constraintEnd_toStartOf="@+id/iv_dev_one"
+                            app:layout_constraintRight_toLeftOf="@+id/iv_dev_one"
                             app:layout_constraintTop_toTopOf="parent"
                             android:textSize="@dimen/_12sdp" />
                         <TextView
@@ -126,7 +128,7 @@
                             android:textDirection="rtl"
                             android:layout_marginEnd="@dimen/_8sdp"
                             android:textSize="@dimen/_13sdp"
-                            android:fontFamily="@font/sub_title_font_ciaro_light"
+                            android:fontFamily="@font/sub_title_font_cairo_light"
                             app:layout_constraintEnd_toStartOf="@+id/iv_dev_one"
                             app:layout_constraintTop_toBottomOf="@+id/tv_dev__name_one" />
                         <ImageView
@@ -135,7 +137,7 @@
                             android:layout_height="@dimen/_25sdp"
                             android:layout_marginStart="@dimen/_14sdp"
                             android:src="@drawable/whatsapp_ic"
-                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -146,8 +148,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
                         app:layout_constraintTop_toBottomOf="@+id/firstContainerDev"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        >
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/iv_dev_two"
                             android:layout_width="@dimen/_45sdp"
@@ -155,7 +158,7 @@
                             android:scaleType="centerCrop"
                             android:layout_marginEnd="@dimen/_8sdp"
                             android:src="@drawable/moahmed_pic"
-                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
                         <TextView
                             android:id="@+id/tv_dev__name_two"
@@ -165,7 +168,7 @@
                             android:text="@string/dev_name_two"
                             android:textDirection="rtl"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            app:layout_constraintEnd_toStartOf="@+id/iv_dev_two"
+                            app:layout_constraintRight_toLeftOf="@+id/iv_dev_two"
                             app:layout_constraintTop_toTopOf="parent"
                             android:textSize="@dimen/_12sdp" />
                         <TextView
@@ -176,8 +179,8 @@
                             android:textDirection="rtl"
                             android:layout_marginEnd="@dimen/_8sdp"
                             android:textSize="@dimen/_13sdp"
-                            android:fontFamily="@font/sub_title_font_ciaro_light"
-                            app:layout_constraintEnd_toStartOf="@+id/iv_dev_two"
+                            android:fontFamily="@font/sub_title_font_cairo_light"
+                            app:layout_constraintRight_toLeftOf="@+id/iv_dev_two"
                             app:layout_constraintTop_toBottomOf="@+id/tv_dev__name_two" />
                         <ImageView
                             android:id="@+id/whatsApp_dev_two"
@@ -185,6 +188,7 @@
                             android:layout_height="@dimen/_25sdp"
                             android:layout_marginStart="@dimen/_14sdp"
                             android:src="@drawable/whatsapp_ic"
+                            app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"/>

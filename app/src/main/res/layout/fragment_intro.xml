@@ -40,7 +40,7 @@
 
         <TextView
             android:id="@+id/tvAddressForNewsAppName"
-            style="@style/h4"
+            style="@style/header_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/tvRightAddressMargin"
@@ -55,7 +55,7 @@
 
         <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonStartIntro"
-            style="@style/blueButtonStyle"
+            style="@style/redButtonStyle"
             android:layout_width="@dimen/smallButtonWidth"
             android:layout_height="@dimen/smallButtonHeight"
             android:text="@string/start"
@@ -68,7 +68,7 @@
 
         <TextView
             android:id="@+id/tvQualityForNewsApp"
-            style="@style/h3"
+            style="@style/header_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"

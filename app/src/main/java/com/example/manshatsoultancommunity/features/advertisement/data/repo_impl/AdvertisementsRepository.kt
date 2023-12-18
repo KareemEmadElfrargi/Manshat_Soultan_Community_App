@@ -8,9 +8,9 @@ import com.example.manshatsoultancommunity.features.advertisement.data.mapper.to
 import com.example.manshatsoultancommunity.features.advertisement.data.mapper.toRoomEntity
 import com.example.manshatsoultancommunity.features.advertisement.data.model.Advertisements
 import com.example.manshatsoultancommunity.features.advertisement.domain.repo.IAdvertisementsRepository
-import com.example.manshatsoultancommunity.utils.Resource
-import com.example.manshatsoultancommunity.utils.isInternetAvailable
-import com.example.manshatsoultancommunity.utils.loadImageData
+import com.example.manshatsoultancommunity.util.Resource
+import com.example.manshatsoultancommunity.util.isInternetAvailable
+import com.example.manshatsoultancommunity.util.loadImageData
 import javax.inject.Inject
 
 class AdvertisementsRepository @Inject constructor(
@@ -28,7 +28,7 @@ class AdvertisementsRepository @Inject constructor(
                     it.toRoomEntity(imageData)
                 } ?: emptyList()
 
-                advertisementsDataSourceLocal.insertAdvertisements(dataListEntity) // room
+                advertisementsDataSourceLocal.insertAdvertisements(dataListEntity)
                 remoteAdvertisementsList
             }catch (e: Exception){
                 Log.e("AdvertisementsRepository", "Error fetching remote data: ${e.message}")

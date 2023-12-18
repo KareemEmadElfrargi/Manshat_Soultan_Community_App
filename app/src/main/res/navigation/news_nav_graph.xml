@@ -10,7 +10,7 @@
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.example.manshatsoultancommunity.features.news.presentation.fragment.AboutFragment"
+        android:name="com.example.manshatsoultancommunity.AboutFragment"
         android:label="AboutFragment" />
     <fragment
         android:id="@+id/addPostFragment"

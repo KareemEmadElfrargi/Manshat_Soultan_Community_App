@@ -2,7 +2,7 @@ package com.example.manshatsoultancommunity.features.advertisement.domain.usecas
 
 import com.example.manshatsoultancommunity.features.advertisement.data.model.Advertisements
 import com.example.manshatsoultancommunity.features.advertisement.domain.repo.IAdvertisementsRepository
-import com.example.manshatsoultancommunity.utils.Resource
+import com.example.manshatsoultancommunity.util.Resource
 import javax.inject.Inject
 
 class GetAdvertisementsUseCase @Inject constructor(

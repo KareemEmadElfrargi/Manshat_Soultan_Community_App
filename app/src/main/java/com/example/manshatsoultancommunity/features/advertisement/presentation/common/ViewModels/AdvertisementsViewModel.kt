@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.manshatsoultancommunity.features.advertisement.data.model.Advertisements
 import com.example.manshatsoultancommunity.features.advertisement.domain.usecase.IGetAdvertisementsUseCase
-import com.example.manshatsoultancommunity.utils.Resource
+import com.example.manshatsoultancommunity.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -9,7 +9,7 @@ import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.features.news.presentation.common.adapter.SportPostAdapter
 import com.example.manshatsoultancommunity.databinding.FragmentSportBinding
 import com.example.manshatsoultancommunity.features.news.data.model.AppointmentMatch
-import com.example.manshatsoultancommunity.features.news.data.model.PostCaption
+import com.example.manshatsoultancommunity.features.news.data.model.Post
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,19 +30,19 @@ class SportFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val nameOfPublisher = "مركز شباب منشأة سلطان"
         val proFileImage = R.drawable.sport_image_profile
-        val listSportPosts = listOf (
-            PostCaption(nameOfPublisher = nameOfPublisher , timeOfPost = "10:00", content = "بكرا ان شاء الله افتتاح دورة المرحوم له باذن الله سامح زيتون في مركز شباب منشاة سلطان", imageOfPublisher = proFileImage),
-            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "11:00", content = "اول فريق هيلعب منشاة سلطان أ ومنشاة سلطان ب الساعة 4 العصر " ,imageOfPublisher = proFileImage),
-            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "1:00", content = "انتخابات مجلس ادارة النادي ان شاء الله يوم الحد الساعة 2 لو حد حابب يشارك ⚽ ", imageOfPublisher = proFileImage),
-            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "1:00", content = "انهاردا مفيش حجز عشان الجو يشباب , امضاء عمك فوزي", imageOfPublisher = proFileImage),
-            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "11:00", content = "اول فريق هيلعب منشاة سلطان أ ومنشاة سلطان ب الساعة 4 العصر ", imageOfPublisher = proFileImage),
-            PostCaption(nameOfPublisher = nameOfPublisher, timeOfPost = "1:00", content = "انهاردا مفيش حجز عشان الجو يشباب , امضاء عمك فوزي", imageOfPublisher = proFileImage, status = true),
-            )
-        val listAppointmentMatch = listOf(
-            AppointmentMatch("منشأة سلطان","تتا","20:20","الحد"),
-        )
-        val objAppointmentMatch = AppointmentMatch("منشأة سلطان","تتا","20:20","الحد")
-        sportAdapter = SportPostAdapter(listSportPosts,listAppointmentMatch,requireContext())
-        binding.recyclerViewSportPage.adapter = sportAdapter
+//        val listSportPosts = listOf (
+//            Post(nameOfPublisher = nameOfPublisher , timeOfPost = "10:00", content = "بكرا ان شاء الله افتتاح دورة المرحوم له باذن الله سامح زيتون في مركز شباب منشاة سلطان", imageOfChannel = proFileImage),
+//            Post(nameOfPublisher = nameOfPublisher, timeOfPost = "11:00", content = "اول فريق هيلعب منشاة سلطان أ ومنشاة سلطان ب الساعة 4 العصر " ,imageOfChannel = proFileImage),
+//            Post(nameOfPublisher = nameOfPublisher, timeOfPost = "1:00", content = "انتخابات مجلس ادارة النادي ان شاء الله يوم الحد الساعة 2 لو حد حابب يشارك ⚽ ", imageOfChannel = proFileImage),
+//            Post(nameOfPublisher = nameOfPublisher, timeOfPost = "1:00", content = "انهاردا مفيش حجز عشان الجو يشباب , امضاء عمك فوزي", imageOfChannel = proFileImage),
+//            Post(nameOfPublisher = nameOfPublisher, timeOfPost = "11:00", content = "اول فريق هيلعب منشاة سلطان أ ومنشاة سلطان ب الساعة 4 العصر ", imageOfChannel = proFileImage),
+//            Post(nameOfPublisher = nameOfPublisher, timeOfPost = "1:00", content = "انهاردا مفيش حجز عشان الجو يشباب , امضاء عمك فوزي", imageOfChannel = proFileImage, status = true),
+//            )
+//        val listAppointmentMatch = listOf(
+//            AppointmentMatch("منشأة سلطان","تتا","20:20","الحد"),
+//        )
+//        val objAppointmentMatch = AppointmentMatch("منشأة سلطان","تتا","20:20","الحد")
+//        sportAdapter = SportPostAdapter(listSportPosts,listAppointmentMatch,requireContext())
+//        binding.recyclerViewSportPage.adapter = sportAdapter
     }
 }

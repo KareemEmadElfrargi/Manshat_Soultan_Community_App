@@ -76,7 +76,7 @@
                     android:shadowDy="2"
                     android:shadowRadius="4"
                     android:layout_marginBottom="@dimen/_4sdp"
-                    android:fontFamily="@font/sub_title_font_ciaro_light"
+                    android:fontFamily="@font/sub_title_font_cairo_light"
                     android:textStyle="bold"
                     android:textSize="@dimen/_8sdp"/>
 
@@ -98,7 +98,7 @@
                     android:shadowDy="2"
                     android:shadowRadius="4"
                     android:layout_marginBottom="@dimen/_4sdp"
-                    android:fontFamily="@font/sub_title_font_ciaro_light"
+                    android:fontFamily="@font/sub_title_font_cairo_light"
                     android:textStyle="bold"
                     android:textSize="@dimen/_8sdp"/>
 
@@ -125,7 +125,7 @@
                     android:id="@+id/AdvertisementDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/sub_title_font_ciaro_light"
+                    android:fontFamily="@font/sub_title_font_cairo_light"
                     android:lineSpacingMultiplier="0.7"
                     android:textStyle="bold"
                     android:layout_marginEnd="@dimen/_8sdp"

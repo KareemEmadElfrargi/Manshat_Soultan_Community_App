@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.ItemApppintmentMatchsBinding
-import com.example.manshatsoultancommunity.databinding.ItemPostTextBinding
+import com.example.manshatsoultancommunity.databinding.ItemPostBinding
 import com.example.manshatsoultancommunity.features.news.data.model.AppointmentMatch
-import com.example.manshatsoultancommunity.features.news.data.model.PostCaption
+import com.example.manshatsoultancommunity.features.news.data.model.Post
 
 @Suppress("UNREACHABLE_CODE")
 class SportPostAdapter(
-    private var listOfPost:List<PostCaption>,
+    private var listOfPost:List<Post>,
     private var listOfAppointmentMatch:List<AppointmentMatch>,
     val context :Context):RecyclerView.Adapter<SportPostAdapter.BaseViewHolder>() {
 
@@ -21,7 +21,7 @@ class SportPostAdapter(
         val inflater = LayoutInflater.from(parent.context)
         return when(viewType){
             POST_VIEW_HOLDER -> {
-                val view = inflater.inflate(R.layout.item_post_text,parent,false)
+                val view = inflater.inflate(R.layout.item_post,parent,false)
                 PostViewHolder(view)
             }
             APPOINTMENT_MATCH_POST_VIEW_HOLDER ->{
@@ -41,10 +41,10 @@ class SportPostAdapter(
                 if (position < listOfPost.size) {
                     val currentPost = listOfPost[position]
                     holder.binding.apply {
-                        profileName.text = currentPost.nameOfPublisher
+                        profileName.text = currentPost.nameOfCategory
                         postTime.text = currentPost.timeOfPost
                         postCaption.text = currentPost.content
-                        currentPost.imageOfPublisher?.let { profileImage.setImageResource(it) }
+                        currentPost.imageOfChannel?.let { profileImage.setImageResource(it) }
                     }
                 }
             }
@@ -72,7 +72,7 @@ class SportPostAdapter(
     override fun getItemCount(): Int = maxOf(listOfPost.size, listOfAppointmentMatch.size)
     abstract class BaseViewHolder(view:View):RecyclerView.ViewHolder(view)
     class PostViewHolder(view: View) : BaseViewHolder(view){
-        val binding = ItemPostTextBinding.bind(view)
+        val binding = ItemPostBinding.bind(view)
     }
     class AppointmentMatchPostViewHolder(view: View) : BaseViewHolder(view){
         val binding = ItemApppintmentMatchsBinding.bind(view)

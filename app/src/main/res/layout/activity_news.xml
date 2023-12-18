@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
-        tools:context=".features.news.presentation.common.NewsActivity">
+        tools:context=".features.news.presentation.activity.NewsActivity">
 
 
         <TextView
@@ -55,7 +55,7 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigationHomeNewsActivity"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="@dimen/_50sdp"
             app:menu="@menu/bottom_navigation_menu"
             app:labelVisibilityMode="selected"
             tools:layout_editor_absoluteX="1dp"

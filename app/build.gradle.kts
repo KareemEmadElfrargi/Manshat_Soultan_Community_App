@@ -118,6 +118,6 @@ dependencies {
     // read more
     //implementation ("com.github.colourmoon:readmore-textview:v1.0.2")
     //implementation ("com.webtoonscorp.android:readmore-view:1.3.3")
-    //implementation ("com.github.dhaval2404:imagepicker-support:1.7.1")
+
     implementation ("com.github.dhaval2404:imagepicker:2.1")
 }

@@ -1,8 +1,8 @@
 package com.example.manshatsoultancommunity.features.advertisement.data.data_source.remote
 
 import com.example.manshatsoultancommunity.features.advertisement.data.model.Advertisements
-import com.example.manshatsoultancommunity.utils.Constants.CHILD_OF_ADS_REALTIME
-import com.example.manshatsoultancommunity.utils.Resource
+import com.example.manshatsoultancommunity.util.Constants.CHILD_OF_ADS_REALTIME
+import com.example.manshatsoultancommunity.util.Resource
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject

@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.ActivityIntroBinding
-import com.example.manshatsoultancommunity.utils.TransitionListener
+import com.example.manshatsoultancommunity.util.TransitionListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -12,17 +12,18 @@ import com.example.manshatsoultancommunity.databinding.FragmentManageBinding
 import com.example.manshatsoultancommunity.features.Intro.common.IntroActivity
 import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
 import com.example.manshatsoultancommunity.features.advertisement.data.model.Advertisements
-import com.example.manshatsoultancommunity.utils.Constants.Auth_STATUS
-import com.example.manshatsoultancommunity.utils.Constants.CHILD_OF_ADS_REALTIME
-import com.example.manshatsoultancommunity.utils.SharedPreferencesManager
-import com.example.manshatsoultancommunity.utils.generateUniqueId
-import com.example.manshatsoultancommunity.utils.getAdminData
-import com.example.manshatsoultancommunity.utils.getCurrentTime
-import com.example.manshatsoultancommunity.utils.showAlertDialog
-import com.example.manshatsoultancommunity.utils.showToast
-import com.example.manshatsoultancommunity.utils.visibilityGone
-import com.example.manshatsoultancommunity.utils.visibilityInVisible
-import com.example.manshatsoultancommunity.utils.visibilityVisible
+import com.example.manshatsoultancommunity.util.Constants.Auth_STATUS
+import com.example.manshatsoultancommunity.util.Constants.CHILD_OF_ADS_REALTIME
+import com.example.manshatsoultancommunity.util.SharedPreferencesManager
+import com.example.manshatsoultancommunity.util.clearAdminData
+import com.example.manshatsoultancommunity.util.generateUniqueId
+import com.example.manshatsoultancommunity.util.getAdminData
+import com.example.manshatsoultancommunity.util.getCurrentTime
+import com.example.manshatsoultancommunity.util.showAlertDialog
+import com.example.manshatsoultancommunity.util.showToast
+import com.example.manshatsoultancommunity.util.visibilityGone
+import com.example.manshatsoultancommunity.util.visibilityInVisible
+import com.example.manshatsoultancommunity.util.visibilityVisible
 import com.github.dhaval2404.imagepicker.ImagePicker
 
 import com.google.firebase.database.FirebaseDatabase
@@ -65,7 +66,10 @@ class ManageFragment: Fragment() {
 
         binding.logoutManagerBtn.setOnClickListener {
             showAlertDialog("تسجيل الخروج","لتسجيل الخروج من التطبيق اضفط زر تسجيل الخروج",{
-                SharedPreferencesManager(requireContext()).clearString(Auth_STATUS)
+                SharedPreferencesManager(requireContext()).apply {
+                    clearItem(Auth_STATUS)
+                    clearAdminData()
+                }
                 startActivity(Intent(requireContext(), IntroActivity::class.java))
                 activity?.finish()
             },{ dialog ->
@@ -232,7 +236,7 @@ class ManageFragment: Fragment() {
                 showToast(ImagePicker.getError(data))
             }
             else -> {
-                showToast("Task Cancelled")
+                showToast("لم يتم تحديد صورة")
             }
         }
     }
