@@ -74,7 +74,7 @@
             android:id="@+id/parent_viewManagers"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="visible">
           <!-- scroll Department admins-->
             <ScrollView
           android:id="@+id/layout_part_admins"
@@ -219,9 +219,11 @@
                   android:layout_height="wrap_content"
                   android:text="إسحب لاعلي"
                   android:textSize="@dimen/_12ssp"
+                  android:layout_marginLeft="@dimen/_8sdp"
                   android:fontFamily="@font/btn_font_cairo_black"
-                  app:layout_constraintEnd_toStartOf="@+id/img_scroll_icon"
+                  app:layout_constraintRight_toLeftOf="@+id/img_scroll_icon"
                   app:layout_constraintTop_toTopOf="@+id/img_scroll_icon"
+                  app:layout_constraintLeft_toLeftOf="parent"
                   app:layout_constraintBottom_toBottomOf="@id/img_scroll_icon"
 
                   />

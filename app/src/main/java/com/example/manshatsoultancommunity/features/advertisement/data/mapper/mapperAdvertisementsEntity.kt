@@ -9,7 +9,7 @@ fun Advertisements.toRoomEntity(imageDataAfterConvertToByte:ByteArray): Advertis
         id = id,
         titleOfAdvertisement = titleOfAdvertisement,
         imageOfAdvertisement = imageOfAdvertisement,
-        imageDataOfAdvertisement =imageDataAfterConvertToByte,
+        imageDataOfAdvertisement = imageDataAfterConvertToByte,
         descriptionOfAdvertisement = descriptionOfAdvertisement,
         locationOfAdvertisement = locationOfAdvertisement,
         isPinAdvertisement = isPinAdvertisement,

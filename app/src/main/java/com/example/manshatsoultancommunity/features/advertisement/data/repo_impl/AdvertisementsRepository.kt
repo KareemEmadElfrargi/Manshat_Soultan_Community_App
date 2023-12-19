@@ -29,6 +29,7 @@ class AdvertisementsRepository @Inject constructor(
                 } ?: emptyList()
 
                 advertisementsDataSourceLocal.insertAdvertisements(dataListEntity)
+
                 remoteAdvertisementsList
             }catch (e: Exception){
                 Log.e("AdvertisementsRepository", "Error fetching remote data: ${e.message}")
