@@ -1,6 +1,10 @@
 package com.example.manshatsoultancommunity.features.news.di
 
 import android.content.Context
+import com.example.manshatsoultancommunity.database.AppDatabase
+import com.example.manshatsoultancommunity.features.news.data.data_source.local.IPostsDao
+import com.example.manshatsoultancommunity.features.news.data.data_source.local.IPostsLocalDataSource
+import com.example.manshatsoultancommunity.features.news.data.data_source.local.PostsLocalDataSource
 import com.example.manshatsoultancommunity.features.news.data.data_source.remote.IPostDataSourceRemote
 import com.example.manshatsoultancommunity.features.news.data.data_source.remote.PostDataSourceRemote
 import com.example.manshatsoultancommunity.features.news.data.repo_impl.PostRepositoryImp
@@ -27,13 +31,16 @@ import dagger.hilt.components.SingletonComponent
 object PostModule {
     @Provides
     fun providePostDataSourceRemote(remoteDatabase:FirebaseDatabase): IPostDataSourceRemote  = PostDataSourceRemote(remoteDatabase)
-//    @Provides
-//    fun providePostLocalDataSource(advertisementsDao:IAdvertisementsDao): IAdvertisementsLocalDataSource = AdvertisementsLocalDataSource(advertisementsDao)
-//    @Provides
-//    fun providePostDao(databaseApp:AppDatabase): IAdvertisementsDao = databaseApp.advertisementsDao()
     @Provides
-    fun providePostRepo(dataSource:IPostDataSourceRemote,
-                                  @ApplicationContext context: Context): IPostRepository = PostRepositoryImp(dataSource,context)
+    fun providePostLocalDataSource(posDao: IPostsDao): IPostsLocalDataSource = PostsLocalDataSource(posDao)
+    @Provides
+    fun providePostDao(databaseApp:AppDatabase): IPostsDao = databaseApp.postsDao()
+    @Provides
+    fun providePostRepo(
+        dataSource:IPostDataSourceRemote,
+        localDataSource: PostsLocalDataSource,
+        @ApplicationContext context: Context
+    ): IPostRepository = PostRepositoryImp(dataSource,localDataSource,context)
     @Provides
     fun provideRipPostUseCase(repo:IPostRepository): IGetRipUseCase = GetRipUseCase(repo)
 

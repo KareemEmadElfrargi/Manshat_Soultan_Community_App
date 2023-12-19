@@ -4,8 +4,8 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 data class Post (
+     val postId:String = "",
      val categoryType:String?=null,
-
      val nameOfCategory:String?=null,
      val imageOfChannel :String?=null,
      val imageOfPost :String?=null,/*optional*/

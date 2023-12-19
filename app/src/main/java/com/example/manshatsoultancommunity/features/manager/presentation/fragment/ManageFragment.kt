@@ -16,6 +16,7 @@ import com.example.manshatsoultancommunity.features.news.data.model.Post
 import com.example.manshatsoultancommunity.util.Constants.Auth_STATUS
 import com.example.manshatsoultancommunity.util.Constants.CATEGORY_TYPE_SPORT_POST
 import com.example.manshatsoultancommunity.util.Constants.CHILD_OF_ADS_REALTIME
+import com.example.manshatsoultancommunity.util.Constants.CHILD_OF_POST_REALTIME
 import com.example.manshatsoultancommunity.util.SharedPreferencesManager
 import com.example.manshatsoultancommunity.util.clearAdminData
 import com.example.manshatsoultancommunity.util.generateUniqueId
@@ -61,18 +62,19 @@ class ManageFragment: Fragment() {
 
         firebaseDatabase = FirebaseDatabase.getInstance()
 
-        val post = Post(
-            CATEGORY_TYPE_SPORT_POST,
-            "وفيات قرية منشاة سلطان",
-            "https://firebasestorage.googleapis.com/v0/b/manshat-soultan-community.appspot.com/o/images%2FOther%2Frip_image.jpg?alt=media&token=89a178dc-5a1a-4003-a887-7cdf3b8d6b38",
-            null,
-            getCurrentTime(),
-            getAdminData().name,
-            "توفي الي رحمة الله تعالي الحاج علي محمد علي والدفنة عند حضور الجثة من مسجد الرحمة",
-            true,
-            getAdminData().rating)
-
-        //firebaseDatabase.reference.child(CHILD_OF_POST_REALTIME).push().setValue(post)
+//        val post = Post(
+//            "2",
+//            CATEGORY_TYPE_SPORT_POST,
+//            "وفيات قرية منشاة سلطان",
+//            "https://firebasestorage.googleapis.com/v0/b/manshat-soultan-community.appspot.com/o/images%2FOther%2Frip_image.jpg?alt=media&token=89a178dc-5a1a-4003-a887-7cdf3b8d6b38",
+//            null,
+//            getCurrentTime(),
+//            getAdminData().name,
+//            "توفي الي رحمة الله تعالي الحاج علي محمد علي والدفنة عند حضور الجثة من مسجد الرحمة",
+//            true,
+//            getAdminData().rating)
+//
+//        firebaseDatabase.reference.child(CHILD_OF_POST_REALTIME).push().setValue(post)
 
 
         admin = getAdminData()
