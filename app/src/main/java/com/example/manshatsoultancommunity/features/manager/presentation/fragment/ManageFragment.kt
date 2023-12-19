@@ -14,10 +14,8 @@ import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
 import com.example.manshatsoultancommunity.features.advertisement.data.model.Advertisements
 import com.example.manshatsoultancommunity.features.news.data.model.Post
 import com.example.manshatsoultancommunity.util.Constants.Auth_STATUS
-import com.example.manshatsoultancommunity.util.Constants.CATEGORY_TYPE_RIP_POST
 import com.example.manshatsoultancommunity.util.Constants.CATEGORY_TYPE_SPORT_POST
 import com.example.manshatsoultancommunity.util.Constants.CHILD_OF_ADS_REALTIME
-import com.example.manshatsoultancommunity.util.Constants.CHILD_OF_POST_REALTIME
 import com.example.manshatsoultancommunity.util.SharedPreferencesManager
 import com.example.manshatsoultancommunity.util.clearAdminData
 import com.example.manshatsoultancommunity.util.generateUniqueId
@@ -74,7 +72,7 @@ class ManageFragment: Fragment() {
             true,
             getAdminData().rating)
 
-        firebaseDatabase.reference.child(CHILD_OF_POST_REALTIME).push().setValue(post)
+        //firebaseDatabase.reference.child(CHILD_OF_POST_REALTIME).push().setValue(post)
 
 
         admin = getAdminData()
@@ -109,7 +107,7 @@ class ManageFragment: Fragment() {
                                 parentViewManagers.visibilityVisible()
                                 parentViewUsers.visibilityGone()
                                 parentViewOwnerAds.visibilityGone()
-                                // gone for blocking page
+                                blockingAnimation.visibilityGone()
                             }
                         }
 
@@ -118,7 +116,7 @@ class ManageFragment: Fragment() {
                                 parentViewManagers.visibilityGone()
                                 parentViewUsers.visibilityGone()
                                 parentViewOwnerAds.visibilityVisible()
-                                // gone for blocking page
+                                blockingAnimation.visibilityGone()
                             }
                         }
                     }
@@ -128,7 +126,7 @@ class ManageFragment: Fragment() {
                     parentViewManagers.visibilityGone()
                     parentViewUsers.visibilityGone()
                     parentViewOwnerAds.visibilityGone()
-                    //TODO : show Blocking page
+                    blockingAnimation.visibilityVisible()
                 }
             }
         }
@@ -141,9 +139,7 @@ class ManageFragment: Fragment() {
         binding.statusNewCheckBox.setOnCheckedChangeListener{ _,isChecked ->
             isPin = isChecked
         }
-
         binding.addImageAds.setOnClickListener {
-
             ImagePicker.with(this@ManageFragment)
                 .crop()
                 .compress(1024)
@@ -192,7 +188,6 @@ class ManageFragment: Fragment() {
             binding.publishAdsBtn.revertAnimation()
         }
     }
-
 
     private fun uploadAdsToFirebase() {
 

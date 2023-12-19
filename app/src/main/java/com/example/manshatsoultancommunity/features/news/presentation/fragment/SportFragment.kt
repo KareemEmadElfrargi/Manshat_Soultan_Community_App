@@ -99,6 +99,7 @@ class SportFragment: Fragment() {
                 }else{
                     binding.emptyListAnimation.visibilityGone()
                 }
+
                 setupRecycleView(finalList)
             }
 

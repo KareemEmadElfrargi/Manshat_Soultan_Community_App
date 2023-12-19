@@ -13,11 +13,8 @@ class GetGeneralUseCase@Inject constructor(
     override suspend fun getGeneralPost(): Resource<List<Post>> {
         val posts = postRepository.getPost()
         return if (posts is Resource.Success){
-            val postsData = posts.data
-            val postGeneral =  postsData?.filter { post ->
-                post.categoryType == CATEGORY_TYPE_GENERAL_POST
-            }
-            Resource.Success(postGeneral!!)
+            val postsData = posts.data?.reversed()
+            Resource.Success(postsData!!)
         } else {
             posts
         }
