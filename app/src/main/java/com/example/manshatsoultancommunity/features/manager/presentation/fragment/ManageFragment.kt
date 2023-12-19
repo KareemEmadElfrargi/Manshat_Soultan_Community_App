@@ -13,6 +13,7 @@ import com.example.manshatsoultancommunity.features.Intro.common.IntroActivity
 import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
 import com.example.manshatsoultancommunity.features.advertisement.data.model.Advertisements
 import com.example.manshatsoultancommunity.features.news.data.model.Post
+import com.example.manshatsoultancommunity.util.Constants.ADMIN_COLLECTION
 import com.example.manshatsoultancommunity.util.Constants.Auth_STATUS
 import com.example.manshatsoultancommunity.util.Constants.CATEGORY_TYPE_SPORT_POST
 import com.example.manshatsoultancommunity.util.Constants.CHILD_OF_ADS_REALTIME
@@ -22,6 +23,7 @@ import com.example.manshatsoultancommunity.util.clearAdminData
 import com.example.manshatsoultancommunity.util.generateUniqueId
 import com.example.manshatsoultancommunity.util.getAdminData
 import com.example.manshatsoultancommunity.util.getCurrentTime
+import com.example.manshatsoultancommunity.util.saveAdminData
 import com.example.manshatsoultancommunity.util.showAlertDialog
 import com.example.manshatsoultancommunity.util.showToast
 import com.example.manshatsoultancommunity.util.visibilityGone
@@ -30,6 +32,7 @@ import com.example.manshatsoultancommunity.util.visibilityVisible
 import com.github.dhaval2404.imagepicker.ImagePicker
 
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,7 +46,6 @@ class ManageFragment: Fragment() {
         FirebaseStorage.getInstance().reference
     }
     private var isPin = false
-    private lateinit var admin : Admin
     private lateinit var authStatus : String
     private  var uriFormGallery : Uri? = null
     private lateinit var downloadUri : String
@@ -77,7 +79,6 @@ class ManageFragment: Fragment() {
 //        firebaseDatabase.reference.child(CHILD_OF_POST_REALTIME).push().setValue(post)
 
 
-        admin = getAdminData()
         authStatus = SharedPreferencesManager(requireContext()).getString(Auth_STATUS)
 
 
@@ -99,38 +100,10 @@ class ManageFragment: Fragment() {
                 parentViewManagers.visibilityGone()
                 parentViewUsers.visibilityVisible()
                 parentViewOwnerAds.visibilityGone()
+                blockingAnimation.visibilityGone()
             }
         }else if (authStatus == "Admin") {
-            if (admin.active) {
-                admin.category.forEach { category ->
-                    when (category) {
-                        "Sport", "RIP", "Education", "General" -> {
-                            binding.apply {
-                                parentViewManagers.visibilityVisible()
-                                parentViewUsers.visibilityGone()
-                                parentViewOwnerAds.visibilityGone()
-                                blockingAnimation.visibilityGone()
-                            }
-                        }
-
-                        "Advertisement" -> {
-                            binding.apply {
-                                parentViewManagers.visibilityGone()
-                                parentViewUsers.visibilityGone()
-                                parentViewOwnerAds.visibilityVisible()
-                                blockingAnimation.visibilityGone()
-                            }
-                        }
-                    }
-                }
-            } else {
-                binding.apply {
-                    parentViewManagers.visibilityGone()
-                    parentViewUsers.visibilityGone()
-                    parentViewOwnerAds.visibilityGone()
-                    blockingAnimation.visibilityVisible()
-                }
-            }
+            updateAdminData()
         }
 
 
@@ -149,6 +122,57 @@ class ManageFragment: Fragment() {
 
         }
 
+    }
+
+    private fun updateAdminAvailability(admin:Admin){
+        if (admin.active) {
+            admin.category.forEach { category ->
+                when (category) {
+                    "Sport", "RIP", "Education", "General" -> {
+                        binding.apply {
+                            parentViewManagers.visibilityVisible()
+                            parentViewUsers.visibilityGone()
+                            parentViewOwnerAds.visibilityGone()
+                            blockingAnimation.visibilityGone()
+                        }
+                    }
+
+                    "Advertisement" -> {
+                        binding.apply {
+                            parentViewManagers.visibilityGone()
+                            parentViewUsers.visibilityGone()
+                            parentViewOwnerAds.visibilityVisible()
+                            blockingAnimation.visibilityGone()
+                        }
+                    }
+                }
+            }
+        } else {
+            binding.apply {
+                parentViewManagers.visibilityGone()
+                parentViewUsers.visibilityGone()
+                parentViewOwnerAds.visibilityGone()
+                blockingAnimation.visibilityVisible()
+            }
+        }
+    }
+
+    private fun updateAdminData(){
+        val docRef = FirebaseFirestore.getInstance().collection(ADMIN_COLLECTION).document(getAdminData().id)
+        docRef.addSnapshotListener { snapshot, exception ->
+            if (exception != null) {
+                // Handle the error
+                return@addSnapshotListener
+            }
+            // Check if the document exists and has data
+            if (snapshot != null && snapshot.exists()) {
+                val admin = snapshot.toObject(Admin::class.java)
+                saveAdminData(admin)
+                updateAdminAvailability(admin!!)
+            } else {
+                // The document doesn't exist
+            }
+        }
     }
 
     private fun uploadImageToFirebase() {
