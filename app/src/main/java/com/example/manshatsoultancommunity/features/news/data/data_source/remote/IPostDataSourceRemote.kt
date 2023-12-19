@@ -5,4 +5,5 @@ import com.example.manshatsoultancommunity.util.Resource
 
 interface IPostDataSourceRemote {
     suspend fun getPost() : Resource<List<Post>>
+
 }
