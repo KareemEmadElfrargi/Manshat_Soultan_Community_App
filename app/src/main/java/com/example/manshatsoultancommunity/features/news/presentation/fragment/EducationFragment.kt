@@ -108,7 +108,7 @@ class EducationFragment: Fragment() {
     }
     private fun setupRecycleView(listOfEducationPost: List<Post>?) {
         listOfEducationPost?.let {
-            educationAdapter = PostAdapter(listOfEducationPost.reversed(), requireContext())
+            educationAdapter = PostAdapter(listOfEducationPost.reversed(),requireContext(),null)
             binding.recyclerViewEductionPage.adapter = educationAdapter
         }
     }

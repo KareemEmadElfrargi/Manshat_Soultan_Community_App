@@ -93,4 +93,16 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
     </style>
+
+    <style name="PopupMenuStyle" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@drawable/background_popup_menu</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="PopupMenuStyleItemText">
+        <item name="android:fontFamily">@font/btn_font_cairo_black</item>
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+
 </resources>

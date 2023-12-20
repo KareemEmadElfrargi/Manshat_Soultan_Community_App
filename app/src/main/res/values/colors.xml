@@ -16,7 +16,6 @@
     <color name="hint">#8f8585</color>
     <color name="background_image_error">#dddddd</color>
     <color name="error">#FF2D55</color>
-
     <!-- other color-->
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#3b0d13</color>
@@ -26,9 +25,6 @@
     <color name="border">#FFFFFF</color>
     <color name="success">#3CD29C</color>
     <color name="progress">#FFB21C</color>
-
-
-
 
     <color name="g_gray700">#666666</color>
     <color name="g_black">#171717</color>

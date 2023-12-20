@@ -8,23 +8,32 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
+import android.graphics.PorterDuff
 import android.media.ExifInterface
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
+import android.text.SpannableString
+import android.text.style.TextAppearanceSpan
 import android.util.Log
 import android.view.Gravity
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
+import com.example.manshatsoultancommunity.features.news.data.model.Post
 import com.google.android.material.snackbar.Snackbar
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -59,7 +68,28 @@ fun Fragment.showToastStyle(message: Any){
     textView.text = message.toString()
 
     with(Toast(context)) {
-        setGravity(Gravity.BOTTOM, 0, 0)
+        setGravity(Gravity.BOTTOM, 0, 150)
+        duration = Toast.LENGTH_SHORT
+        view = layout
+        show()
+    }
+}
+fun Fragment.showToastStyleWithPopUpMenu(message: Any,menuItem:MenuItem){
+    val inflater = layoutInflater
+    var layout: View? = null
+    when(menuItem.itemId){
+        R.id.delete_post ->{
+            layout = inflater.inflate(R.layout.custom_toast_delete_layout, null)
+        }
+        R.id.update_post ->{
+            layout = inflater.inflate(R.layout.custom_toast_edit_layout, null)
+        }
+    }
+    val textView = layout?.findViewById<TextView>(R.id.textViewToast)
+    textView?.text = message.toString()
+
+    with(Toast(context)) {
+        setGravity(Gravity.BOTTOM, 0, 150)
         duration = Toast.LENGTH_SHORT
         view = layout
         show()
@@ -311,17 +341,91 @@ fun Fragment.clearAdminData() {
     }
 }
 
-fun Fragment.showAlertDialog(title:String,message:String, positive: () -> Unit,negativie: (dialog:DialogInterface) -> Unit){
-    AlertDialog.Builder(requireContext())
-        .setTitle(title)
-        .setMessage(message)
-        .setPositiveButton("تسجيل الخروج") { dialog, which ->
-            positive()
-        }
-        .setNegativeButton("الغاء") { dialog, which ->
-            negativie(dialog)
-        }.create().show()
+fun Fragment.showAlertDialog(title:String,
+                             message:String,
+                             positive: () -> Unit,
+                             negativie:(dialog:DialogInterface) -> Unit){
+
+    val inflater = requireActivity().layoutInflater
+    val view = inflater.inflate(R.layout.custom_alert_dialog_layout, null)
+
+    val titleTextView: TextView = view.findViewById(R.id.alertDialogTitle)
+    val messageTextView: TextView = view.findViewById(R.id.alertDialogMessage)
+    val positiveButton: Button = view.findViewById(R.id.alertDialogPositiveButton)
+    val negativeButton: Button = view.findViewById(R.id.alertDialogNegativeButton)
+
+    titleTextView.text = title
+    messageTextView.text = message
+
+    val alertDialog = AlertDialog.Builder(requireContext())
+        .setView(view)
+        .create()
+
+    alertDialog.show()
+    positiveButton.setOnClickListener { positive() }
+    negativeButton.setOnClickListener { negativie(alertDialog) }
 }
+
+
+fun <T> Fragment.showPopupMenu(post: T,
+                               view:View,
+                               delete:(post:T,menuItem:MenuItem)->Unit,
+                               update:(post:T,menuItem:MenuItem)->Unit,
+                               onDismiss: () -> Unit) {
+    val popupMenu = PopupMenu(requireContext(),view,0,0,R.style.PopupMenuStyle)
+    popupMenu.menuInflater.inflate(R.menu.popup_menu,popupMenu.menu)
+
+    for (i in 0 until popupMenu.menu.size()) {
+        val menuItem = popupMenu.menu.getItem(i)
+        val spannableString = SpannableString(menuItem.title)
+        spannableString.setSpan(
+            TextAppearanceSpan(requireContext(), R.style.PopupMenuStyleItemText),
+            0,
+            spannableString.length,
+            0
+        )
+        menuItem.title = spannableString
+    }
+
+    popupMenu.setOnMenuItemClickListener { menuItem ->
+        when (menuItem.itemId) {
+            R.id.delete_post -> {
+                delete(post,menuItem)
+                true
+            }
+            R.id.update_post -> {
+                update(post,menuItem)
+                true
+            }
+            else -> false
+        }
+    }
+    popupMenu.setOnDismissListener {
+        onDismiss()
+    }
+    popupMenu.show()
+
+
+    try {
+        val popup = PopupMenu::class.java.getDeclaredField("mPopup")
+        popup.isAccessible = true
+        val menu = popup.get(popupMenu)
+        menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+            .invoke(menu, true)
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+}
+
+fun ImageView.changeColorOfVectorIcon(context:Context, iconRes:Int, colorRes:Int) {
+    val drawable = ContextCompat.getDrawable(context, iconRes)
+    val color = ContextCompat.getColor(context,colorRes)
+    DrawableCompat.setTint(drawable!!, color)
+    DrawableCompat.setTintMode(drawable, PorterDuff.Mode.SRC_IN)
+    setImageDrawable(drawable)
+}
+
+
 
         // When the user scrolls, it checks if the bottom of the content , presumably to load more data as the user scrolls.
 //        binding.nestedScrollAdsPage.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener{ view, _, scrollY, _, _ ->

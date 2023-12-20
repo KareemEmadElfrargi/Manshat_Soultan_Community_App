@@ -118,7 +118,7 @@ class SportFragment: Fragment() {
 
     private fun setupRecycleView(listOfSportPost: List<Post>?) {
         listOfSportPost?.let {
-            sportAdapter = PostAdapter(listOfSportPost.reversed(), requireContext())
+            sportAdapter = PostAdapter(listOfSportPost.reversed(), requireContext(),null)
             binding.recyclerViewSportPage.adapter = sportAdapter
         }
     }

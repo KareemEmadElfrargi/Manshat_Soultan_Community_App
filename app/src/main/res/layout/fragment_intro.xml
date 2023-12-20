@@ -14,15 +14,15 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_300sdp"
+            android:layout_height="@dimen/_205sdp"
             app:layout_constraintBottom_toTopOf="@id/tvAddressForNewsAppName"
             app:layout_constraintEnd_toEndOf="@id/guidelineEllipseRight"
             app:layout_constraintStart_toStartOf="@id/guidelineEllipseLeft"
             app:layout_constraintTop_toTopOf="@id/ellipse"
             app:lottie_autoPlay="true"
             android:layout_marginBottom="@dimen/_29sdp"
-            app:lottie_rawRes="@raw/xe"
+            app:lottie_rawRes="@raw/anim_intro"
             app:lottie_loop="true"
              />
 
