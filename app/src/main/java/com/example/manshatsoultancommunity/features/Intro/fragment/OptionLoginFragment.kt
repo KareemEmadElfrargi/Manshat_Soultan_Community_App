@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.FragmentLoginOptionBinding
 import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
-import com.example.manshatsoultancommunity.features.news.presentation.activity.NewsActivity
+import com.example.manshatsoultancommunity.features.news.presentation.common.activity.NewsActivity
 import com.example.manshatsoultancommunity.util.Constants.ADMIN_COLLECTION
 import com.example.manshatsoultancommunity.util.Constants.Auth_STATUS
 import com.example.manshatsoultancommunity.util.SharedPreferencesManager

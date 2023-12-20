@@ -22,6 +22,7 @@ class PostDataSourceRemote @Inject constructor(
                }
            }
            Resource.Success(postsList)
+
        } catch (exception :Exception){
            Resource.Error(exception.message.toString())
        }

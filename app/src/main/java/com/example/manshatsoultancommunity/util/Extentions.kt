@@ -247,8 +247,14 @@ private fun isServerReachable(serverAddress: String, port: Int, timeout: Int): B
 
 }
 
-fun loadImageData(imageUrl: String,context: Context): ByteArray {
+fun loadImageData(imageUrl: String?,context: Context): ByteArray {
     return try {
+
+        if (imageUrl.isNullOrBlank()) {
+            Log.e("loadImageData", "Image URL is null or empty")
+            return byteArrayOf() // Default empty byte array for simplicity
+        }
+
         // Use Glide to load the image and retrieve the byte array
         val glideRequest = Glide.with(context)
             .asBitmap()

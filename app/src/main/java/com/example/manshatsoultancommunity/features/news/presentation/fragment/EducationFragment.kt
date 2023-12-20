@@ -108,18 +108,20 @@ class EducationFragment: Fragment() {
     }
     private fun setupRecycleView(listOfEducationPost: List<Post>?) {
         listOfEducationPost?.let {
-            educationAdapter = PostAdapter(listOfEducationPost, requireContext())
+            educationAdapter = PostAdapter(listOfEducationPost.reversed(), requireContext())
             binding.recyclerViewEductionPage.adapter = educationAdapter
         }
     }
     private fun showLoading() {
         binding.progressBarEducationFragment.visibilityVisible()
     }
-    override fun onDestroy() {
-        super.onDestroy()
-        firebaseDatabase.reference.child(Constants.CHILD_OF_POST_REALTIME).removeEventListener(valueEventListenerEducationPost!!)
-    }
+
     private fun hideLoading() {
         binding.progressBarEducationFragment.visibilityGone()
+    }
+    override fun onDestroyView() {
+        binding.emptyListAnimation.cancelAnimation()
+        firebaseDatabase.reference.child(Constants.CHILD_OF_POST_REALTIME).removeEventListener(valueEventListenerEducationPost!!)
+        super.onDestroyView()
     }
 }

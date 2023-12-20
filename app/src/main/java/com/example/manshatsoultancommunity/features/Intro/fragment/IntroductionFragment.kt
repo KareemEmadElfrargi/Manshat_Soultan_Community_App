@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.FragmentIntroBinding
-import com.example.manshatsoultancommunity.features.news.presentation.activity.NewsActivity
+import com.example.manshatsoultancommunity.features.news.presentation.common.activity.NewsActivity
 import com.example.manshatsoultancommunity.util.Constants.Auth_STATUS
 import com.example.manshatsoultancommunity.util.SharedPreferencesManager
 import dagger.hilt.android.AndroidEntryPoint

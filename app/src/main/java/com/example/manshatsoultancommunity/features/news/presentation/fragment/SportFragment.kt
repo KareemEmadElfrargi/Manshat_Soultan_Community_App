@@ -118,7 +118,7 @@ class SportFragment: Fragment() {
 
     private fun setupRecycleView(listOfSportPost: List<Post>?) {
         listOfSportPost?.let {
-            sportAdapter = PostAdapter(listOfSportPost, requireContext())
+            sportAdapter = PostAdapter(listOfSportPost.reversed(), requireContext())
             binding.recyclerViewSportPage.adapter = sportAdapter
         }
     }
@@ -127,6 +127,10 @@ class SportFragment: Fragment() {
     }
     override fun onDestroy() {
         super.onDestroy()
+    }
+    override fun onDestroyView() {
+        binding.emptyListAnimation.cancelAnimation()
         firebaseDatabase.reference.child(Constants.CHILD_OF_POST_REALTIME).removeEventListener(valueEventListenerSportPost!!)
+        super.onDestroyView()
     }
 }

@@ -10,9 +10,11 @@ import com.example.manshatsoultancommunity.features.news.domain.usecase.IGetRipU
 import com.example.manshatsoultancommunity.features.news.domain.usecase.IGetSportUseCase
 import com.example.manshatsoultancommunity.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -43,13 +45,19 @@ class PostViewModel @Inject constructor(
         fetchEducationPost()
         fetchPosts()
     }
-    fun fetchRipPost(){
+    fun fetchRipPost() {
         viewModelScope.launch {
-            _ripPostList.emit(Resource.Loading())
-        }
-        viewModelScope.launch {
-            val result = ripUseCase.getRipPost()
-            _ripPostList.emit(result)
+            try {
+                _ripPostList.emit(Resource.Loading())
+
+                val result = withContext(Dispatchers.IO) {
+                    ripUseCase.getRipPost()
+                }
+
+                _ripPostList.emit(result)
+            } catch (e: Exception) {
+                _ripPostList.emit(Resource.Error("An error occurred: ${e.message}"))
+            }
         }
     }
     fun fetchSportPost(){

@@ -23,6 +23,7 @@ class PostRepositoryImp @Inject constructor(
             try {
                 postsLocalDataSource.deleteAllPosts()
                 val remotePostsList = postDataSourceRemote.getPost()
+                Log.i("AdvertisementsRepository",remotePostsList.toString())
                 var imageData:ByteArray? = null
                 val dataListEntity = remotePostsList.data?.map {post ->
                     post.imageOfPost?.let {
@@ -34,7 +35,7 @@ class PostRepositoryImp @Inject constructor(
                 remotePostsList
             }catch (e: Exception){
                 Log.e("AdvertisementsRepository", "Error fetching remote data: ${e.message}")
-                Resource.Error("Error fetching remote data")
+                Resource.Error("خطأ في تحميل المنشورات من السيرفر")
             }
 
         } else {
@@ -45,7 +46,7 @@ class PostRepositoryImp @Inject constructor(
                 }
                 Resource.Success(dataListDomain)
             } else {
-                Resource.Error("Empty List cached on your phone!")
+                Resource.Error("لا يوجد اي منشورات لديك في الذاكرة")
             }
         }
     }

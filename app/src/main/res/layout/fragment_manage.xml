@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,7 +73,7 @@
             android:id="@+id/parent_viewManagers"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible">
+            android:visibility="gone">
           <!-- scroll Department admins-->
             <ScrollView
           android:id="@+id/layout_part_admins"
@@ -87,7 +86,6 @@
           <androidx.constraintlayout.widget.ConstraintLayout
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-
               >
               <TextView
                   android:id="@+id/nameOfManager"
@@ -106,6 +104,8 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   style="@style/header_4"
+                  android:background="@drawable/background_author_name"
+                  android:paddingHorizontal="@dimen/_8sdp"
                   android:text="انت الان علي بعد خطوة من ادارة صفحتك"
                   android:textSize="@dimen/_10sdp"
                   app:layout_constraintTop_toBottomOf="@id/nameOfManager"
@@ -148,7 +148,6 @@
                           android:textAlignment="center"
                           android:textSize="@dimen/_10sdp"
                           android:text="الوفيات" />
-
                       <RadioButton
                           android:id="@+id/rd_sport_news"
                           android:layout_width="wrap_content"
@@ -157,7 +156,6 @@
                           android:textAlignment="center"
                           android:textSize="@dimen/_10sdp"
                           android:text="مركز الشباب" />
-
                       <RadioButton
                           android:id="@+id/rd_education_news"
                           android:layout_width="wrap_content"
@@ -166,7 +164,6 @@
                           android:textAlignment="center"
                           android:textSize="@dimen/_10sdp"
                           android:text="التعليم" />
-
                   </RadioGroup>
 
               </androidx.core.widget.NestedScrollView>

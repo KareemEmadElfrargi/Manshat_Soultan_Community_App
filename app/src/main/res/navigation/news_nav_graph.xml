@@ -25,4 +25,8 @@
         android:id="@+id/adsFragment"
         android:name="com.example.manshatsoultancommunity.features.advertisement.presentation.fragment.AdvertisementsFragment"
         android:label="AdsFragment" />
+    <fragment
+        android:id="@+id/shoppingFragment"
+        android:name="com.example.manshatsoultancommunity.features.Shopping.presentation.fragment.ShoppingFragment"
+        android:label="ShoppingFragment" />
 </navigation>

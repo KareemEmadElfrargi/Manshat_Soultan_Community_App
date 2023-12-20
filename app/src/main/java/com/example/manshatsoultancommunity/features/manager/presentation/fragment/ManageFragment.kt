@@ -128,7 +128,7 @@ class ManageFragment: Fragment() {
         if (admin.active) {
             admin.category.forEach { category ->
                 when (category) {
-                    "Sport", "RIP", "Education", "General" -> {
+                    "Sport", "Rip", "Education", "General" -> {
                         binding.apply {
                             parentViewManagers.visibilityVisible()
                             parentViewUsers.visibilityGone()

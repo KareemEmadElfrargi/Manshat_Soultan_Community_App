@@ -13,7 +13,7 @@ class GetGeneralUseCase@Inject constructor(
     override suspend fun getGeneralPost(): Resource<List<Post>> {
         val posts = postRepository.getPost()
         return if (posts is Resource.Success){
-            val postsData = posts.data?.reversed()
+            val postsData = posts.data
             Resource.Success(postsData!!)
         } else {
             posts

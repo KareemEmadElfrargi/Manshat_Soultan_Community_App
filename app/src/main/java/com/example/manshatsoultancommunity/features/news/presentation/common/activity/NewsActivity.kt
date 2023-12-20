@@ -1,4 +1,4 @@
-package com.example.manshatsoultancommunity.features.news.presentation.activity
+package com.example.manshatsoultancommunity.features.news.presentation.common.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

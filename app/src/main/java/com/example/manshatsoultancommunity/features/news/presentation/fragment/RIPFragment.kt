@@ -101,7 +101,7 @@ class RIPFragment: Fragment() {
 
     private fun setupRecycleView(listOfRipPost: List<Post>?) {
         listOfRipPost?.let {
-            ripAdapter = PostAdapter(listOfRipPost, requireContext())
+            ripAdapter = PostAdapter(listOfRipPost.reversed(), requireContext())
             binding.recyclerViewRIPPage.adapter = ripAdapter
         }
     }
@@ -109,8 +109,9 @@ class RIPFragment: Fragment() {
     private fun showLoading() {
         binding.progressBarRipFragment.visibilityVisible()
     }
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         firebaseDatabase.reference.child(Constants.CHILD_OF_POST_REALTIME).removeEventListener(valueEventListenerRipPost!!)
     }
+
 }

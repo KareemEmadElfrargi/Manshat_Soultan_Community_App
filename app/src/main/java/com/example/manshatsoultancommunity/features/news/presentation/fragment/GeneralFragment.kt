@@ -103,7 +103,7 @@ class GeneralFragment: Fragment() {
     }
     private fun setupRecycleView(listPosts: List<Post>?) {
         listPosts?.let {
-            homeAdapter = PostAdapter(listPosts, requireContext())
+            homeAdapter = PostAdapter(listPosts.reversed(), requireContext())
             binding.recyclerViewGeneralPage.adapter = homeAdapter
         }
     }
@@ -113,8 +113,10 @@ class GeneralFragment: Fragment() {
     private fun showLoading() {
         binding.progressBarGeneralFragment.visibilityVisible()
     }
-    override fun onDestroy() {
-        super.onDestroy()
+
+    override fun onDestroyView() {
+        binding.emptyListAnimation.cancelAnimation()
         firebaseDatabase.reference.child(Constants.CHILD_OF_POST_REALTIME).removeEventListener(valueEventListenerPosts!!)
+        super.onDestroyView()
     }
 }

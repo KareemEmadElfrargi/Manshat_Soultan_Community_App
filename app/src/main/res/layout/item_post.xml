@@ -85,8 +85,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_2sdp"
-                android:layout_marginRight="@dimen/_8sdp"
-                android:lineSpacingMultiplier="0.6"
+                android:lineSpacingMultiplier="0.7"
                 android:textColor="@color/black"
                 android:text="توفية الي رحمة الله تعالي الحاجة فتحية محمد حلاوة زوجة المرحوم محمد خالد والدفنة عند حضورة الجثة من مسجد الرحمة ولا عزاء للسيدات "
                 android:textDirection="rtl"
@@ -115,35 +114,15 @@
             </com.google.android.material.card.MaterialCardView>
 
             <ImageView
-                android:id="@+id/deleteIcon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_delete"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardForImage" />
-            <Space
-                android:id="@+id/spaceBetweenIcons"
-                android:layout_width="10dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/deleteIcon"
-                app:layout_constraintTop_toBottomOf="@+id/postCaption" />
+                android:id="@+id/menu_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/profileImage"
+                app:layout_constraintLeft_toLeftOf="@id/guideline"
+                app:layout_constraintBottom_toBottomOf="@id/profileImage"
+                android:src="@drawable/circle_menu_3"
+                android:contentDescription="Item Menu" />
 
-            <ImageView
-                android:id="@+id/editIcon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_edit_24"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/spaceBetweenIcons"
-                app:layout_constraintTop_toBottomOf="@+id/cardForImage" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"

@@ -120,4 +120,7 @@ dependencies {
     //implementation ("com.webtoonscorp.android:readmore-view:1.3.3")
 
     implementation ("com.github.dhaval2404:imagepicker:2.1")
+    //ShimmerRecyclerView
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
+//    implementation ("com.todkars:shimmer-recyclerview:0.4.1")
 }

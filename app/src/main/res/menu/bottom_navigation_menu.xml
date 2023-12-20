@@ -11,6 +11,14 @@
         android:icon="@drawable/advertise_ic_n"
         android:id="@+id/adsFragment"/>
 
+
+    <item
+        android:title="دكــان"
+        android:icon="@drawable/shopping_ic_n"
+        android:id="@+id/shoppingFragment"/>
+
+    />
+
     <item
         android:title="من نحن"
         android:icon="@drawable/about_us_ic_n"

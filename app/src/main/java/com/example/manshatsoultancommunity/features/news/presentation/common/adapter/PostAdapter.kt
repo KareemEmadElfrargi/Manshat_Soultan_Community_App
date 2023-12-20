@@ -41,11 +41,14 @@ class PostAdapter(private var listOfPost:List<Post>, val context :Context):Recyc
             }
 
             if(username == currentPost.author){
-                deleteIcon.visibilityVisible()
-                editIcon.visibilityVisible()
+                menuOptions.visibilityVisible()
             }else{
-                deleteIcon.visibilityGone()
-                editIcon.visibilityGone()
+                menuOptions.visibilityGone()
+            }
+            when(currentPost.categoryType){
+                "Rip" -> {
+                    //
+                }
             }
 
             when (currentPost.authorRating){
