@@ -22,8 +22,7 @@ class PostRepositoryImp @Inject constructor(
         return if (isInternetAvailable(context)) {
             try {
                 postsLocalDataSource.deleteAllPosts()
-                val remotePostsList = postDataSourceRemote.getPost()
-                Log.i("AdvertisementsRepository",remotePostsList.toString())
+                 val remotePostsList = postDataSourceRemote.getPost()
                 var imageData:ByteArray? = null
                 val dataListEntity = remotePostsList.data?.map {post ->
                     post.imageOfPost?.let {
@@ -34,7 +33,6 @@ class PostRepositoryImp @Inject constructor(
                 postsLocalDataSource.insertPosts(dataListEntity)
                 remotePostsList
             }catch (e: Exception){
-                Log.e("AdvertisementsRepository", "Error fetching remote data: ${e.message}")
                 Resource.Error("خطأ في تحميل المنشورات من السيرفر")
             }
 

@@ -71,12 +71,17 @@ class PostViewModel @Inject constructor(
     }
     fun fetchGeneralPost(){
         viewModelScope.launch {
-            _generalPostList.emit(Resource.Loading())
+            try {
+                _generalPostList.emit(Resource.Loading())
+                val result = withContext(Dispatchers.IO) {
+                    generalUseCase.getGeneralPost()
+                }
+                _generalPostList.emit(result)
+            } catch (e: Exception) {
+                _generalPostList.emit(Resource.Error("An error occurred: ${e.message}"))
+            }
         }
-        viewModelScope.launch {
-            val result = generalUseCase.getGeneralPost()
-            _generalPostList.emit(result)
-        }
+
     }
 
     fun fetchEducationPost(){

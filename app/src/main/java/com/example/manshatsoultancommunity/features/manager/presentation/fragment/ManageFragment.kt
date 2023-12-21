@@ -15,6 +15,9 @@ import com.example.manshatsoultancommunity.features.advertisement.data.model.Adv
 import com.example.manshatsoultancommunity.features.news.data.model.Post
 import com.example.manshatsoultancommunity.util.Constants.ADMIN_COLLECTION
 import com.example.manshatsoultancommunity.util.Constants.Auth_STATUS
+import com.example.manshatsoultancommunity.util.Constants.CATEGORY_TYPE_EDUCATION_POST
+import com.example.manshatsoultancommunity.util.Constants.CATEGORY_TYPE_GENERAL_POST
+import com.example.manshatsoultancommunity.util.Constants.CATEGORY_TYPE_RIP_POST
 import com.example.manshatsoultancommunity.util.Constants.CATEGORY_TYPE_SPORT_POST
 import com.example.manshatsoultancommunity.util.Constants.CHILD_OF_ADS_REALTIME
 import com.example.manshatsoultancommunity.util.Constants.CHILD_OF_POST_REALTIME
@@ -42,13 +45,17 @@ import dagger.hilt.android.AndroidEntryPoint
 class ManageFragment: Fragment() {
     private lateinit var binding : FragmentManageBinding
     private lateinit var firebaseDatabase: FirebaseDatabase
+    private  var categoryType : String?=null
+    private  var nameOfChannel : String?=null
+    private  var imageOfProfile : String?=null
     private val storageReference: StorageReference by lazy {
         FirebaseStorage.getInstance().reference
     }
     private var isPin = false
     private lateinit var authStatus : String
     private  var uriFormGallery : Uri? = null
-    private lateinit var downloadUri : String
+    private lateinit var downloadUriAdvertisment : String
+    private  var downloadUriPosts : String? =null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,20 +70,6 @@ class ManageFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         firebaseDatabase = FirebaseDatabase.getInstance()
-
-//        val post = Post(
-//            "2",
-//            CATEGORY_TYPE_SPORT_POST,
-//            "وفيات قرية منشاة سلطان",
-//            "https://firebasestorage.googleapis.com/v0/b/manshat-soultan-community.appspot.com/o/images%2FOther%2Frip_image.jpg?alt=media&token=89a178dc-5a1a-4003-a887-7cdf3b8d6b38",
-//            null,
-//            getCurrentTime(),
-//            getAdminData().name,
-//            "توفي الي رحمة الله تعالي الحاج علي محمد علي والدفنة عند حضور الجثة من مسجد الرحمة",
-//            true,
-//            getAdminData().rating)
-//
-//        firebaseDatabase.reference.child(CHILD_OF_POST_REALTIME).push().setValue(post)
 
 
         authStatus = SharedPreferencesManager(requireContext()).getString(Auth_STATUS)
@@ -122,10 +115,111 @@ class ManageFragment: Fragment() {
 
         }
 
+        binding.radioGroupForPost.setOnCheckedChangeListener{ _ , checkId ->
+            when(checkId){
+                binding.rdGeneralNews.id ->{
+                    categoryType = CATEGORY_TYPE_GENERAL_POST
+                    nameOfChannel = "مشاة سلطان"
+                    imageOfProfile = "https://firebasestorage.googleapis.com/v0/b/manshat-soultan-community.appspot.com/o/410850549_3543666529283645_4261973851753068178_n.jpg?alt=media&token=556675c0-0a92-4395-9277-675458a70f62"
+                }
+                binding.rdRipNews.id ->{
+                    categoryType = CATEGORY_TYPE_RIP_POST
+                    nameOfChannel = "وفيات م.سلطان"
+                    imageOfProfile = "https://firebasestorage.googleapis.com/v0/b/manshat-soultan-community.appspot.com/o/images%2FOther%2Frip_image.jpg?alt=media&token=89a178dc-5a1a-4003-a887-7cdf3b8d6b38"
+                }
+                binding.rdSportNews.id ->{
+                    categoryType = CATEGORY_TYPE_SPORT_POST
+                    nameOfChannel = "م. شباب م.سلطان"
+                    imageOfProfile = "https://firebasestorage.googleapis.com/v0/b/manshat-soultan-community.appspot.com/o/sport_image_profile.jpg?alt=media&token=7c8db50f-e793-419b-863d-1822bd046f16"
+                }
+                binding.rdEducationNews.id ->{
+                    categoryType = CATEGORY_TYPE_EDUCATION_POST
+                    nameOfChannel = "م.الشهيد شعبان"
+                    imageOfProfile = "https://firebasestorage.googleapis.com/v0/b/manshat-soultan-community.appspot.com/o/img_shcool_profile.jpg?alt=media&token=25f28de7-e85c-4172-97d5-535295c0101a"
+                }
+            }
+        }
+
+        binding.uploadImgPost.setOnClickListener {
+            ImagePicker.with(this@ManageFragment)
+                .crop()
+                .compress(1024)
+                .start()
+        }
+
+        binding.publishPost.setOnClickListener {
+            binding.publishPost.startAnimation()
+            uploadDataForPosts()
+        }
+
     }
+
+    private fun uploadDataForPosts(){
+        val referencePostsImage = storageReference.child("images/Posts/${generateUniqueId()}.jpg")
+        val contentPost = binding.contentPost.text.toString()
+        if (contentPost.isNotBlank() && !categoryType.isNullOrBlank()) {
+            if (uriFormGallery !=null){
+                val uploadTask = referencePostsImage.putFile(uriFormGallery!!)
+                uploadTask.continueWithTask { task ->
+                    if (!task.isSuccessful) {
+                        task.exception?.let { throw it }
+                    }
+
+                    referencePostsImage.downloadUrl
+                }.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        downloadUriPosts = task.result.toString()
+                        uploadPost()
+                    }
+                }.toString()
+            }else{
+                uploadPost()
+            }
+
+        }
+        else {
+            showToast("يجب عليك ادخال جميع بيانات")
+            binding.publishPost.revertAnimation()
+        }
+    }
+
+    private fun uploadPost() {
+        val contentPost = binding.contentPost.text.toString()
+        val post  = Post(generateUniqueId(),
+            categoryType,
+            nameOfChannel,
+            imageOfProfile,
+            downloadUriPosts,
+            getCurrentTime(),
+            getAdminData().name,
+            contentPost,
+            false,
+            getAdminData().rating
+        )
+
+        firebaseDatabase.reference.child(CHILD_OF_POST_REALTIME).push().setValue(post)
+            .addOnSuccessListener {
+                binding.publishPost.revertAnimation()
+                showToast("تم رفع المنشور بنجاح")
+            }.addOnFailureListener {
+                binding.publishPost.revertAnimation()
+                showToast("لم يتم رفع المنشور ")
+            }
+
+        cleanFiledForPost()
+    }
+
+    private fun cleanFiledForPost() {
+        binding.contentPost.text = null
+        binding.cardImage.visibilityGone()
+        binding.showImagePost.setImageURI(null)
+    }
+
 
     private fun updateAdminAvailability(admin:Admin){
         if (admin.active) {
+            binding.nameOfManager.text = " مرحباً بك ${admin.name}"
+
             admin.category.forEach { category ->
                 when (category) {
                     "Sport", "Rip", "Education", "General" -> {
@@ -134,7 +228,23 @@ class ManageFragment: Fragment() {
                             parentViewUsers.visibilityGone()
                             parentViewOwnerAds.visibilityGone()
                             blockingAnimation.visibilityGone()
-                        }
+
+                            if (category == "Sport"){
+                                rdSportNews.visibilityVisible()
+                            }
+                            if (category == "Rip"){
+                                rdRipNews.visibilityVisible()
+                            }
+                            if (category == "Education"){
+                                rdEducationNews.visibilityVisible()
+                            }
+                            if (category == "General"){
+                                rdGeneralNews.visibilityVisible()
+                            }
+
+
+                            }
+
                     }
 
                     "Advertisement" -> {
@@ -202,7 +312,7 @@ class ManageFragment: Fragment() {
                 referenceAdvertisements.downloadUrl
             }.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    downloadUri = task.result.toString()
+                    downloadUriAdvertisment = task.result.toString()
                     uploadAdsToFirebase()
                 } else {
                     // Handle failures
@@ -227,7 +337,7 @@ class ManageFragment: Fragment() {
         val objAnnouncement = Advertisements(
             generateUniqueId(),
             titleAdvertisement,
-            downloadUri,
+            downloadUriAdvertisment,
             descriptionAdvertisement,
             placePostedAdvertisement,
             isPin,
@@ -267,8 +377,23 @@ class ManageFragment: Fragment() {
         when (resultCode) {
             Activity.RESULT_OK -> {
                 uriFormGallery = data?.data!!
-                binding.addImageAds.setImageURI(uriFormGallery)
-                binding.iconOfImageAds.visibilityInVisible()
+
+                val cashedCategory = getAdminData().category
+                cashedCategory.forEach{ category ->
+                    if (category == CATEGORY_TYPE_RIP_POST
+                        || category == CATEGORY_TYPE_SPORT_POST
+                        || category == CATEGORY_TYPE_GENERAL_POST
+                        ||  category == CATEGORY_TYPE_EDUCATION_POST){
+                        binding.apply {
+                            cardImage.visibilityVisible()
+                            showImagePost.setImageURI(uriFormGallery)
+                        }
+                    } else if (category=="Advertisement") {
+                        binding.addImageAds.setImageURI(uriFormGallery)
+                        binding.iconOfImageAds.visibilityInVisible()
+                    }
+                }
+
             }
             ImagePicker.RESULT_ERROR -> {
                 showToast(ImagePicker.getError(data))
@@ -278,5 +403,4 @@ class ManageFragment: Fragment() {
             }
         }
     }
-
 }
