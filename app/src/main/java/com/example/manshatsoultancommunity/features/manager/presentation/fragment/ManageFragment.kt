@@ -119,7 +119,7 @@ class ManageFragment: Fragment() {
             when(checkId){
                 binding.rdGeneralNews.id ->{
                     categoryType = CATEGORY_TYPE_GENERAL_POST
-                    nameOfChannel = "مشاة سلطان"
+                    nameOfChannel = "منشاة سلطان"
                     imageOfProfile = "https://firebasestorage.googleapis.com/v0/b/manshat-soultan-community.appspot.com/o/410850549_3543666529283645_4261973851753068178_n.jpg?alt=media&token=556675c0-0a92-4395-9277-675458a70f62"
                 }
                 binding.rdRipNews.id ->{

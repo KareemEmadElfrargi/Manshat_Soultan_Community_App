@@ -81,16 +81,19 @@ class PostViewModel @Inject constructor(
                 _generalPostList.emit(Resource.Error("An error occurred: ${e.message}"))
             }
         }
-
     }
 
     fun fetchEducationPost(){
         viewModelScope.launch {
-            _educationPostList.emit(Resource.Loading())
-        }
-        viewModelScope.launch {
-            val result = educationUseCase.getEducationPost()
-            _educationPostList.emit(result)
+            try {
+                _educationPostList.emit(Resource.Loading())
+                val result = withContext(Dispatchers.IO) {
+                    educationUseCase.getEducationPost()
+                }
+                _educationPostList.emit(result)
+            } catch (e: Exception) {
+                _educationPostList.emit(Resource.Error("An error occurred: ${e.message}"))
+            }
         }
     }
     fun fetchPosts(){

@@ -73,7 +73,7 @@
             android:id="@+id/parent_viewManagers"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="visible">
           <!-- scroll Department admins-->
             <ScrollView
           android:id="@+id/layout_part_admins"
@@ -191,10 +191,8 @@
                       android:layout_height="match_parent"
                       app:layout_constraintStart_toStartOf="parent"
                       app:layout_constraintEnd_toEndOf="parent"
-                      android:layout_marginTop="@dimen/_16sdp"
                       android:scaleType="centerCrop"
-                      android:background="@drawable/background_image_post_deafult"
-                      android:layout_marginHorizontal="@dimen/_8sdp"/>
+                      android:background="@drawable/background_image_post_deafult" />
               </androidx.cardview.widget.CardView>
 
             <LinearLayout
