@@ -103,7 +103,7 @@ class GeneralFragment: Fragment() {
     }
     private fun setupRecycleView(listPosts: List<Post>?) {
         listPosts?.let {
-            homeAdapter = PostAdapter(listPosts.reversed(), requireContext(),null)
+            homeAdapter = PostAdapter(listPosts, requireContext(),null)
             binding.recyclerViewGeneralPage.adapter = homeAdapter
         }
     }

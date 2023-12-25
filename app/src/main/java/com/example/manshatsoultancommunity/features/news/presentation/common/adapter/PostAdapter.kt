@@ -21,26 +21,33 @@ import com.example.manshatsoultancommunity.util.getAdminData
 import com.example.manshatsoultancommunity.util.visibilityGone
 import com.example.manshatsoultancommunity.util.visibilityVisible
 
-class PostAdapter(private var listOfPost:List<Post>, val context :Context,
+class PostAdapter(listOfPost:List<Post>, val context :Context,
 private val listener:InteractionWithOptionPost?):RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+   private val reversedList = listOfPost.reversed()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_post,parent,false)
         return PostViewHolder(view)
     }
     val username = SharedPreferencesManager(context).getString(ADMIN_NAME_KEY)
-    override fun getItemCount() =  listOfPost.size
+    override fun getItemCount() =  reversedList.size
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        val currentPost = listOfPost[position]
+        val currentPost = reversedList[position]
         holder.binding.apply {
             profileName.text = currentPost.nameOfCategory
             authorName.text = currentPost.author
             postCaption.text = currentPost.content
             postTime.text = currentPost.timeOfPost
 
+
+
             Glide.with(context).load(currentPost.imageOfChannel).into(profileImage)
 
             if (!currentPost.imageOfPost.isNullOrBlank()){
                 Glide.with(context).load(currentPost.imageOfPost).into(postImage)
+                postImage.setOnLongClickListener {
+                    listener?.onLongPress(currentPost,it)
+                    true
+                }
             }else{
                 cardForImage.visibilityGone()
             }

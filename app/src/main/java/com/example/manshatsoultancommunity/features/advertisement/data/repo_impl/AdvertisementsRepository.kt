@@ -11,6 +11,7 @@ import com.example.manshatsoultancommunity.features.advertisement.domain.repo.IA
 import com.example.manshatsoultancommunity.util.Resource
 import com.example.manshatsoultancommunity.util.isInternetAvailable
 import com.example.manshatsoultancommunity.util.loadImageData
+import com.example.manshatsoultancommunity.util.loadImageDataAsync
 import javax.inject.Inject
 
 class AdvertisementsRepository @Inject constructor(
@@ -24,7 +25,7 @@ class AdvertisementsRepository @Inject constructor(
                 advertisementsDataSourceLocal.deleteAdvertisements()
                 val remoteAdvertisementsList = advertisementsDataSourceRemote.getAdvertisements()
                 val dataListEntity = remoteAdvertisementsList.data?.map {
-                    val imageData = loadImageData(it.imageOfAdvertisement!!, context)
+                    val imageData = loadImageDataAsync(it.imageOfAdvertisement!!, context)
                     it.toRoomEntity(imageData)
                 } ?: emptyList()
 

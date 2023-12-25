@@ -5,4 +5,5 @@ import com.example.manshatsoultancommunity.features.news.data.model.Post
 
 interface InteractionWithOptionPost {
     fun onClickOptionPopupMenu(post: Post, view: View)
+    fun onLongPress(post: Post, view: View)
 }

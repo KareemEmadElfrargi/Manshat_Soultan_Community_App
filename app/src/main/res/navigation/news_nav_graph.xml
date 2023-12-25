@@ -7,7 +7,14 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.manshatsoultancommunity.features.news.presentation.fragment.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_addPostFragment"
+            app:destination="@id/addPostFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_RIPFragment"
+            app:destination="@id/RIPFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.manshatsoultancommunity.AboutFragment"
@@ -20,7 +27,11 @@
     <fragment
         android:id="@+id/RIPFragment"
         android:name="com.example.manshatsoultancommunity.features.news.presentation.fragment.RIPFragment"
-        android:label="RIPFragment" />
+        android:label="RIPFragment" >
+        <action
+            android:id="@+id/action_RIPFragment_to_addPostFragment"
+            app:destination="@id/addPostFragment" />
+    </fragment>
     <fragment
         android:id="@+id/adsFragment"
         android:name="com.example.manshatsoultancommunity.features.advertisement.presentation.fragment.AdvertisementsFragment"

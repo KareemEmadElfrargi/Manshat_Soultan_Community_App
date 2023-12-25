@@ -11,6 +11,7 @@ import com.example.manshatsoultancommunity.features.news.domain.repo.IPostReposi
 import com.example.manshatsoultancommunity.util.Resource
 import com.example.manshatsoultancommunity.util.isInternetAvailable
 import com.example.manshatsoultancommunity.util.loadImageData
+import com.example.manshatsoultancommunity.util.loadImageDataAsync
 import javax.inject.Inject
 
 class PostRepositoryImp @Inject constructor(
@@ -26,14 +27,16 @@ class PostRepositoryImp @Inject constructor(
                 var imageData:ByteArray? = null
                 val dataListEntity = remotePostsList.data?.map {post ->
                     post.imageOfPost?.let {
-                        imageData = loadImageData(it, context)
+                        imageData = loadImageDataAsync(it, context)
+                        Log.e("PostRepositoryImp",imageData.toString())
                     }
-                    post.toRoomEntity(imageData!!)
+                    post.toRoomEntity(imageData)
                 } ?: emptyList()
                 postsLocalDataSource.insertPosts(dataListEntity)
                 remotePostsList
             }catch (e: Exception){
-                Resource.Error("خطأ في تحميل المنشورات من السيرفر")
+                Log.e("PostRepositoryImp",e.message.toString())
+                Resource.Error(e.message.toString())
             }
 
         } else {

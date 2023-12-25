@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.example.manshatsoultancommunity.databinding.FragmentManageBinding
 import com.example.manshatsoultancommunity.features.Intro.common.IntroActivity
 import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
@@ -43,11 +44,13 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 
 class ManageFragment: Fragment() {
+//    private val args by navArgs<ManageFragmentArgs>()
     private lateinit var binding : FragmentManageBinding
     private lateinit var firebaseDatabase: FirebaseDatabase
     private  var categoryType : String?=null
     private  var nameOfChannel : String?=null
     private  var imageOfProfile : String?=null
+
     private val storageReference: StorageReference by lazy {
         FirebaseStorage.getInstance().reference
     }
@@ -68,9 +71,9 @@ class ManageFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //val post = args.post!!.postId
 
         firebaseDatabase = FirebaseDatabase.getInstance()
-
 
         authStatus = SharedPreferencesManager(requireContext()).getString(Auth_STATUS)
 
@@ -185,7 +188,8 @@ class ManageFragment: Fragment() {
 
     private fun uploadPost() {
         val contentPost = binding.contentPost.text.toString()
-        val post  = Post(generateUniqueId(),
+        val postId = generateUniqueId()
+        val post  = Post(postId,
             categoryType,
             nameOfChannel,
             imageOfProfile,
@@ -197,7 +201,7 @@ class ManageFragment: Fragment() {
             getAdminData().rating
         )
 
-        firebaseDatabase.reference.child(CHILD_OF_POST_REALTIME).push().setValue(post)
+        firebaseDatabase.reference.child(CHILD_OF_POST_REALTIME).child(postId).setValue(post)
             .addOnSuccessListener {
                 binding.publishPost.revertAnimation()
                 showToast("تم رفع المنشور بنجاح")

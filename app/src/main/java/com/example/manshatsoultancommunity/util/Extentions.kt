@@ -35,6 +35,8 @@ import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.features.Intro.data.model.Admin
 import com.example.manshatsoultancommunity.features.news.data.model.Post
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.net.InetSocketAddress
@@ -207,7 +209,7 @@ fun Fragment.showKeyboard(view: View) {
 
     if (!isWhatsAppInstalled()){
         val uri = Uri.parse("https://api.whatsapp.com/send?phone=$codeCountry$phoneNumber")
-        val whatsappIntent = Intent(Intent.ACTION_VIEW, uri)
+        val whatsappIntent = Intent(Intent.ACTION_VIEW,uri)
         startActivity(whatsappIntent)
     }else{
         contactByCall(phoneNumber)
@@ -302,6 +304,37 @@ fun loadImageData(imageUrl: String?,context: Context): ByteArray {
         byteArrayOf() // Default empty byte array for simplicity
     }
 }
+
+suspend fun loadImageDataAsync(imageUrl: String?, context: Context): ByteArray {
+    return withContext(Dispatchers.IO) {
+        try {
+            if (imageUrl.isNullOrBlank()) {
+                Log.e("loadImageData", "Image URL is null or empty")
+                return@withContext byteArrayOf() // Default empty byte array for simplicity
+            }
+
+            // Use Glide to load the image and retrieve the byte array
+            val glideRequest = Glide.with(context)
+                .asBitmap()
+                .load(imageUrl)
+
+            val bitmap: Bitmap = glideRequest.submit().get()
+
+            // Convert the Bitmap to a ByteArray
+            val outputStream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            outputStream.toByteArray()
+        } catch (e: Exception) {
+            // Handle errors, such as network issues or image loading failures
+            // You might want to log the error or return a default image data
+            e.printStackTrace()
+            return@withContext byteArrayOf() // Default empty byte array for simplicity
+        }
+    }
+}
+
+
+
 
 
 fun Fragment.getAdminData(): Admin {

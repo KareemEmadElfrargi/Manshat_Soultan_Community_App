@@ -1,7 +1,10 @@
 package com.example.manshatsoultancommunity.features.news.data.model
 
+import android.os.Parcelable
 import com.google.firebase.database.IgnoreExtraProperties
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @IgnoreExtraProperties
 data class Post (
      val postId:String = "",
@@ -14,4 +17,4 @@ data class Post (
      val content :String?=null,
      val isPin : Boolean = false,
      val authorRating:Int?=null,
-     )
+     ):Parcelable

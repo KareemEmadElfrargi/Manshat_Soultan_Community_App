@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id ("kotlin-kapt")
+    id ("kotlin-parcelize")
     id ("androidx.navigation.safeargs")
     id("com.google.dagger.hilt.android")
     id ("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
@@ -122,5 +123,6 @@ dependencies {
     implementation ("com.github.dhaval2404:imagepicker:2.1")
     //ShimmerRecyclerView
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
+    implementation ("com.github.chrisbanes:PhotoView:2.3.0")
 //    implementation ("com.todkars:shimmer-recyclerview:0.4.1")
 }

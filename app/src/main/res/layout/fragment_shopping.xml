@@ -32,6 +32,7 @@
                 app:lottie_loop="true"
                 />
             <TextView
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/header_3"
@@ -39,6 +40,26 @@
                 android:lineSpacingMultiplier="0.9"
                 android:text="انتظروا افتتاح اكثر من محل علي التطبيق , يمكن التسوق والاشتراك"
                 app:layout_constraintTop_toBottomOf="@+id/empty_list_animation"
+                app:layout_constraintLeft_toLeftOf="@+id/empty_list_animation"
+                app:layout_constraintRight_toRightOf="@+id/empty_list_animation"/>
+            <TextView
+                android:id="@+id/bookShopping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_8sdp"
+                style="@style/sub_header_2"
+                android:drawableRight="@drawable/phone_call_ic"
+                android:drawablePadding="@dimen/_8sdp"
+                android:gravity="center"
+                android:fontFamily="@font/dubai_bold"
+                android:textSize="@dimen/_14sdp"
+                android:lineSpacingMultiplier="0.7"
+                android:background="@drawable/background_author_name"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="يمكنك حجز مقعدك من الان."
+                app:layout_constraintTop_toBottomOf="@+id/title"
                 app:layout_constraintLeft_toLeftOf="@+id/empty_list_animation"
                 app:layout_constraintRight_toRightOf="@+id/empty_list_animation"/>
 
@@ -61,7 +82,6 @@
                 android:orientation="vertical"
                 android:visibility="gone"
                 />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
