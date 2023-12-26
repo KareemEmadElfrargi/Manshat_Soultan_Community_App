@@ -44,7 +44,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 
 class ManageFragment: Fragment() {
-//    private val args by navArgs<ManageFragmentArgs>()
+
     private lateinit var binding : FragmentManageBinding
     private lateinit var firebaseDatabase: FirebaseDatabase
     private  var categoryType : String?=null
@@ -71,7 +71,6 @@ class ManageFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //val post = args.post!!.postId
 
         firebaseDatabase = FirebaseDatabase.getInstance()
 

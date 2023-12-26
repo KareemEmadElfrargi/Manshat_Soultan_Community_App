@@ -28,17 +28,14 @@ class PostRepositoryImp @Inject constructor(
                 val dataListEntity = remotePostsList.data?.map {post ->
                     post.imageOfPost?.let {
                         imageData = loadImageDataAsync(it, context)
-                        Log.e("PostRepositoryImp",imageData.toString())
                     }
                     post.toRoomEntity(imageData)
                 } ?: emptyList()
                 postsLocalDataSource.insertPosts(dataListEntity)
                 remotePostsList
             }catch (e: Exception){
-                Log.e("PostRepositoryImp",e.message.toString())
                 Resource.Error(e.message.toString())
             }
-
         } else {
             val localPosts = postsLocalDataSource.getAllPosts()
             return if (localPosts.isNotEmpty()) {
