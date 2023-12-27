@@ -64,11 +64,6 @@ private val listener:InteractionWithOptionPost?):RecyclerView.Adapter<PostAdapte
             }else{
                 menuOptions.visibilityGone()
             }
-            when(currentPost.categoryType){
-                "Rip" -> {
-                    //
-                }
-            }
 
             when (currentPost.authorRating){
                 1,2 ->{

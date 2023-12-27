@@ -11,7 +11,6 @@
         android:id="@+id/iv_dialog_editPost"
         android:layout_width="0dp"
         android:layout_height="@dimen/_200sdp"
-        android:scaleType="centerCrop"
         android:src="@drawable/placeholder_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:fontFamily="@font/dubai_bold"
+        app:spinning_bar_color="@color/white"
         app:layout_constraintTop_toBottomOf="@id/et_dialog_editPost"
         android:text="تعديل"/>
 

@@ -40,6 +40,7 @@ import com.example.manshatsoultancommunity.util.showToastStyleWithPopUpMenu
 import com.example.manshatsoultancommunity.util.visibilityGone
 import com.example.manshatsoultancommunity.util.visibilityInVisible
 import com.example.manshatsoultancommunity.util.visibilityVisible
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.github.chrisbanes.photoview.PhotoView
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
@@ -56,6 +57,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class RIPFragment: Fragment(), InteractionWithOptionPost {
     private  lateinit var binding : FragmentRipBinding
+    //private  var shimmerLayout: ShimmerFrameLayout? = null
     private lateinit var ripAdapter : PostAdapter
     private lateinit var firebaseDatabase: FirebaseDatabase
     private var valueEventListenerRipPost: ValueEventListener? = null
@@ -78,24 +80,28 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //shimmerLayout?.startShimmer()
         firebaseDatabase = FirebaseDatabase.getInstance()
         lifecycleScope.launch {
-            viewModel.ripPostList.collect{ result ->
-                when(result){
+            viewModel.ripPostList.collect { result ->
+                when (result) {
                     is Resource.Loading -> {
-                        showLoading()
+                        //shimmerLayout?.startShimmer()
                     }
                     is Resource.Success -> {
-                        hideLoading()
                         val listRipPost = result.data
-                        if (listRipPost?.size==0){
+                        setupRecycleView(listRipPost)
+                        //shimmerLayout?.stopShimmer()
+                        //shimmerLayout?.visibility = View.GONE
+
+                        if (listRipPost?.size == 0) {
                             binding.emptyListAnimation.visibilityVisible()
-                        }else {
+                        } else {
                             binding.emptyListAnimation.visibilityGone()
                         }
-                        setupRecycleView(listRipPost)
                     }
                     is Resource.Error -> {
+                        //shimmerLayout?.stopShimmer()
                         hideLoading()
                         val errorMessage = result.message.toString()
                         showToast(errorMessage)
@@ -125,7 +131,7 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
             }
         }
 
-        firebaseDatabase.reference.child(Constants.CHILD_OF_POST_REALTIME)
+        firebaseDatabase.reference.child(CHILD_OF_POST_REALTIME)
             .addValueEventListener(valueEventListenerRipPost!!)
     }
     private fun hideLoading() {
@@ -196,7 +202,7 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
         val iv = iv_post_edit
         val et_post_edit = customLayout.findViewById<EditText>(R.id.et_dialog_editPost)
         val btn_post_edit = customLayout.findViewById<CircularProgressButton>(R.id.btn_dialog_editPost)
-
+        val oldImage = currentPost.imageOfPost
         Glide.with(requireView()).load(currentPost.imageOfPost).into(iv!!)
         et_post_edit.setText(currentPost.content)
         val postsCollection = firebaseDatabase.getReference(CHILD_OF_POST_REALTIME)
@@ -208,7 +214,8 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
                 .start()
         }
         btn_post_edit.setOnClickListener {
-            updateImagePost(et_post_edit,currentPost,postDocument)
+            btn_post_edit.startAnimation()
+            updateImagePost(et_post_edit,currentPost,postDocument,btn_post_edit,oldImage)
         }
         builder.create().show()
 
@@ -217,7 +224,8 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
     private fun updatedPost(
         et_post_edit: EditText,
         currentPost: Post,
-        postDocument: DatabaseReference
+        postDocument: DatabaseReference,
+        btnPost:CircularProgressButton
     ) {
         val updatedContent = et_post_edit.text.toString()
         val updatedPost = Post(
@@ -234,10 +242,12 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
         )
         postDocument.setValue(updatedPost)
             .addOnSuccessListener {
+                btnPost.revertAnimation()
                 showToast("تم تعديل المنشور بنجاح")
                 Log.d("EditDialog", "Post updated successfully")
             }
             .addOnFailureListener {
+                btnPost.revertAnimation()
                 showToast("خطا في تعديل المنشور")
                 Log.e("EditDialog", "Error updating post", it)
             }
@@ -245,7 +255,8 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
 
     private fun updateImagePost(et_post_edit: EditText
                                 , currentPost: Post
-                                , postDocument: DatabaseReference)
+                                , postDocument: DatabaseReference,
+                                btnPost:CircularProgressButton,oldImage:String?)
     {
 
             val referencePostsImage = storageReference
@@ -259,11 +270,18 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
                     referencePostsImage.downloadUrl
                 }.addOnCompleteListener { task ->
                     if (task.isSuccessful) {
+                        val oldImageReference = FirebaseStorage.getInstance().getReferenceFromUrl(oldImage!!)
+                        oldImageReference.delete().addOnSuccessListener {
+                            // image deleted from firebase
+                        }
                         downloadUriEditPost = task.result.toString()
-                        updatedPost(et_post_edit, currentPost, postDocument)
+                        updatedPost(et_post_edit, currentPost, postDocument,btnPost)
 
                     }
                 }.toString()
+            }else{
+                downloadUriEditPost = currentPost.imageOfPost
+                updatedPost(et_post_edit, currentPost, postDocument,btnPost)
             }
 
     }
@@ -286,6 +304,8 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
         super.onDestroyView()
         firebaseDatabase.reference.child(CHILD_OF_POST_REALTIME).removeEventListener(valueEventListenerRipPost!!)
         //binding = null
+        //shimmerLayout?.stopShimmer()
+        //shimmerLayout?.visibility = View.GONE
     }
 
 }

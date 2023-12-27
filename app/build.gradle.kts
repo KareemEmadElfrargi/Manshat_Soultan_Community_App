@@ -116,13 +116,13 @@ dependencies {
 
     //Import the StringEscapeUtils
     implementation ("org.apache.commons:commons-text:1.9")
+
     // read more
     //implementation ("com.github.colourmoon:readmore-textview:v1.0.2")
-    //implementation ("com.webtoonscorp.android:readmore-view:1.3.3")
-
     implementation ("com.github.dhaval2404:imagepicker:2.1")
     //ShimmerRecyclerView
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
+    // photoView
     implementation ("com.github.chrisbanes:PhotoView:2.3.0")
-//    implementation ("com.todkars:shimmer-recyclerview:0.4.1")
+
 }

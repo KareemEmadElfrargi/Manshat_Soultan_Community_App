@@ -57,11 +57,11 @@ class SportFragment: Fragment() {
                     is Resource.Success -> {
                         hideLoading()
                         val listSportPost = result.data
-                        if (listSportPost?.size==0){
-                            binding.emptyListAnimation.visibilityVisible()
-                        }else {
-                            binding.emptyListAnimation.visibilityGone()
-                        }
+//                        if (listSportPost?.size==0){
+//                            binding.emptyListAnimation.visibilityVisible()
+//                        }else {
+//                            binding.emptyListAnimation.visibilityGone()
+//                        }
                         Log.i("SportFragment",result.data.toString())
                         setupRecycleView(listSportPost)
                     }
