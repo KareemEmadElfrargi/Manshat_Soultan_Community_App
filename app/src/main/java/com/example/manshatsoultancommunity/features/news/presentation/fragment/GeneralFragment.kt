@@ -53,13 +53,15 @@ class GeneralFragment: Fragment() {
                     is Resource.Success -> {
                         hideLoading()
                         val listPosts = result.data
-                        if (listPosts?.size==0){
+                        if (listPosts!!.isEmpty()){
                             binding.emptyListAnimation.visibilityVisible()
+                            hideOtherViews()
                         }else {
                             binding.emptyListAnimation.visibilityGone()
+                            showOtherViews()
+                            setupRecycleView(listPosts)
                         }
-                        Log.i("SportFragment",result.data.toString())
-                        setupRecycleView(listPosts)
+
                     }
                     is Resource.Error -> {
                         hideLoading()
@@ -72,6 +74,14 @@ class GeneralFragment: Fragment() {
         }
         updatedData()
     }
+
+    private fun hideOtherViews() {
+        binding.recyclerViewGeneralPage.visibilityGone()
+    }
+    private fun showOtherViews() {
+        binding.recyclerViewGeneralPage.visibilityVisible()
+    }
+
     private fun updatedData() {
         valueEventListenerPosts = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

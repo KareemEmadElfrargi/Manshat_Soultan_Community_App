@@ -86,19 +86,20 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
             viewModel.ripPostList.collect { result ->
                 when (result) {
                     is Resource.Loading -> {
-                        //shimmerLayout?.startShimmer()
+                        showLoading()
                     }
                     is Resource.Success -> {
+                        hideLoading()
                         val listRipPost = result.data
-                        setupRecycleView(listRipPost)
-                        //shimmerLayout?.stopShimmer()
-                        //shimmerLayout?.visibility = View.GONE
-
-                        if (listRipPost?.size == 0) {
+                        if (listRipPost!!.isEmpty()){
                             binding.emptyListAnimation.visibilityVisible()
-                        } else {
+                            hideOtherViews()
+                        }else{
                             binding.emptyListAnimation.visibilityGone()
+                            showOtherViews()
+                            setupRecycleView(listRipPost)
                         }
+
                     }
                     is Resource.Error -> {
                         //shimmerLayout?.stopShimmer()
@@ -113,6 +114,14 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
         updatedData()
     }
 
+    private fun showOtherViews() {
+        binding.recyclerViewRIPPage.visibilityVisible()
+    }
+
+    private fun hideOtherViews() {
+        binding.recyclerViewRIPPage.visibilityGone()
+    }
+
     private fun updatedData() {
         valueEventListenerRipPost = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -121,9 +130,19 @@ class RIPFragment: Fragment(), InteractionWithOptionPost {
                     val ripPost = ripPostSnapshot.getValue(Post::class.java)
                     ripPost?.let { listOfRipPost.add(ripPost) }
                 }
-                setupRecycleView( listOfRipPost.filter { post ->
+
+                val finalList = listOfRipPost.filter { post ->
                     post.categoryType == Constants.CATEGORY_TYPE_RIP_POST
-                })
+                }
+
+                if (finalList.isEmpty()){
+                    binding.emptyListAnimation.visibilityVisible()
+                    hideOtherViews()
+                }else{
+                    binding.emptyListAnimation.visibilityGone()
+                    showOtherViews()
+                }
+                setupRecycleView(finalList)
 
             }
             override fun onCancelled(error: DatabaseError) {

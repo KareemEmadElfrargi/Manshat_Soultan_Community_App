@@ -8,10 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.manshatsoultancommunity.R
-import com.example.manshatsoultancommunity.features.news.presentation.common.adapter.SportPostAdapter
 import com.example.manshatsoultancommunity.databinding.FragmentSportBinding
-import com.example.manshatsoultancommunity.features.news.data.model.AppointmentMatch
 import com.example.manshatsoultancommunity.features.news.data.model.Post
 import com.example.manshatsoultancommunity.features.news.presentation.common.ViewModels.PostViewModel
 import com.example.manshatsoultancommunity.features.news.presentation.common.adapter.PostAdapter
@@ -57,14 +54,16 @@ class SportFragment: Fragment() {
                     is Resource.Success -> {
                         hideLoading()
                         val listSportPost = result.data
-//                        if (listSportPost?.size==0){
-//                            binding.emptyListAnimation.visibilityVisible()
-//                        }else {
-//                            binding.emptyListAnimation.visibilityGone()
-//                        }
-                        Log.i("SportFragment",result.data.toString())
-                        setupRecycleView(listSportPost)
+                        if (listSportPost!!.isEmpty()){
+                            binding.emptyListAnimation.visibilityVisible()
+                            hideOtherViews()
+                        }else {
+                            binding.emptyListAnimation.visibilityGone()
+                            showOtherViews()
+                            setupRecycleView(listSportPost)
+                        }
                     }
+
                     is Resource.Error -> {
                         hideLoading()
                         val errorMessage = result.message.toString()
@@ -96,10 +95,11 @@ class SportFragment: Fragment() {
 
                 if (finalList.isEmpty()){
                     binding.emptyListAnimation.visibilityVisible()
+                    hideOtherViews()
                 }else{
                     binding.emptyListAnimation.visibilityGone()
+                    showOtherViews()
                 }
-
                 setupRecycleView(finalList)
             }
 
@@ -124,6 +124,12 @@ class SportFragment: Fragment() {
     }
     private fun showLoading() {
         binding.progressBarSportFragment.visibilityVisible()
+    }
+    private fun hideOtherViews() {
+        binding.recyclerViewSportPage.visibilityGone()
+    }
+    private fun showOtherViews() {
+        binding.recyclerViewSportPage.visibilityVisible()
     }
     override fun onDestroy() {
         super.onDestroy()

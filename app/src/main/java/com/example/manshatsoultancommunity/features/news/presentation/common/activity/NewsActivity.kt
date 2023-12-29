@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.manshatsoultancommunity.R
 import com.example.manshatsoultancommunity.databinding.ActivityNewsBinding
+import com.example.manshatsoultancommunity.features.advertisement.presentation.common.ViewModels.AdvertisementsViewModel
 import com.example.manshatsoultancommunity.features.news.presentation.common.ViewModels.PostViewModel
 import com.example.manshatsoultancommunity.util.Constants.CODE_AUTH_KEY
 import com.example.manshatsoultancommunity.util.Resource
@@ -22,7 +23,7 @@ import org.apache.commons.text.StringEscapeUtils
 
 class NewsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewsBinding
-    private val viewModel by viewModels<PostViewModel>()
+    private val viewModel by viewModels<AdvertisementsViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNewsBinding.inflate(layoutInflater)
@@ -43,14 +44,14 @@ class NewsActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launch {
-            viewModel.generalPostList.collectLatest {
+            viewModel.advertisementsList.collectLatest {
                 when(it){
                     is Resource.Success -> {
                         val count = it.data?.size ?: 0
                         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigationHomeNewsActivity)
-                        bottomNavigationView.getOrCreateBadge(R.id.homeFragment).apply {
+                        bottomNavigationView.getOrCreateBadge(R.id.adsFragment).apply {
                             number = count
-                            backgroundColor = resources.getColor(R.color.title)
+                            backgroundColor = resources.getColor(R.color.black)
                         }
                     }
                     else -> Unit

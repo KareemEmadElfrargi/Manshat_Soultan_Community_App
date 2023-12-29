@@ -53,13 +53,15 @@ class EducationFragment: Fragment() {
                     is Resource.Success -> {
                         hideLoading()
                         val listEducationPost = result.data
-                        if (listEducationPost?.size==0){
+                        if (listEducationPost!!.isEmpty()){
                             binding.emptyListAnimation.visibilityVisible()
+                            hideOtherViews()
                         }else {
                             binding.emptyListAnimation.visibilityGone()
+                            showOtherViews()
+                            setupRecycleView(listEducationPost)
                         }
-                        Log.i("EducationFragment",result.data.toString())
-                        setupRecycleView(listEducationPost)
+
                     }
                     is Resource.Error -> {
                         hideLoading()
@@ -118,6 +120,12 @@ class EducationFragment: Fragment() {
 
     private fun hideLoading() {
         binding.progressBarEducationFragment.visibilityGone()
+    }
+    private fun hideOtherViews() {
+        binding.recyclerViewEductionPage.visibilityGone()
+    }
+    private fun showOtherViews() {
+        binding.recyclerViewEductionPage.visibilityVisible()
     }
     override fun onDestroyView() {
         binding.emptyListAnimation.cancelAnimation()
