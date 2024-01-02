@@ -3,6 +3,10 @@
 
 Socail Media App presents the village news in terms of deaths, sports, health and education news on its own, where specialized officials publish these news on the app.
 
+## Screenshots
+
+![Manshat_Soultan_Community_App](https://github.com/KareemEmadElfrargi/Manshat_Soultan_Community_App/assets/148908216/3762c1eb-8d3f-4f48-ab05-6f87e6a94205)
+
 ## Libraries and technologies used
 
 • Navigation component : one activity contains multiple fragments  instead of creating multiple activites
