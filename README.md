@@ -3,9 +3,20 @@
 
 Socail Media App presents the village news in terms of deaths, sports, health and education news on its own, where specialized officials publish these news on the app.
 
-## Screenshots
+## Authors
 
+- [@KareemEmadElfrargi](https://github.com/KareemEmadElfrargi)
+- [@Mohamed Samir](https://github.com/Mohamed-samir03) 
+
+## Screenshots
+- Some Screenshots of this app
 ![Manshat_Soultan_Community_App](https://github.com/KareemEmadElfrargi/Manshat_Soultan_Community_App/assets/148908216/3762c1eb-8d3f-4f48-ab05-6f87e6a94205)
+
+## Language of this Application
+
+It hold single language now and is adaptable to other languages
+
+`Arabic Language`
 
 ## Libraries and technologies used
 
@@ -41,3 +52,29 @@ Socail Media App presents the village news in terms of deaths, sports, health an
 ```bash
 implementation ("com.github.bumptech.glide:glide:4.16.0")
 ```   
+ • Dependency injection with Hilt : Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project
+```bash
+implementation("com.google.dagger:hilt-android:2.49")
+kapt("com.google.dagger:hilt-android-compiler:2.49")
+```
+## Others like 
+
+```bash
+//circular image
+implementation ("de.hdodenhof:circleimageview:3.1.0"))
+//Import the StringEscapeUtils
+implementation ("org.apache.commons:commons-text:1.9")
+// photoView
+implementation ("com.github.chrisbanes:PhotoView:2.3.0")
+//circular image
+implementation ("de.hdodenhof:circleimageview:3.1.0")
+//stepView
+implementation ("com.github.shuhart:stepview:1.5.1")
+//loading button
+implementation("com.github.leandroborgesferreira:loading-button-android:2.3.0")
+//dimens
+implementation ("com.intuit.sdp:sdp-android:1.1.0")
+//font dimens
+implementation ("com.intuit.ssp:ssp-android:1.1.0")
+```
+
